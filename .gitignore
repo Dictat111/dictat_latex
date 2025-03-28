@@ -1,0 +1,17 @@
+# 忽略编译生成的文件
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# 忽略临时文件和备份文件
+*~
+*.bak
+
+# 忽略 PDF 文件（假设你只想要源代码）
+*.pdf    
