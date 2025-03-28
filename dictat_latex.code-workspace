@@ -4,5 +4,127 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+
+// latex 设置
+"latex-workshop.latex.recipes": [
+
+    // 没有参考文献的编译方式
+
+    // 为了正确生成目录项，一般需要编译两次源代码
+
+    {
+
+        "name": "xelatex",
+
+        "tools": [
+
+            "xelatex",
+
+            "xelatex"
+
+        ]
+
+    },
+
+    // 使用 BibTeX 参考文献工具的编译方式
+
+    {
+
+        "name": "xelatex ➞ bibtex ➞ xelatex × 2",
+
+        "tools": [
+
+            "xelatex",
+
+            "bibtex",
+
+            "xelatex",
+
+            "xelatex"
+
+        ]
+
+    },
+
+    // 使用 BibLaTeX 参考文献工具的编译方式
+
+    {
+
+        "name": "xelatex ➞ biber ➞ xelatex x 2",
+
+        "tools": [
+
+            "xelatex",
+
+            "biber",
+
+            "xelatex",
+
+            "xelatex"
+
+        ]
+
+    }
+
+],
+
+
+"latex-workshop.latex.tools": [
+
+    {
+
+        "name": "xelatex",
+        "command": "xelatex",
+        "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+
+        ],
+
+        "env": {}
+
+    },
+
+    {
+
+        "name": "bibtex",
+
+        "command": "bibtex",
+
+        "args": [
+
+            "%DOCFILE%"
+
+        ],
+
+        "env": {}
+
+    },
+
+    {
+
+        "name": "biber",
+
+        "command": "biber",
+
+        "args": [
+
+            "%DOCFILE%"
+
+        ],
+
+        "env": {}
+
+    }
+
+],
+
+
+
+
+
+	}
 }
