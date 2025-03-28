@@ -1,0 +1,21 @@
+
+
+// 这是个snippets 的测试
+{
+    "Print Hello World": {
+        "prefix": "hello",
+        "body": [
+            "print('Hello, World!')"
+        ],
+        "description": "Print 'Hello, World!' in Python"
+    },
+    "Function Definition": {
+        "prefix": "def",
+        "body": [
+            "def ${1:function_name}(${2:parameters}):",
+            "    ${3:# Function body}",
+            "    return ${4:result}"
+        ],
+        "description": "Define a function in Python"
+    }
+}    

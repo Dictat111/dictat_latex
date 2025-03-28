@@ -1,0 +1,10 @@
+[
+    {
+        "key": "alt+r",
+        "command": "python.runPythonFileInTerminal",
+        "when": "editorTextFocus && editorLangId == 'python'"
+    }
+]
+
+
+

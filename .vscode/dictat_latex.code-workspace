@@ -1,7 +1,7 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".."
 		}
 	],
 	"settings": {
@@ -123,8 +123,18 @@
 ],
 
 
+// 隐藏一些文件 
+"files.exclude": {
+    // ".gitignore": true,
+    "**/*.xdv": true,
+    "**/*.log": true,
+    "**/*.fls": true,
+    "**/*.aux": true,
+    "**/*.gz": true,
+    "**/*.fdb_latexmk": true,
 
-
+    "**/.*": true , //不显示隐藏文件 
+}
 
 	}
 }

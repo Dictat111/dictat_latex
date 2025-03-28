@@ -1,0 +1,47 @@
+\documentclass{article}
+\usepackage{ctex}
+\usepackage[exerciseonly]{exercise} %exerciseonly表示不显示答案
+\usepackage{amsmath}
+
+\title{圆的方程练习题}
+\date{\today} % 自动生成当前日期（可自定义）
+
+% 重新定义例题和解答的名称
+\renewcommand{\ExerciseName}{题目}
+\renewcommand{\ExerciseListName}{题}
+\renewcommand{\AnswerName}{解答}
+\renewcommand{\AnswerListName}{解}
+\begin{document}
+% \thispagestyle{empty} %禁用所有页码
+
+% \section*{}
+\maketitle % 生成标题
+
+\begin{ExerciseList}
+\Exercise
+求以点\((2, -3)\)为圆心，半径为\(5\)的圆的标准方程。
+\Answer
+根据圆标准方程\((x - a)^2+(y - b)^2 = r^2\)，\(a = 2\)，\(b=-3\)，\(r = 5\)，得\((x - 2)^2+(y + 3)^2 = 25\)。
+
+\Exercise
+已知圆的方程为\((x + 1)^2+(y - 2)^2 = 9\)，求圆心坐标和半径。
+\Answer
+圆标准方程\((x - a)^2+(y - b)^2 = r^2\)，此方程中\(a=-1\)，\(b = 2\)，\(r = 3\)，所以圆心\((-1,2)\)，半径\(3\)。
+
+\Exercise
+若圆经过点\(A(1,2)\)，\(B(3,4)\)，且圆心在直线\(x - y + 1 = 0\)上，求该圆的方程。
+\Answer
+设圆方程\((x - a)^2+(y - b)^2 = r^2\)，由已知得\(\begin{cases}(1 - a)^2+(2 - b)^2 = r^2\\(3 - a)^2+(4 - b)^2 = r^2\\a - b+1 = 0\end{cases}\)，前两式相减得\(a + b = 5\)，联立\(\begin{cases}a + b = 5\\a - b+1 = 0\end{cases}\)解得\(a = 2\)，\(b = 3\)，\(r^2 = 2\)，圆方程为\((x - 2)^2+(y - 3)^2 = 2\)。
+
+\Exercise
+求过点\((0,0)\)，\((1,1)\)，\((2,0)\)的圆的方程。
+\Answer
+设圆一般方程\(x^{2}+y^{2}+Dx + Ey+F = 0\)，代入三点得\(\begin{cases}F = 0\\1 + 1+D + E+F = 0\\4+2D+F = 0\end{cases}\)，解得\(D=-2\)，\(E = 0\)，\(F = 0\)，圆方程为\(x^{2}+y^{2}-2x = 0\)。
+
+\Exercise
+圆\(x^2 + y^2 - 4x + 6y - 3 = 0\)的圆心坐标和半径分别是多少？
+\Answer
+配方得\(x^{2}-4x + 4+y^{2}+6y+9=3 + 4+9\)，即\((x - 2)^2+(y + 3)^2 = 16\)，圆心\((2,-3)\)，半径\(4\)。
+\end{ExerciseList}
+
+\end{document}
