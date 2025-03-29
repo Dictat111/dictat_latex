@@ -9,6 +9,8 @@
 *.fdb_latexmk
 *.fls
 *.xdv
+*.loe
+*.gz
 # 忽略临时文件和备份文件
 *~
 *.bak

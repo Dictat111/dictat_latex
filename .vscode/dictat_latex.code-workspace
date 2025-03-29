@@ -135,6 +135,10 @@
     "**/*.aux": true,
     "**/*.gz": true,
     "**/*.fdb_latexmk": true,
+    "**/*.toc": true,
+    "**/*.loe": true,
+
+
 
     "**/.*": true , //不显示隐藏文件 
 }

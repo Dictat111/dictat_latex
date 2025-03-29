@@ -1,5 +1,5 @@
 \documentclass{ctexart}
-\usepackage{exercise}
+\usepackage[]{exercise} % exerciseonly 表示不显示答案
 \usepackage{amsmath} % 提供 \implies 命令 逻辑蕴涵符号
 \usepackage{xcolor} % 或 \usepackage{color}
 \usepackage[most]{tcolorbox} %使用 most来 使用 breakable 选项,即自动分页功能
@@ -13,6 +13,13 @@
  {\begin{tcolorbox}[breakable, colframe=blue] \begin{Answer}[#1] \color{blue} \kaishu}  % 开始部分
  {\end{Answer}\end{tcolorbox}}      
 
+\newtcbox{\mybox}[1][red]{on line,
+arc=0pt,outer arc=0pt,colback=#1!10!white,colframe=#1!50!black,
+boxsep=0pt,left=1pt,right=1pt,top=2pt,bottom=2pt,
+boxrule=0pt,bottomrule=1pt,toprule=1pt} % 用来开头高亮表示答案
+
+% \def\listexercisename{练习目录}
+
 % \renewcommand{\AnswerName}{解答}
 % \renewcommand{\AnswerListName}{\textcolor{blue}{解}}
 % \renewcommand{\AtBeginAnswer}{ \color{blue} \kaishu}
@@ -21,21 +28,93 @@
 % \AtEndEnvironment{Answer}{  \end{tcolorbox}} %有问题
 
 \begin{document}
+% 1.还需要做的,添加一个题目的目录
+% 怎么设置没有答案的时候 tcolorbox 就不产生
+% 解决 linux 粘贴出现 ^[[200~tcolorbox~ 的问题
+% 解决没有答案显示时方框仍会被显示的问题
 
-\begin{Exercise}[title={圆的基本性质练习}, label={ex:circle-properties}]
-    \Question 求以点$(2, -3)$为圆心，半径为$5$的圆的标准方程。
-    \Question 已知圆的方程为$(x + 1)^2+(y - 2)^2 = 9$，求圆心坐标和半径。
-    \Question 若圆经过点$A(1,2)$，$B(3,4)$，且圆心在直线$x - y + 1 = 0$上，求该圆的方程。
-    \Question 求过点$(0,0)$，$(1,1)$，$(2,0)$的圆的方程。
+% \listofexercises %有点问题
+% \ListOfExerciseInToc
+ \clearpage
+\begin{Exercise}[title={指数运算小练习}, label={ex:exponent}]
+    \Question 已知 $2^x = 3$，$4^y = 5$，求 $2^{x - 2y}$ 的值.
+    \Question 若函数 $y = a^{2x - 2}+1$（$a>0$ 且 $a\neq1$）的图象恒过定点 $P$，求点 $P$ 的坐标.
+    \Question 计算 $\frac{(\sqrt[3]{25}-\sqrt{125})\div\sqrt[4]{25}}{5^{-\frac{7}{6}}}$ 的值.
+    \Question 已知 $3^a = 5^b = 15$，求 $\frac{1}{a}+\frac{1}{b}$ 的值.
+\end{Exercise}
+
+\begin{MyAnswer}[ref={ex:exponent}]
+    \Question \mybox{答案为 $\frac{3}{5}$;}\\ 解：因为 $4^y=(2^2)^y = 2^{2y}=5$，又已知 $2^x = 3$，根据指数运算法则 $a^m\div a^n=a^{m - n}$，可得 $2^{x - 2y}=2^x\div2^{2y}=\frac{3}{5}$。
+    \Question \mybox{答案为 $(1,2)$;}\\ 解：令 $2x - 2 = 0$，解得 $x = 1$。当 $x = 1$ 时，$y=a^{0}+1=1 + 1=2$，所以函数 $y = a^{2x - 2}+1$（$a>0$ 且 $a\neq1$）的图象恒过定点 $P(1,2)$。
+    \Question \mybox{答案为 $-4$;}\\ 解：
+        先将各项根式化为指数形式，$\sqrt[3]{25}=5^{\frac{2}{3}}$，$\sqrt{125}=5^{\frac{3}{2}}$，$\sqrt[4]{25}=5^{\frac{1}{2}}$。\\
+        则 $\frac{(\sqrt[3]{25}-\sqrt{125})\div\sqrt[4]{25}}{5^{-\frac{7}{6}}}=\frac{(5^{\frac{2}{3}}-5^{\frac{3}{2}})\div5^{\frac{1}{2}}}{5^{-\frac{7}{6}}}=\frac{5^{\frac{2}{3}-\frac{1}{2}}-5^{\frac{3}{2}-\frac{1}{2}}}{5^{-\frac{7}{6}}}=\frac{5^{\frac{1}{6}}-5}{5^{-\frac{7}{6}}}$。
+        根据指数运算法则 $a^m\div a^n=a^{m - n}$，进一步得到 $(5^{\frac{1}{6}}-5)\times5^{\frac{7}{6}}=5^{\frac{1}{6}+\frac{7}{6}}-5^{1+\frac{7}{6}}=5^{\frac{4}{3}}-5^{\frac{13}{6}}=5\times5^{\frac{1}{3}}-5\times5^{\frac{7}{6}}$，化简后为 $5 - 9=-4$。
+    \Question \mybox{答案为 $1$;}\\ 解：因为 $3^a = 15$，所以 $a=\log_3{15}$，则 $\frac{1}{a}=\log_{15}3$；因为 $5^b = 15$，所以 $b=\log_5{15}$，则 $\frac{1}{b}=\log_{15}5$。根据对数运算法则 $\log_aM+\log_aN=\log_a(MN)$，可得 $\frac{1}{a}+\frac{1}{b}=\log_{15}3+\log_{15}5=\log_{15}(3\times5)=\log_{15}15 = 1$。
+\end{MyAnswer}
+\clearpage
+
+
+\begin{Exercise}[title={对数运算小练习1}, label={ex:logarithm}]
+    \Question 计算 $\log_2 8 + \log_3 27$ 的值.
+    \Question 已知 $\log_a 2 = m$,$\log_a 3 = n$,求 $\log_a 12$（用 $m$,$n$ 表示）.
+    \Question 若 $\log_5 (x + 1) - \log_5 (x - 1) = 1$,求 $x$ 的值.
+    \Question 计算 $\log_{10} 1000 - \log_{10} 10$ 的值.
+    \Question 已知 $\log_b 5 = p$，$\log_b 2 = q$，求 $\log_b 20$（用 $p$，$q$ 表示）.
+    \Question 若 $\log_3 (x^2 - 1) = 2$，求 $x$ 的值.
+\end{Exercise}
+\begin{MyAnswer}[ref={ex:logarithm}]
+        \Question \mybox{答案为 $6$;}\\ 解：根据对数运算法则,$\log_2 8=\log_2 2^3 = 3$,$\log_3 27=\log_3 3^3 = 3$,所以 $\log_2 8+\log_3 27=3 + 3=6$.
+
+        \Question \mybox{答案为 $n + 2m$;}\\ 解：因为 $\log_a 12=\log_a(3\times2^2)$,根据对数运算法则 $\log_a(MN)=\log_a M+\log_a N$ 和 $\log_a M^p = p\log_a M$,可得 $\log_a 12=\log_a 3 + 2\log_a 2$,又已知 $\log_a 2 = m$,$\log_a 3 = n$,所以 $\log_a 12=n + 2m$.
+
+        \Question  \mybox{答案为 $x=\frac{3}{2}$;}\\  解：根据对数运算法则 $\log_a M-\log_a N=\log_a\frac{M}{N}$,则 $\log_5 (x + 1)-\log_5 (x - 1)=\log_5\frac{x + 1}{x - 1}$.已知 $\log_5\frac{x + 1}{x - 1}=1$,即 $\frac{x + 1}{x - 1}=5^1 = 5$.
+        方程两边同乘 $x - 1$ 得：$x + 1 = 5(x - 1)$,展开得 $x + 1 = 5x-5$,移项可得 $4x = 6$,解得 $x=\frac{3}{2}$.经检验,当 $x=\frac{3}{2}$ 时,$x + 1=\frac{5}{2}>0$,$x - 1=\frac{1}{2}>0$,满足对数函数的定义域要求.
+
+        \Question \mybox{答案为 $2$;}\\ 解：根据对数运算法则，$\log_{10} 1000=\log_{10} 10^3 = 3$，$\log_{10} 10 = 1$，所以 $\log_{10} 1000 - \log_{10} 10=3 - 1 = 2$.
+
+        \Question \mybox{答案为 $p + 2q$;}\\ 解：因为 $\log_b 20=\log_b(5\times2^2)$，根据对数运算法则 $\log_b(MN)=\log_b M+\log_b N$ 和 $\log_b M^p = p\log_b M$，可得 $\log_b 20=\log_b 5 + 2\log_b 2$，又已知 $\log_b 5 = p$，$\log_b 2 = q$，所以 $\log_b 20=p + 2q$.
+
+        \Question \mybox{答案为 $x=\pm\sqrt{10}$;}\\ 解：已知 $\log_3 (x^2 - 1) = 2$，根据对数的定义可得 $x^2 - 1 = 3^2 = 9$，移项可得 $x^2 = 10$，解得 $x=\pm\sqrt{10}$。经检验，当 $x=\pm\sqrt{10}$ 时，$x^2 - 1 = 9>0$，满足对数函数的定义域要求。
+\end{MyAnswer}
+
+
+
+\begin{Exercise}[title={对数运算小练习2}, label={ex:logarithm2}]
+    \Question 计算 $\log_4 16 + \log_9 81$ 的值.
+    \Question 已知 $\log_b 5 = p$, $\log_b 7 = q$, 求 $\log_b 35$（用 $p$, $q$ 表示）.
+    \Question 若 $\log_2 (2x - 3) + \log_2 (x + 1) = 2$, 求 $x$ 的值.
+    \Question 解方程 $2^{x} = 5$, 用对数表示 $x$ 的值.
+\end{Exercise}
+\begin{MyAnswer}[ref={ex:logarithm2}]
+        \Question \mybox{答案为 $4$;}\\ 解：根据对数运算法则, $\log_4 16 = \log_4 4^2 = 2$, $\log_9 81 = \log_9 9^2 = 2$, 所以 $\log_4 16 + \log_9 81 = 2 + 2 = 4$.
+
+        \Question \mybox{答案为 $p + q$;}\\ 解：因为 $\log_b 35 = \log_b (5 \times 7)$, 根据对数运算法则 $\log_b(MN) = \log_b M + \log_b N$, 可得 $\log_b 35 = \log_b 5 + \log_b 7$, 又已知 $\log_b 5 = p$, $\log_b 7 = q$, 所以 $\log_b 35 = p + q$.
+
+        \Question \mybox{答案为 $x = 2$;}\\ 解：根据对数运算法则 $\log_a M + \log_a N = \log_a (MN)$, 则 $\log_2 (2x - 3) + \log_2 (x + 1) = \log_2 [(2x - 3)(x + 1)]$. 已知 $\log_2 [(2x - 3)(x + 1)] = 2$, 即 $(2x - 3)(x + 1) = 2^2 = 4$. 展开得 $2x^2 - x - 3 = 4$, 即 $2x^2 - x - 7 = 0$. 解得 $x = 2$ 或 $x = -\frac{7}{4}$. 经检验, 当 $x = 2$ 时, $2x - 3 = 1 > 0$ 且 $x + 1 = 3 > 0$, 满足对数函数的定义域要求; 当 $x = -\frac{7}{4}$ 时, $2x - 3 = -\frac{13}{2} < 0$, 不满足定义域要求. 所以 $x = 2$.
+
+        \Question \mybox{答案为 $x = \log_2 5$;}\\ 解：对等式 $2^x = 5$ 两边取以 $2$ 为底的对数, 得 $x = \log_2 5$.
+\end{MyAnswer}
+
+
+
+
+
+
+\begin{Exercise}[title={圆的基本性质练习}, label={ex:circle-properties},difficulty=3]
+    \Question 求以点$(2, -3)$为圆心,半径为$5$的圆的标准方程.
+    \Question 已知圆的方程为$(x + 1)^2+(y - 2)^2 = 9$,求圆心坐标和半径.
+    \Question 若圆经过点$A(1,2)$,$B(3,4)$,且圆心在直线$x - y + 1 = 0$上,求该圆的方程.
+    \Question 求过点$(0,0)$,$(1,1)$,$(2,0)$的圆的方程.
     \Question 圆$x^2 + y^2 - 4x + 6y - 3 = 0$的圆心坐标和半径分别是多少？
 \end{Exercise}
 
 \begin{MyAnswer}[ref={ex:circle-properties}]
-    \Question 解：根据圆标准方程$(x - a)^2+(y - b)^2 = r^2$，$a = 2$，$b=-3$，$r = 5$，得$(x - 2)^2+(y + 3)^2 = 25$。
+    \Question 解：根据圆标准方程$(x - a)^2+(y - b)^2 = r^2$,$a = 2$,$b=-3$,$r = 5$,得$(x - 2)^2+(y + 3)^2 = 25$.
     
-    \Question 解：圆标准方程$(x - a)^2+(y - b)^2 = r^2$，此方程中$a=-1$，$b = 2$，$r = 3$，所以圆心$(-1,2)$，半径$3$。
+    \Question 解：圆标准方程$(x - a)^2+(y - b)^2 = r^2$,此方程中$a=-1$,$b = 2$,$r = 3$,所以圆心$(-1,2)$,半径$3$.
     
-    \Question 解：设圆方程$(x - a)^2+(y - b)^2 = r^2$，由已知得
+    \Question 解：设圆方程$(x - a)^2+(y - b)^2 = r^2$,由已知得
     $$
     \begin{cases}
     (1 - a)^2+(2 - b)^2 = r^2 \\
@@ -43,16 +122,16 @@
     a - b+1 = 0
     \end{cases}
     $$
-    前两式相减得$a + b = 5$，联立
+    前两式相减得$a + b = 5$,联立
     $$
     \begin{cases}
     a + b = 5 \\
     a - b+1 = 0
     \end{cases}
     $$
-    解得$a = 2$，$b = 3$，$r^2 = 2$，圆方程为$(x - 2)^2+(y - 3)^2 = 2$。
+    解得$a = 2$,$b = 3$,$r^2 = 2$,圆方程为$(x - 2)^2+(y - 3)^2 = 2$.
     
-    \Question 解：设圆一般方程$x^{2}+y^{2}+Dx + Ey+F = 0$，代入三点得
+    \Question 解：设圆一般方程$x^{2}+y^{2}+Dx + Ey+F = 0$,代入三点得
     $$
     \begin{cases}
     F = 0 \\
@@ -60,40 +139,39 @@
     4+2D+F = 0
     \end{cases}
     $$
-    解得$D=-2$，$E = 0$，$F = 0$，圆方程为$x^{2}+y^{2}-2x = 0$。
+    解得$D=-2$,$E = 0$,$F = 0$,圆方程为$x^{2}+y^{2}-2x = 0$.
     
     \Question 解：配方得
     $$
     x^{2}-4x + 4+y^{2}+6y+9=3 + 4+9
     $$
-    即$(x - 2)^2+(y + 3)^2 = 16$，圆心$(2,-3)$，半径$4$。
+    即$(x - 2)^2+(y + 3)^2 = 16$,圆心$(2,-3)$,半径$4$.
 \end{MyAnswer}
 
 \clearpage
 \begin{Exercise}[title={直线与圆的位置关系小练习}, label={ex:line-circle}]
-    \Question 判断直线 $ y = x + 1 $ 与圆 $ x^2 + y^2 = 2 $ 的位置关系（相交、相切、相离）。
-    \Question 求直线 $ 3x + 4y - 5 = 0 $ 与圆 $ (x-1)^2 + (y+2)^2 = 4 $ 的圆心到直线的距离，并判断位置关系。
-    \Question 若直线 $ y = kx + 2 $ 与圆 $ x^2 + y^2 = 1 $ 相切，求实数 $ k $ 的值。
+    \Question 判断直线 $ y = x + 1 $ 与圆 $ x^2 + y^2 = 2 $ 的位置关系（相交、相切、相离）.
+    \Question 求直线 $ 3x + 4y - 5 = 0 $ 与圆 $ (x-1)^2 + (y+2)^2 = 4 $ 的圆心到直线的距离,并判断位置关系.
+    \Question 若直线 $ y = kx + 2 $ 与圆 $ x^2 + y^2 = 1 $ 相切,求实数 $ k $ 的值.
 \end{Exercise}
 \begin{MyAnswer}[ref={ex:line-circle}]
         \Question 解：将直线方程代入圆的方程：
         $$
         x^2 + (x + 1)^2 = 2 \implies 2x^2 + 2x - 1 = 0
         $$
-        判别式 $ \Delta = 4 + 8 = 12 > 0 $，因此直线与圆相交。
+        判别式 $ \Delta = 4 + 8 = 12 > 0 $,因此直线与圆相交.
 
-        \Question 解：圆心为 $ (1, -2) $，半径 $ r = 2 $。计算圆心到直线的距离：
+        \Question 解：圆心为 $ (1, -2) $,半径 $ r = 2 $.计算圆心到直线的距离：
         $$
         d = \frac{|3 \times 1 + 4 \times (-2) - 5|}{\sqrt{3^2 + 4^2}} = \frac{10}{5} = 2
         $$
-        因为 $ d = r $，所以直线与圆相切。
+        因为 $ d = r $,所以直线与圆相切.
 
-        \Question 解：直线与圆相切时，距离等于半径：
+        \Question 解：直线与圆相切时,距离等于半径：
         $$
         \frac{|2|}{\sqrt{k^2 + 1}} = 1 \implies \sqrt{k^2 + 1} = 2 \implies k^2 = 3 \implies k = \pm \sqrt{3}
         $$
 \end{MyAnswer}
-
 
 
 
