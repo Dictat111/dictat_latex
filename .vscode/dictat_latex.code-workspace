@@ -1,9 +1,12 @@
 {
 	"folders": [
-		{
-			"path": ".."
-		}
-	],
+        {
+            "path": ".."
+        },
+        {
+            "path": "../../latex_test"
+        }
+    ],
 	"settings": {
 
 // latex 设置

@@ -1,0 +1,104 @@
+\documentclass{ctexart}
+\usepackage{exercise}
+\usepackage{amsmath} % 提供 \implies 命令 逻辑蕴涵符号
+\usepackage{xcolor} % 或 \usepackage{color}
+\usepackage[most]{tcolorbox} %使用 most来 使用 breakable 选项,即自动分页功能
+
+\renewcommand{\ExerciseName}{题目}
+\renewcommand{\ExerciseListName}{题}
+\renewcommand{\AnswerHeader}{\color{blue}\medskip\centerline{\textbf{
+ \ExerciseName\ \ExerciseHeaderNB  ~答案}\smallskip}} %自定义题目标题
+
+ \newenvironment{MyAnswer}[1][] %设置了一个参数,用来
+ {\begin{tcolorbox}[breakable, colframe=blue] \begin{Answer}[#1] \color{blue} \kaishu}  % 开始部分
+ {\end{Answer}\end{tcolorbox}}      
+
+% \renewcommand{\AnswerName}{解答}
+% \renewcommand{\AnswerListName}{\textcolor{blue}{解}}
+% \renewcommand{\AtBeginAnswer}{ \color{blue} \kaishu}
+
+% \AtBeginEnvironment{Answer}{  \begin{tcolorbox}}
+% \AtEndEnvironment{Answer}{  \end{tcolorbox}} %有问题
+
+\begin{document}
+
+\begin{Exercise}[title={圆的基本性质练习}, label={ex:circle-properties}]
+    \Question 求以点$(2, -3)$为圆心，半径为$5$的圆的标准方程。
+    \Question 已知圆的方程为$(x + 1)^2+(y - 2)^2 = 9$，求圆心坐标和半径。
+    \Question 若圆经过点$A(1,2)$，$B(3,4)$，且圆心在直线$x - y + 1 = 0$上，求该圆的方程。
+    \Question 求过点$(0,0)$，$(1,1)$，$(2,0)$的圆的方程。
+    \Question 圆$x^2 + y^2 - 4x + 6y - 3 = 0$的圆心坐标和半径分别是多少？
+\end{Exercise}
+
+\begin{MyAnswer}[ref={ex:circle-properties}]
+    \Question 解：根据圆标准方程$(x - a)^2+(y - b)^2 = r^2$，$a = 2$，$b=-3$，$r = 5$，得$(x - 2)^2+(y + 3)^2 = 25$。
+    
+    \Question 解：圆标准方程$(x - a)^2+(y - b)^2 = r^2$，此方程中$a=-1$，$b = 2$，$r = 3$，所以圆心$(-1,2)$，半径$3$。
+    
+    \Question 解：设圆方程$(x - a)^2+(y - b)^2 = r^2$，由已知得
+    $$
+    \begin{cases}
+    (1 - a)^2+(2 - b)^2 = r^2 \\
+    (3 - a)^2+(4 - b)^2 = r^2 \\
+    a - b+1 = 0
+    \end{cases}
+    $$
+    前两式相减得$a + b = 5$，联立
+    $$
+    \begin{cases}
+    a + b = 5 \\
+    a - b+1 = 0
+    \end{cases}
+    $$
+    解得$a = 2$，$b = 3$，$r^2 = 2$，圆方程为$(x - 2)^2+(y - 3)^2 = 2$。
+    
+    \Question 解：设圆一般方程$x^{2}+y^{2}+Dx + Ey+F = 0$，代入三点得
+    $$
+    \begin{cases}
+    F = 0 \\
+    1 + 1+D + E+F = 0 \\
+    4+2D+F = 0
+    \end{cases}
+    $$
+    解得$D=-2$，$E = 0$，$F = 0$，圆方程为$x^{2}+y^{2}-2x = 0$。
+    
+    \Question 解：配方得
+    $$
+    x^{2}-4x + 4+y^{2}+6y+9=3 + 4+9
+    $$
+    即$(x - 2)^2+(y + 3)^2 = 16$，圆心$(2,-3)$，半径$4$。
+\end{MyAnswer}
+
+\clearpage
+\begin{Exercise}[title={直线与圆的位置关系小练习}, label={ex:line-circle}]
+    \Question 判断直线 $ y = x + 1 $ 与圆 $ x^2 + y^2 = 2 $ 的位置关系（相交、相切、相离）。
+    \Question 求直线 $ 3x + 4y - 5 = 0 $ 与圆 $ (x-1)^2 + (y+2)^2 = 4 $ 的圆心到直线的距离，并判断位置关系。
+    \Question 若直线 $ y = kx + 2 $ 与圆 $ x^2 + y^2 = 1 $ 相切，求实数 $ k $ 的值。
+\end{Exercise}
+\begin{MyAnswer}[ref={ex:line-circle}]
+        \Question 解：将直线方程代入圆的方程：
+        $$
+        x^2 + (x + 1)^2 = 2 \implies 2x^2 + 2x - 1 = 0
+        $$
+        判别式 $ \Delta = 4 + 8 = 12 > 0 $，因此直线与圆相交。
+
+        \Question 解：圆心为 $ (1, -2) $，半径 $ r = 2 $。计算圆心到直线的距离：
+        $$
+        d = \frac{|3 \times 1 + 4 \times (-2) - 5|}{\sqrt{3^2 + 4^2}} = \frac{10}{5} = 2
+        $$
+        因为 $ d = r $，所以直线与圆相切。
+
+        \Question 解：直线与圆相切时，距离等于半径：
+        $$
+        \frac{|2|}{\sqrt{k^2 + 1}} = 1 \implies \sqrt{k^2 + 1} = 2 \implies k^2 = 3 \implies k = \pm \sqrt{3}
+        $$
+\end{MyAnswer}
+
+
+
+
+
+\end{document}
+
+
+%  不要出先类似## **的 markdown 语法, 要使用严格的latex语言.
