@@ -4,15 +4,48 @@
 \usetikzlibrary{arrows.meta} % 引入一些箭头
 \usepackage{pgfplots} % 引入绘图宏包
 \begin{document}
-\begin{tikzpicture}[scale=1]
-    % 绘制坐标轴
-    \draw[->, thick] (-2,0) -- (2,0) node[right] {$x$};
-    \draw[->, thick] (0,-2) -- (0,2) node[above] {$y$};
-    % 绘制函数图像，添加 thick 选项使线条变粗
-    \draw[domain=-2:1, smooth, variable=\x, red, thick] plot ({\x},{1*\x + 1});
-    % 添加函数标签
-    \node[blue] at (1,1) {$y = 2x + 1$};
-\end{tikzpicture}
+
+
+\section{箭头测试}
+
+\begin{center}
+    
+    \begin{tikzpicture}
+        \centering
+        % 设置网格，方便观察坐标位置
+        \draw[help lines] (-3,-3) grid (3,3);
+        % 绘制 x 轴和 y 轴
+        \draw[-stealth] (-3,0) -- (3,0) node[right] {"-stealth"};
+        \draw[->] (0,-3) -- (0,3) node[above] {"->"};
+        \draw[-To] (0,0) -- (2,2) node[above] {"-To"};
+        
+        \draw[-latex] (0,0) -- (-2,2) node[above] {"-latex"};
+        
+        %\usetikzlibrary{arrows.meta}
+        \draw[-Triangle] (0,0) -- (-2,-2) node[above] {"-Triangle"};
+        \draw[-Circle] (0,0) -- (2,-2) node[above] {"-Circle"};
+    \end{tikzpicture}
+    
+\end{center}
+
+
+\section{函数绘制}
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        % 绘制坐标轴
+        \draw[->, thick] (-2,0) -- (2,0) node[right] {$x$};
+        \draw[->, thick] (0,-2) -- (0,2) node[above] {$y$};
+        % 绘制函数图像，添加 thick 选项使线条变粗
+        \draw[domain=-2:1, smooth, variable=\x, red, thick] plot ({\x},{1*\x + 1});
+        % 添加函数标签
+        \node[blue] at (1,1) {$y = 2x + 1$};
+    \end{tikzpicture}
+    \caption{添加标题:类似图片的方法 }
+\end{figure}
+
+
+
 \begin{tikzpicture}[scale=1]
     % 绘制坐标轴
     \draw[->, thick] (-2,0) -- (2,0) node[right] {$x$};
@@ -25,17 +58,7 @@
     \draw[domain=-1.5:1.5 ,color=orange] plot (\x,{exp(\x)}) ;
 \end{tikzpicture}
 
-\begin{tikzpicture}
-    \draw (0,0) rectangle (4,4);
-\end{tikzpicture}
 
-\begin{tikzpicture}
-    \draw (0,0) parabola (4,4);
-  \end{tikzpicture}
-
-  \begin{tikzpicture}
-	\draw[scale=0.5] (0,0) ellipse (3cm and 1cm);
-\end{tikzpicture}
 
 
 
@@ -46,7 +69,7 @@
 
 
 
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=1]
 		\begin{axis}[
 			axis lines =middle,
 			xlabel = $x$,
@@ -76,6 +99,10 @@
 		\end{axis}
 	\end{tikzpicture}
 
+
+
+
+    \section{三角函数}
     \begin{tikzpicture}
         \begin{axis}[
             axis lines = middle,
@@ -100,7 +127,58 @@
         ]{(sin(deg(x)))};
         \end{axis}
     \end{tikzpicture}
+    \\
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = $x$,
+            ylabel = $y$,
+            xmin = -3.5,
+            xmax = 3.5,
+            ymin = -2,
+            ymax = 2,
+            clip = false, % 设置不裁剪图形,也就是函数图像会超过坐标轴的范围
+            axis line style={thick}, %使坐标轴变粗
+            x axis line style={-Latex},
+            y axis line style={-stealth},
+            title = {设置$x$、$y$轴长度不同,但是图像上长度相同},   
+            xtick=\empty,
+            ytick=\empty %取消刻度
+        ]
+        \addplot [
+            domain=-pi:pi ,
+            samples=500,
+            color=blue
+        ]{(sin(deg(x)))};
+        \end{axis}
+    \end{tikzpicture}
+    \\
+    \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            xlabel = $x$,
+            ylabel = $y$,
+            xmin = -7,
+            xmax = 7,
+            ymin = -2,
+            ymax = 2,
+            clip = false, % 设置不裁剪图形,也就是函数图像会超过坐标轴的范围
+            axis line style={thick}, %使坐标轴变粗
+            x axis line style={-Latex},
+            y axis line style={-stealth},
+            title = {设置$x$、$y$轴长度不同,但是图像上长度相同},   
+            xtick=\empty,
+            ytick=\empty %取消刻度
+        ]
+        \addplot [
+            domain=-2*pi:2*pi ,
+            samples=500,
+            color=blue
+        ]{(sin(deg(x)))};
+        \end{axis}
+    \end{tikzpicture}
 
+    \section{对数函数}
     \begin{tikzpicture}
         \begin{axis}[
             axis lines = middle, % 会影响x轴和y轴的相对位置
@@ -126,6 +204,8 @@
         ]{(ln(x))};
         \end{axis}
     \end{tikzpicture}
+
+
 
     
 \end{document}

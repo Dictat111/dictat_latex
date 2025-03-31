@@ -137,6 +137,8 @@
     "**/*.fdb_latexmk": true,
     "**/*.toc": true,
     "**/*.loe": true,
+    "**/*.pdf": true,
+
 
 
 

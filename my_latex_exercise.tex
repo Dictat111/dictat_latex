@@ -10,8 +10,13 @@
  \ExerciseName\ \ExerciseHeaderNB  ~答案}\smallskip}} %自定义题目标题
 
  \newenvironment{MyAnswer}[1][] %设置了一个参数,用来
- {\begin{tcolorbox}[breakable, colframe=blue] \begin{Answer}[#1] \color{blue} \kaishu}  % 开始部分
- {\end{Answer}\end{tcolorbox}}      
+{
+    \begin{tcolorbox}[breakable, colframe=blue]
+    \begin{Answer}[#1] \color{blue} \kaishu
+        }  % 开始部分
+{\end{Answer}
+\end{tcolorbox}
+}      
 
 \newtcbox{\mybox}[1][red]{on line,
 arc=0pt,outer arc=0pt,colback=#1!10!white,colframe=#1!50!black,
@@ -39,17 +44,12 @@ boxrule=0pt,bottomrule=1pt,toprule=1pt} % 用来开头高亮表示答案
 \begin{Exercise}[title={指数运算小练习}, label={ex:exponent}]
     \Question 已知 $2^x = 3$，$4^y = 5$，求 $2^{x - 2y}$ 的值.
     \Question 若函数 $y = a^{2x - 2}+1$（$a>0$ 且 $a\neq1$）的图象恒过定点 $P$，求点 $P$ 的坐标.
-    \Question 计算 $\frac{(\sqrt[3]{25}-\sqrt{125})\div\sqrt[4]{25}}{5^{-\frac{7}{6}}}$ 的值.
     \Question 已知 $3^a = 5^b = 15$，求 $\frac{1}{a}+\frac{1}{b}$ 的值.
 \end{Exercise}
 
 \begin{MyAnswer}[ref={ex:exponent}]
     \Question \mybox{答案为 $\frac{3}{5}$;}\\ 解：因为 $4^y=(2^2)^y = 2^{2y}=5$，又已知 $2^x = 3$，根据指数运算法则 $a^m\div a^n=a^{m - n}$，可得 $2^{x - 2y}=2^x\div2^{2y}=\frac{3}{5}$。
     \Question \mybox{答案为 $(1,2)$;}\\ 解：令 $2x - 2 = 0$，解得 $x = 1$。当 $x = 1$ 时，$y=a^{0}+1=1 + 1=2$，所以函数 $y = a^{2x - 2}+1$（$a>0$ 且 $a\neq1$）的图象恒过定点 $P(1,2)$。
-    \Question \mybox{答案为 $-4$;}\\ 解：
-        先将各项根式化为指数形式，$\sqrt[3]{25}=5^{\frac{2}{3}}$，$\sqrt{125}=5^{\frac{3}{2}}$，$\sqrt[4]{25}=5^{\frac{1}{2}}$。\\
-        则 $\frac{(\sqrt[3]{25}-\sqrt{125})\div\sqrt[4]{25}}{5^{-\frac{7}{6}}}=\frac{(5^{\frac{2}{3}}-5^{\frac{3}{2}})\div5^{\frac{1}{2}}}{5^{-\frac{7}{6}}}=\frac{5^{\frac{2}{3}-\frac{1}{2}}-5^{\frac{3}{2}-\frac{1}{2}}}{5^{-\frac{7}{6}}}=\frac{5^{\frac{1}{6}}-5}{5^{-\frac{7}{6}}}$。
-        根据指数运算法则 $a^m\div a^n=a^{m - n}$，进一步得到 $(5^{\frac{1}{6}}-5)\times5^{\frac{7}{6}}=5^{\frac{1}{6}+\frac{7}{6}}-5^{1+\frac{7}{6}}=5^{\frac{4}{3}}-5^{\frac{13}{6}}=5\times5^{\frac{1}{3}}-5\times5^{\frac{7}{6}}$，化简后为 $5 - 9=-4$。
     \Question \mybox{答案为 $1$;}\\ 解：因为 $3^a = 15$，所以 $a=\log_3{15}$，则 $\frac{1}{a}=\log_{15}3$；因为 $5^b = 15$，所以 $b=\log_5{15}$，则 $\frac{1}{b}=\log_{15}5$。根据对数运算法则 $\log_aM+\log_aN=\log_a(MN)$，可得 $\frac{1}{a}+\frac{1}{b}=\log_{15}3+\log_{15}5=\log_{15}(3\times5)=\log_{15}15 = 1$。
 \end{MyAnswer}
 \clearpage
@@ -83,7 +83,6 @@ boxrule=0pt,bottomrule=1pt,toprule=1pt} % 用来开头高亮表示答案
 \begin{Exercise}[title={对数运算小练习2}, label={ex:logarithm2}]
     \Question 计算 $\log_4 16 + \log_9 81$ 的值.
     \Question 已知 $\log_b 5 = p$, $\log_b 7 = q$, 求 $\log_b 35$（用 $p$, $q$ 表示）.
-    \Question 若 $\log_2 (2x - 3) + \log_2 (x + 1) = 2$, 求 $x$ 的值.
     \Question 解方程 $2^{x} = 5$, 用对数表示 $x$ 的值.
 \end{Exercise}
 \begin{MyAnswer}[ref={ex:logarithm2}]
@@ -91,13 +90,75 @@ boxrule=0pt,bottomrule=1pt,toprule=1pt} % 用来开头高亮表示答案
 
         \Question \mybox{答案为 $p + q$;}\\ 解：因为 $\log_b 35 = \log_b (5 \times 7)$, 根据对数运算法则 $\log_b(MN) = \log_b M + \log_b N$, 可得 $\log_b 35 = \log_b 5 + \log_b 7$, 又已知 $\log_b 5 = p$, $\log_b 7 = q$, 所以 $\log_b 35 = p + q$.
 
-        \Question \mybox{答案为 $x = 2$;}\\ 解：根据对数运算法则 $\log_a M + \log_a N = \log_a (MN)$, 则 $\log_2 (2x - 3) + \log_2 (x + 1) = \log_2 [(2x - 3)(x + 1)]$. 已知 $\log_2 [(2x - 3)(x + 1)] = 2$, 即 $(2x - 3)(x + 1) = 2^2 = 4$. 展开得 $2x^2 - x - 3 = 4$, 即 $2x^2 - x - 7 = 0$. 解得 $x = 2$ 或 $x = -\frac{7}{4}$. 经检验, 当 $x = 2$ 时, $2x - 3 = 1 > 0$ 且 $x + 1 = 3 > 0$, 满足对数函数的定义域要求; 当 $x = -\frac{7}{4}$ 时, $2x - 3 = -\frac{13}{2} < 0$, 不满足定义域要求. 所以 $x = 2$.
 
         \Question \mybox{答案为 $x = \log_2 5$;}\\ 解：对等式 $2^x = 5$ 两边取以 $2$ 为底的对数, 得 $x = \log_2 5$.
 \end{MyAnswer}
 
 
+\begin{Exercise}[title={对数运算进阶练习}, label={ex:logarithm-advanced}]
+    \Question 计算 $\log_4 9 \cdot \log_3 16$ 的值.
+    \Question 解不等式 $\log_{\frac{1}{2}}(2x-1) > \log_{\frac{1}{2}}(x+3)$.
+    \Question 已知 $\log_{12} 3 = a$, 用 $a$ 表示 $\log_{\sqrt{3}} 4$.
+    \Question 设 $a > 0$ 且 $a \neq 1$，若 $\log_a x = 2\log_a 3 - \log_a 5$，求 $x$ 的值.
+    \Question 解方程 $\log_2(x^2 - 3x) = 1 + \log_2(1 - x)$.
+\end{Exercise}
 
+\begin{MyAnswer}[ref={ex:logarithm-advanced}]
+    \Question \mybox{答案为 $4$;}\\ 
+    解：利用换底公式 $\log_a b = \frac{\log_c b}{\log_c a}$：
+    $$
+    \log_4 9 \cdot \log_3 16 = \frac{\log 9}{\log 4} \cdot \frac{\log 16}{\log 3} = \frac{2\log 3}{2\log 2} \cdot \frac{4\log 2}{\log 3} = 4
+    $$
+
+    \Question \mybox{答案为 $\frac{1}{2} < x < 4$;}\\ 
+    解：由于底数 $\frac{1}{2} \in (0,1)$，对数函数单调递减：
+    $$
+    \begin{cases}
+        2x-1 > 0 \\
+        x+3 > 0 \\
+        2x-1 < x+3
+    \end{cases}
+    \Rightarrow
+    \begin{cases}
+        x > \frac{1}{2} \\
+        x > -3 \\
+        x < 4
+    \end{cases}
+    $$
+    最终解集为 $\frac{1}{2} < x < 4$.
+
+    \Question \mybox{答案为 $\frac{2(1-a)}{a}$;}\\ 
+    解：由 $\log_{12} 3 = a$ 得：
+    $$
+    \frac{\log 3}{\log 12} = a \Rightarrow \log 3 = a(\log 3 + 2\log 2)
+    $$
+    设 $\log 3 = k$，则 $\log 2 = \frac{(1-a)k}{2a}$。所求表达式为：
+    $$
+    \log_{\sqrt{3}} 4 = \frac{\log 4}{\frac{1}{2}\log 3} = \frac{4\log 2}{\log 3} = \frac{4 \cdot \frac{(1-a)k}{2a}}{k} = \frac{2(1-a)}{a}
+    $$
+
+    \Question \mybox{答案为 $x = \frac{9}{5}$;}\\ 
+    解：根据对数运算法则：
+    $$
+    \log_a x = \log_a 3^2 - \log_a 5 = \log_a \left( \frac{9}{5} \right)
+    $$
+    因此 $x = \frac{9}{5}$.
+
+    \Question \mybox{答案为 $x = -1$;}\\ 
+    解：首先确定定义域：
+    $$
+    \begin{cases}
+        x^2 - 3x > 0 \\
+        1 - x > 0
+    \end{cases}
+    \Rightarrow x < 0
+    $$
+    原方程化为：
+    $$
+    \log_2(x^2 - 3x) = \log_2 2 + \log_2(1 - x) = \log_2[2(1 - x)]
+    $$
+    得到 $x^2 - 3x = 2 - 2x$，整理得 $x^2 - x - 2 = 0$，解得 $x = -1$ 或 $x = 2$（舍去）。经检验 $x = -1$ 满足定义域。
+\end{MyAnswer}
 
 
 
@@ -161,6 +222,11 @@ boxrule=0pt,bottomrule=1pt,toprule=1pt} % 用来开头高亮表示答案
         $$
         判别式 $ \Delta = 4 + 8 = 12 > 0 $,因此直线与圆相交.
 
+        或者圆心到直线的距离为 
+        $$    
+        d = \frac{|0-0+1|}{\sqrt{1^2 + (-1)^2}} = \frac{\sqrt{2}}{2} < \sqrt{2} =r
+        $$
+        所以相交.
         \Question 解：圆心为 $ (1, -2) $,半径 $ r = 2 $.计算圆心到直线的距离：
         $$
         d = \frac{|3 \times 1 + 4 \times (-2) - 5|}{\sqrt{3^2 + 4^2}} = \frac{10}{5} = 2
@@ -173,6 +239,33 @@ boxrule=0pt,bottomrule=1pt,toprule=1pt} % 用来开头高亮表示答案
         $$
 \end{MyAnswer}
 
+
+\begin{Exercise}[title={圆与直线位置关系练习}, label={ex:circle-line}]
+    \Question 已知直线 $y = kx + 1$ 与圆 $x^2 + y^2 = 4$ 相交，求 $k$ 的取值范围.
+    \Question 求圆心在 $(2,-1)$ 且与直线 $3x - 4y + 5 = 0$ 相切的圆的方程.
+\end{Exercise}
+
+\begin{MyAnswer}[ref={ex:circle-line}]
+
+
+    \Question \mybox{答案为 $-\frac{\sqrt{3}}{2} < k < \frac{\sqrt{3}}{2}$;}\\ 
+    解：将直线方程代入圆的方程：
+    $$
+    x^2 + (kx + 1)^2 = 4 \Rightarrow (1 + k^2)x^2 + 2kx - 3 = 0
+    $$
+    由判别式 $\Delta > 0$ 得：
+    $$
+    (2k)^2 - 4(1 + k^2)(-3) > 0 \Rightarrow 16k^2 < 12
+    $$
+    解得 $k$ 的范围.
+
+    \Question \mybox{答案为 $(x-2)^2 + (y+1)^2 = 1$;}\\ 
+    解：计算圆心到直线的距离即为半径：
+    $$
+    r = \frac{|3 \times 2 - 4 \times (-1) + 5|}{\sqrt{3^2 + 4^2}} = \frac{15}{5} = 3
+    $$
+    故圆的方程为 $(x-2)^2 + (y+1)^2 = 9$.
+\end{MyAnswer}
 
 
 

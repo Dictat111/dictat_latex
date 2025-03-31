@@ -1,0 +1,39 @@
+\documentclass{standalone}
+\usepackage{etex}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar,colormaps,colorbrewer}
+\pgfplotsset{compat=1.16}
+\usepackage{ctex,metalogo}
+\usetikzlibrary{calc,decorations.markings}
+\setmainfont{TeX Gyre Pagella}
+\usepackage{amssymb,amsmath,pgfornament,shapepar}
+\usetikzlibrary{shapes.geometric,through,decorations.pathmorphing, arrows.meta,quotes,mindmap,shapes.symbols,shapes.arrows,automata,angles,3d,trees,shadows,automata,arrows,
+shapes.callouts}
+\begin{document}
+
+\begin{tikzpicture}[xscale=0.7,yscale=100,>=Stealth]  % x,y 轴的比例调整
+\draw[decorate,decoration={snake,segment length=1mm,amplitude=0.5mm}]
+(0,0)node[below left]{$O$}--(0.5,0);  % 原点的O及原点到（0.5，0）的小波浪线设置
+\draw[->](0.5,0)--(8.3,0)node[below]{分数}; %所使用的x轴长度和x轴标签
+\draw[->](0,0)--(0,0.04)node[right]{频率/组距}; %所使用的y轴长度y轴标签
+\foreach \x in{40,50,60,70,80,90,100} % 组距端点值
+\node[below]at(\x/10-3,0){$\x$}; 
+% 端点值所对应的坐标设置。比如：每个端点值除以100以后减去3就是每个数字对应的坐标
+\draw(1,0)--(1,0.004)--(2,0.004)
+(2,0)--(2,0.006)--(3,0.006)
+(3,0)--(3,0.022)--(4,0.022)
+(4,0)--(4,0.028)--(5,0.028)--(5,0)
+(5,0.022)--(6,0.022)--(6,0)
+(6,0.018)--(7,0.018)--(7,0);  % 画条形图
+\draw[densely dotted]
+(1,0.004)--(0,0.004)node[left]{$0.004$}
+(2,0.006)--(0,0.006)node[left]{$a$}
+(3,0.022)--(0,0.022)node[left]{$0.022$}
+(4,0.028)--(0,0.028)node[left]{$0.028$}
+(6,0.018)--(0,0.018)node[left]{$0.018$}; % 画出虚线和对应的y轴左边的数字
+\end{tikzpicture}
+
+
+
+\end{document} 
