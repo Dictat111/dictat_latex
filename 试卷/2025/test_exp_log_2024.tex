@@ -2,6 +2,9 @@
 \usepackage{siunitx}
 \usepackage{array} % 用于指定列宽
 
+% 这个在win11上是没有问题的,因为那个exam-zh的包用的是 exam-zh 的 2024-02-15 版本(以文档为例) 现在的问题是要怎么更新包
+%我手动下载了包,然后替换了原来的文件,然后用 sudo texhash 更新了库
+
 
 % 定义新的列类型，指定列宽为 0.80cm 且内容居中
 \newcolumntype{C}{>{\centering\arraybackslash}p{0.80cm}} %设置表格宽度
