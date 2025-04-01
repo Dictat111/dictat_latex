@@ -1,4 +1,8 @@
 
+<!-- 用于豆包或者deepseek来生成练习题目 -->
+
+
+
 使用下面的模板出几道对数函数的练习题,标点符号使用半角标点.
 ```latex
 \begin{Exercise}[title={对数运算小练习}, label={ex:logarithm}]
