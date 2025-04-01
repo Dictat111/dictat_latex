@@ -1,0 +1,418 @@
+\documentclass{exam-zh}
+\usepackage{siunitx}
+\usepackage{array} % 用于指定列宽
+
+
+% 定义新的列类型，指定列宽为 0.80cm 且内容居中
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.80cm}} %设置表格宽度
+
+% doubao 绘制试卷网格的提示词
+%我需要latex绘制表格,一共有20个,分为两层,上面一层写上1到10的数字,下面是空的,网格一样大小,指定列宽为0.80cm
+
+\title{高一数学统测测试卷——第五章 指数函数与对数函数}
+% \examsetup{
+%   paren/show-paren=true,%显示 paren 命令的括号
+%   paren/show-answer=true,%显示答案
+%   fillin/no-answer-type=none,
+%   fillin/width = 5em % 设置填空横线长度,默认是3em
+% }
+
+%显示答案
+\examsetup{
+  page/size=a4paper,
+  paren/show-paren=true,
+  paren/show-answer=true,
+  paren/text-color=red,
+  fillin/show-answer=true,
+  fillin/text-color=blue,
+  solution/text-color=blue,
+  solution/show-solution=show-stay,
+}
+
+
+% 不显示答案
+% \examsetup{
+%   page/size=a4paper,
+%   paren/show-paren=true,
+%   paren/show-answer=false,
+%   paren/text-color=red,
+%   fillin/show-answer=false,
+%   fillin/text-color=blue,
+%   fillin/no-answer-type=none, %去除横线上的三角
+%   solution/show-solution=hide,
+%   solution/blank-type=manual, % 不显示solution 的时候添加空白
+%   solution/blank-vsep=60ex plus 1ex minus 1ex %控制添加空白的大小
+% }
+
+
+\everymath{\displaystyle}
+
+
+
+
+
+\usepackage{tasks}
+\usepackage{tabularx}
+%要怎么绘制填空题和选择题的填涂区域呢?
+%怎么统计
+ \begin{document} 
+
+\maketitle
+ \information{
+班级\underline{\hspace{6em}},
+姓名\underline{\hspace{6em}},
+学号\underline{\hspace{6em}}
+}
+
+    \section{选择题：本题共 10 小题，每小题 3 分，共 30 分。}
+
+
+
+    \begin{question}
+        计算 $(-64)^{\frac{1}{3}} = $\paren[B]
+        \begin{choices}
+        \item $4$
+        \item $-4$
+        \item $\frac{1}{4}$
+        \item $-\frac{1}{4}$
+        \end{choices}
+    \end{question}
+
+
+
+    \begin{question}
+        计算 $ 2^{\frac{1}{2}} \times 2^{\frac{1}{3}} \div 2^{\frac{1}{4}}    = $\paren[D]
+        \begin{choices}
+        \item $2^{\frac{13}{12}}$
+        \item $2^{\frac{2}{3}}$
+        \item $\frac{12}{7}$
+        \item $\sqrt[12]{2^7}$
+        \end{choices}
+    \end{question}
+
+
+
+
+    \begin{question}
+      若指数函数 $f(x) = a^x$ 的图像经过$(2,2)$,则$f(8) = $\paren[B]
+      \begin{choices}
+      \item $8$
+      \item $16$
+      \item $32$
+      \item $64$
+      \end{choices}
+    \end{question}
+
+
+
+    
+    \begin{question}
+      函数 $y =  a^{x-3} +1 (a>0 \text{~且~}  a \neq 1 )$ 的图像恒过定点\paren[B]
+      \begin{choices}
+      \item $(3,1)$
+      \item $(3,2)$
+      \item $(3,3)$
+      \item $(3,-1)$
+      \end{choices}
+    \end{question}
+
+
+    \begin{question}
+      下列函数在其定义域内单调递减的是\paren[C]
+      \begin{choices}
+      \item $y =\frac{1}{2} x $
+      \item $y = 2^x$
+      \item $y = 2^{-x}$
+      \item $y = -x^{-1}$
+      \end{choices}
+    \end{question}
+
+
+    
+    \begin{question}
+      设$(\frac{1}{2})^b < (\frac{1}{2})^a < 1 $,则下列选项正确的是\paren[D]
+      \begin{choices}
+      \item $b<a<1 $
+      \item $b>a>1 $
+      \item $b<a<0 $
+      \item $b>a>0 $
+      \end{choices}
+    \end{question}
+
+% 6
+
+
+
+
+\begin{question}
+  下列等式正确的是\paren[C]
+  \begin{choices}
+  \item $\lg 5 + \lg 3 = \lg 8$
+  \item $\lg 5 - \lg 2 = \lg 3$
+  \item $\lg \frac{1}{100}  = - 2$
+  \item $\lg 5 = \frac{\ln 10}{\ln 2}$
+  \end{choices}
+\end{question}
+
+% 7
+
+\begin{question}
+  已知 $\lg a $ 和 $\lg b$ 分别是方程 $x^2+x-3  = 0$ 的两个根, 则 $ab$ = \paren[C]
+  \begin{choices}
+  \item $10$
+  \item $1$
+  \item $\frac{1}{10}$
+  \item $100$
+  \end{choices}
+\end{question}
+% 8
+
+    
+\begin{question}
+  若$a = \log_4 2 , b = \log_2 5 , c = \log_4 9$, 则 \paren[C]
+  \begin{choices}
+  \item $a<b<c$
+  \item $c<b<a$
+  \item $a<c<b$
+  \item $b<c<a$
+  \end{choices}
+\end{question}
+
+
+
+\begin{question}
+  下列对数函数在区间$(0,+\infty)$内为减函数的是 \paren[B]
+  \begin{choices}
+  \item $y = \log_{\frac{5}{4}} x$
+  \item $y = \log_{\frac{1}{3}} x$
+  \item $y = \ln x$
+  \item $y = \lg x$
+  \end{choices}
+\end{question}
+
+
+\section{填空题：本题共 10 小题，每小题 3 分，共 30 分。}
+
+
+
+
+
+
+        \begin{question}
+          已知 $3^a = 5,3^b =2$,则 $3^{2a - 3b }  =$ \fillin[$\frac{25}{8}$].
+        \end{question}
+
+        \begin{question}
+          化简:$\sqrt{(e - \pi)^2}=$\fillin[$\pi - e $].
+        \end{question}
+
+        \begin{question}
+          若指数函数$y = (2a+3)^x$ 在$\mathbb{R}$上是减函数,则$a$的取值范围是 \fillin[$(-\frac{3}{2},-1)$].
+        \end{question}
+
+        \begin{question}
+          当 $x\in [0,1]$ 时, 函数 $f(x) = 3^x+2$的值域为 \fillin[$[3,5]$].
+        \end{question}
+
+
+        \begin{question}
+          解方程$\log_{\sqrt{2}} x = 4$,  $x = $\fillin[$4$].
+        \end{question}
+
+
+        \begin{question}
+          计算$e^{\ln 5} = $\fillin[$5$].
+        \end{question}
+
+
+        \begin{question}
+          若$\lg 2 =a , \lg 3 = b ,$则 $\log_2 24 = $    \fillin[$\frac{3a+b}{a}$ 或 $3 + \frac{b}{a}$](用$a,b$来表示).
+        \end{question}
+
+        \begin{question}
+          若$\log_2(\log_3 x) = 1 $则 $x = $    \fillin[$9$].
+        \end{question}
+
+
+        \begin{question}
+          计算 $2025^{\log_{2025}2} \times \ln e^{-1}=$      \fillin[$-2$].
+        \end{question}
+        \begin{question}
+         函数 $f(x) = \frac{\sqrt{2-x}}{\lg(x+3)}$的定义域是  \fillin[$(-3,-2) \cup {( -2,2]}$].
+        \end{question}
+
+
+
+
+\section*{一、选择题}
+\begin{table}[h]
+\centering
+\begin{tabular}{|C|C|C|C|C|C|C|C|C|C|}
+  \hline
+  1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+  \hline
+    &   &   &   &   &   &   &   &   &    \\
+  \hline
+\end{tabular}
+\end{table}
+
+
+% 15个问题时
+% \begin{table}[h]
+%   \centering
+%   \begin{tabular}{|C|C|C|C|C|C|C|C|C|C|C|C|C|C|C|}
+%     \hline
+%     1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 \\
+%     \hline
+%       &   &   &   &   &   &   &   &   &    &    &    &    &    &    \\
+%     \hline
+%   \end{tabular}
+%   \end{table}
+
+
+
+\section*{一、填空题}
+\begin{tasks}[label=\arabic*.](5)
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+\end{tasks}  
+
+
+
+\clearpage
+
+
+
+
+
+
+
+
+
+\section{解答题：本题共 4 小题，共 40 分。解答应写出文字说明、证明过程或者演算步骤。}
+
+        % \begin{problem}[points = 12]
+        %   已知函数 $f(x) = x (1 - \ln x)$。讨论 $f(x)$ 的单调性。
+        %   设 $a$,$b$ 为两个不相等的正数，且 $b \ln a - a \ln b = a - b$，
+        %   证明：$2 < \frac{1}{a} + \frac{1}{b} < \eu$.
+        % \end{problem}
+
+
+        % \begin{problem}[points = 10000]
+        %   证明希尔伯特第五问题.
+        % \end{problem}
+
+        \begin{problem}[points = 10]
+          求下列各式的值
+
+          \begin{tasks}[label=(\arabic*)](2)
+              \task $\log_{3} 18 - \log_3 2 + \lg \frac{1}{8} - \lg 125 +(\sqrt{3} -\sqrt{2})^{\ln 1}$;
+              \task $\left(\lg5\right)^{2}+\lg4\cdot\lg5+\left(\lg2\right)^{2}$.
+          \end{tasks}
+        \end{problem}
+
+
+        \begin{solution}\\
+
+          (1) 
+          \begin{align*}
+             = &\log_3 9 + \log \frac{1}{1000} +1 \\
+             = &2 - 3 +1 \\
+             = & 0.
+          \end{align*}
+
+          (2)
+            \begin{align*}
+              = & \left(\lg5\right)^{2}+\lg2^2\cdot\lg5+\left(\lg2\right)^{2}\\
+               = & \left(\lg5\right)^{2}+2 \cdot \lg2\cdot\lg5+\left(\lg2\right)^{2}\\
+               = & (\lg 5 + \lg 2)^2\\
+               = & 1.
+          \end{align*}
+
+        \end{solution}
+        % \vspace{10cm} %添加书写空间
+
+
+
+
+        
+        \begin{problem}[points = 10]
+          求下列函数定义域:
+
+          \begin{tasks}[label=(\arabic*)](2)
+              \task $f(x) = \sqrt{1-(\frac{1}{2})^x}$;
+              \task $f(x) = \log_7 \frac{1}{1-3x}$.
+
+          \end{tasks}
+        \end{problem}
+
+
+        
+        \begin{solution}
+          \\\
+      (1)$[0,+\infty]$;\\
+      (2)$(-\infty,\frac{1}{3})$.
+        \end{solution}
+
+
+\clearpage
+
+
+        \begin{problem}[points = 10]
+          求下列方程的解:
+          $$
+          \lg (\frac{1000}{x}) \cdot \lg (10 x) = -5.
+          $$
+        \end{problem}
+        % \vspace{10cm} %添加书写空间
+        \begin{solution}
+原式等价于
+          \begin{align*}
+               &(3 - \lg x)(1+\lg x ) = -5 \\
+             \Leftrightarrow  & (\lg x)^2 - 2 \lg x  -8  = 0 \\
+             \Leftrightarrow  & (\lg x -4)  (\lg x +2 )   = 0 \\
+          \end{align*}
+          则 $\lg x = 4$ 或 $\lg = -2$, 则 $x = 10000$ 或 $x = \frac{1}{100}$ .
+
+          \vspace{3cm}
+
+        \end{solution}
+
+
+
+
+
+
+
+
+
+
+
+        \begin{problem}[points = 10]
+          已知函数 $f(x) = \lg(ax^2 +2 x +1)$ 的值域为 $\mathbf{R}$,求 实数 $a$ 的取值范围.
+        \end{problem}
+
+
+        \begin{solution}
+          当 $a = 0$ 时,符合题意;
+
+          当 $a<0$ 时,不符合题意;
+
+
+          当 $a>0$ 时,$\Delta = 2^2 - 4 a = 4-4a \ge 0$,即 $a \le 1$的时候符合题意.
+
+          综上所述,$a$的取值范围是 $[0,1]$.
+          
+                  \end{solution}
+          
+
+
+ \end{document}
