@@ -1,10 +1,20 @@
 [
-    {
-        "key": "alt+r",
-        "command": "python.runPythonFileInTerminal",
-        "when": "editorTextFocus && editorLangId == 'python'"
-    },
-]
 
+    //latex 设置,目前只能复制到电脑的vscode快捷键下使用,需要安装 vscode
+
+    // 这两个要选中的时候才有用
+    {
+        "key": "ctrl+shift+alt+s",
+        "command": "latex-workshop.surround",
+        "when": "editorHasSelection && editorTextFocus && !editorReadonly && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+      },
+    {
+      "key": "shift+alt+s",
+      "command": "latex-workshop.wrap-env",
+      "when": "editorHasSelection && editorTextFocus && !editorReadonly && editorLangId =~ /^latex$|^latex-expl3$|^doctex$|^rsweave$|^jlweave$|^pweave$/"
+    },
+
+
+    ]
 
 
