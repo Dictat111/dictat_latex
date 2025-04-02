@@ -3,7 +3,7 @@
 
 
 
-使用下面的模板出几道对数函数的练习题,标点符号使用半角标点.
+使用下面的模板出几道对数函数的练习题.
 ```latex
 \begin{Exercise}[title={对数运算小练习}, label={ex:logarithm}]
     \Question 计算 $\log_2 8 + \log_3 27$ 的值.
