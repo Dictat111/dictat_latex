@@ -28,6 +28,18 @@
 
     },
 
+    {
+
+        "name": "pdflatex",
+
+        "tools": [
+
+            "pdflatex"
+
+        ]
+
+    },
+
     // 使用 BibTeX 参考文献工具的编译方式
 
     {
@@ -77,6 +89,22 @@
 
         "name": "xelatex",
         "command": "xelatex",
+        "args": [
+            "-synctex=1",
+            "-interaction=nonstopmode",
+            "-file-line-error",
+            "%DOC%"
+
+        ],
+
+        "env": {}
+
+    },
+
+    {
+
+        "name": "pdflatex",
+        "command": "pdflatex",
         "args": [
             "-synctex=1",
             "-interaction=nonstopmode",
