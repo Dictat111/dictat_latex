@@ -11,6 +11,8 @@
 *.xdv
 *.loe
 *.gz
+*.synctex
+*.synctex(busy)
 # 忽略临时文件和备份文件
 *~
 *.bak
