@@ -163,7 +163,9 @@
     "**/*.fdb_latexmk": true,
     "**/*.toc": true,
     "**/*.loe": true,
-    "**/*.pdf": true,
+    // "**/*.pdf": true,
+    "**/*.nav": true,
+    "**/*.snm": true,
     "高考立体几何画图": true,
 
 
