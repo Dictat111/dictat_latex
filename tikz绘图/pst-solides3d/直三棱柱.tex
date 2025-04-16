@@ -1,0 +1,18 @@
+\documentclass[pstricks,12pt]{standalone}
+\usepackage{pst-eucl}
+\begin{document}
+\begin{pspicture}(8,10)
+    \pstGeonode[PosAngle={180,0,45} ,PointName=none](1,1){A}(7,1){B}(4,4){C}(4,9){F}
+    \pstTranslation[PosAngle={180,0},PointName=none]{C}{F}{A,B}[D,E]
+    \psline(E)(F)(D)(A)(B)(E)(D)
+    \psset{linestyle=dashed}
+    \psline(A)(C)(B)
+    \psline(C)(F)
+\end{pspicture}
+\end{document}
+
+% PointName=none 让 label 消失
+
+
+% convert -density 500 直三棱柱.pdf 直三棱柱.png
+

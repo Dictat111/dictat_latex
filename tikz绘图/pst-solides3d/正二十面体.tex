@@ -1,0 +1,15 @@
+
+\documentclass{standalone}
+\usepackage{pst-solides3d}   
+\begin{document}
+
+\psset{viewpoint=30 20 10 rtp2xyz, lightsrc=10 5 4,Decran=30}
+\begin{pspicture}(-3,-3)(3,3)
+    \psSolid[
+        object=icosahedron,
+        a=3,
+        action=draw,
+        fillcolor=green!50]
+\end{pspicture}
+
+\end{document}
