@@ -1,0 +1,106 @@
+
+\begin{tikzpicture}
+    % 定义正三角形的边长
+    \def\sideLength{3}
+
+    % 定义点
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\sideLength,0);
+    \coordinate (C) at (\sideLength/2,{sqrt(3)*\sideLength/2});
+    % 计算 AB 的中点
+    \coordinate (H) at ($(A)!0.5!(B)$);
+
+    % 绘制正三角形
+    \draw (A) -- (B) -- (C) -- cycle;
+    \draw[dashed] (C) -- (H);
+
+    % 标记顶点
+    \node[below left] at (A) {$A$};
+    \node[below right] at (B) {$B$};
+    \node[above] at (C) {$C$};
+    \node[above=5pt,right] at (H) {$H$};
+    \draw[decorate,decoration={calligraphic brace,amplitude=3mm,raise=2pt},ultra thick] (C) -- (B); 
+    %raise 表示让括号位移一点 amplitude 控制花括号的弯度程度 
+    % calligraphic brace 有粗细变换的括号
+    \node at ($(C)!0.5!(B)$) [above=8pt,right=8pt] {$x$};
+
+\end{tikzpicture}
+
+一个正三角形的边长为$x$,则其高为$\frac{\sqrt{3}}{2} x$, 面积为 $\frac{\sqrt{3}}{4} x^2$.
+
+
+\begin{tikzpicture}[scale=2]
+    % 定义正六边形外接圆半径
+    \def\radius{1}
+    % 定义正六边形顶点坐标
+    \coordinate (A) at (\radius, 0);
+    \coordinate (B) at ({0.5 * \radius}, {sqrt(3) * 0.5 * \radius});
+    \coordinate (C) at ({-0.5 * \radius}, {sqrt(3) * 0.5 * \radius});
+    \coordinate (D) at (-\radius, 0);
+    \coordinate (E) at ({-0.5 * \radius}, {-sqrt(3) * 0.5 * \radius});
+    \coordinate (F) at ({0.5 * \radius}, {-sqrt(3) * 0.5 * \radius});
+
+    % % 绘制顶点
+    % \foreach \point in {A, B, C, D, E, F} {
+    %     \fill (\point) circle (2pt);
+    % }
+
+    % 绘制正六边形的边
+    \draw (A) -- (B) -- (C) -- (D) -- (E) -- (F) -- cycle;
+    \draw[dashed,line width=0.2pt] (A)  -- (D) ;
+    \draw[dashed,line width=0.2pt] (B)  -- (E) ;
+    \draw[dashed,line width=0.2pt] (C)  -- (F) ;
+
+    % % 标记顶点
+    % \foreach \point in {A, B, C, D, E, F} {
+    %     \node[above right] at (\point) {$\point$};
+    % }
+
+    \draw[decorate,decoration={calligraphic brace,amplitude=3mm,raise=2pt},ultra thick] (B) -- (A); 
+    \node at ($(A)!0.5!(B)$) [above=8pt,right=8pt] {$x$};
+\end{tikzpicture}
+
+因为一个正六边形能分割成$6$个全等的正三角形,所以边长为$x$的正六边形的面积是 $6 \times \frac{\sqrt{3}}{4} x^2  $.
+
+
+
+
+
+
+\begin{tikzpicture}[scale=1.5]
+    % 定义正三角形的边长
+    \def\sideLength{3}
+    % 定义点
+    \coordinate (A) at (0,0);
+    \coordinate (B) at (\sideLength,0);
+    \coordinate (C) at (\sideLength/2,{sqrt(3)*\sideLength/2});
+    % 计算 AB 的中点
+    \coordinate (H) at ($(A)!0.5!(B)$);
+    \coordinate (O) at ($(H)!0.3333!(C)$); % 中点
+
+    %填涂区域
+    \fill[red!20] (A) -- (O) -- (H) -- cycle;
+
+    % 绘制正三角形
+    \draw (A) -- (B) -- (C) -- cycle;
+    % \draw[dashed] (C) -- (H);
+    \draw[dashed,ultra thick,blue] (C) -- (O);
+    \draw[dashed,ultra thick,red] (O) -- (H);
+    % \draw[dashed,thick,blue] (C) -- (O);
+    \draw[dashed] (A) -- ($(C)!0.5!(B)$);
+    \draw[dashed] (B) -- ($(C)!0.5!(A)$);
+
+
+    % 标记顶点
+    \node[below left] at (A) {$A$};
+    \node[below right] at (B) {$B$};
+    \node[above] at (C) {$C$};
+    \node[above=5pt,right] at (H) {$H$};
+    \node[right=3pt,red] at (O) {$O$};
+
+    \fill (O) circle (2pt);%填涂测试
+
+
+\end{tikzpicture}
+
+一个正三角形还能被分隔成如图所示的$6$个全等的直角三角形,则线段 $|CO|$ 与线段 $|OH|$ 的比值为 $2$.

@@ -1,0 +1,448 @@
+\documentclass{ctexart}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{tikz-3dplot}
+\usetikzlibrary{decorations.pathreplacing}%使用大括号
+\usetikzlibrary{calligraphy} %calligraphy 书法风格
+% \usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds} %特定的绘图操作置于背景层
+\usetikzlibrary{3d}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % 清空页眉页脚的默认设置
+\renewcommand{\headrulewidth}{0pt} % 去除页眉横线
+\renewcommand{\footrulewidth}{0pt} % 去除页脚横线
+% 在页脚中央添加版权信息
+\fancyfoot[C]{\copyright\ 2025 钱皓楠。保留所有权利。}
+
+% 去除页眉和页脚的横线
+
+\begin{document}
+
+
+\section{棱柱}
+棱柱的底面边数是 $n$, 则这个棱柱有 $3n$ 条棱, $2+n$ 个面.
+
+\begin{tikzpicture}[scale=0.5,
+    y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+    % 定义矩体的尺寸
+    \def\a{5} % 长
+    \def\b{4} % 宽
+    \def\c{3} % 高
+
+    % 定义顶点
+    \coordinate (D) at (0,0,0);
+    \coordinate (C) at (\a,0,0);
+    \coordinate (B) at (\a,\b,0);
+    \coordinate (A) at (0,\b,0);
+    \coordinate (D') at (0,0,\c);
+    \coordinate (C') at (\a,0,\c);
+    \coordinate (B') at (\a,\b,\c);
+    \coordinate (A') at (0,\b,\c);
+
+    % 绘制底面
+    \draw (C) -- (B) -- (A) ;
+    \draw[dashed] (C) -- (D) ;
+    \draw[dashed] (D) -- (A) ;
+    % 绘制侧面
+    \draw[dashed] (D) -- (D');
+    \draw (C) -- (C');
+    \draw (B) -- (B');
+    \draw (A) -- (A');
+    % 绘制顶面
+    \draw (D') -- (C') -- (B') -- (A') -- cycle;
+
+    \draw[dashed] (D) -- (B);
+    \draw[dashed,red,thick] (D') -- (B);
+
+    % % 标注顶点名称
+    % \node[below left] at (A) {$A$};
+    % \node[below right] at (B) {$B$};
+    % \node[below right] at (C) {$C$};
+    % \node[above left] at (D) {$D$};
+
+    % \node[below left] at (A') {$A'$};
+    % \node[below right] at (B') {$B'$};
+    % \node[above right] at (C') {$C'$};
+    % \node[above left] at (D') {$D'$};
+\draw (A) -- (B) node[midway, below,blue] {$a$};
+\draw (B) -- (C) node[midway, right,blue] {$b$};
+\draw (B) -- (B') node[midway, right,blue] {$c$};
+\end{tikzpicture}
+
+长方体\textcolor{red}{对角线}的长度为 
+\[
+\sqrt{a^2+b^2+c^2}.
+\]
+
+
+\section{棱锥}
+% \subsection{定义}
+\textbf{棱锥的定义}:
+
+
+% 将代码中的顶点名称 A、B、C、D 替换为 D、C、B、A
+\begin{tikzpicture}[scale=3,
+    y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+\coordinate (D) at (0,0,0);
+\coordinate (C) at (1,0,0);
+\coordinate (B) at (1,1,0);
+\coordinate (A) at (0,1,0);
+\coordinate (V) at (0.5,0.5,1);
+
+\coordinate (H) at (0.5,0.5,0);
+% 计算中点
+\coordinate (H') at ($(A)!0.5!(B)$);
+\coordinate (H'') at ($(C)!0.5!(B)$);
+%填充底面
+\fill[lightgray,opacity=0.5] (D) -- (C) -- (B) -- (A) -- cycle;
+
+% 绘制底面
+\draw (C) -- (B) -- (A);
+
+% 绘制侧面
+\draw[dashed] (D) -- (V);
+\draw[dashed] (D) -- (A);
+\draw[dashed] (D) -- (C);
+\draw (C) -- (V);
+\draw (B) -- (V);
+\draw (A) -- (V);
+
+
+\draw[thick,blue,dashed] (H) -- (V); %棱柱的高
+
+\draw[thick,red,dashed] (H') -- (V); %棱柱的斜高
+\draw[thick,red,dashed] (H'') -- (V); %棱柱的斜高
+
+% 标记顶点
+\node[ left] at (D) {$D$};
+\node[ right] at (C) {$C$};
+\node[ right] at (B) {$B$};
+\node[left] at (A) {$A$};
+\node[above] at (V) {$V$};
+\node[right] at (H) {$H$};
+
+%绘制圆点
+\fill[blue] (V) circle (0.75pt);
+\fill[blue] (H) circle (0.75pt);
+\fill[red] (H') circle (0.75pt);
+\fill[red] (H'') circle (0.75pt);
+% \node[circle, fill=blue, inner sep=1.5pt] at (V) {};
+% \node[circle, fill=blue, inner sep=1.5pt] at (H) {};
+\end{tikzpicture}
+
+这是一个正四棱锥,蓝色的线段是\textcolor{blue}{高},记为\textcolor{blue}{$h$},而红色的线段是\textcolor{red}{斜高},记为\textcolor{red}{$h'$}.
+
+
+棱锥的体积公式: 
+\[
+V =\frac{1}{3} S_\text{底} h.
+\]
+
+正棱锥的侧面积公式: 
+\[
+S_\text{正棱锥侧} =\frac{1}{2} c h'.
+\]
+故正棱锥表面积公式为
+\[
+    S_\text{正棱锥表}  =S_\text{正棱锥侧}+S_\text{底} = \frac{1}{2} c h'+S_\text{底}.
+\]
+
+
+\subsection{正四面体}
+
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=0.5,
+        y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
+        x={(1cm,0cm)},            % 设置 y 轴方向
+        z={(0cm,1cm)}             % 设置 z 轴方向
+    ]%斜二测画法
+        % 定义矩体的尺寸
+        \def\a{4} % 长
+        \def\b{4} % 宽
+        \def\c{4} % 高
+
+        % 定义顶点
+        \coordinate (D) at (0,0,0);
+        \coordinate (C) at (\a,0,0);
+        \coordinate (B) at (\a,\b,0);
+        \coordinate (A) at (0,\b,0);
+        \coordinate (D') at (0,0,\c);
+        \coordinate (C') at (\a,0,\c);
+        \coordinate (B') at (\a,\b,\c);
+        \coordinate (A') at (0,\b,\c);
+
+        % 绘制底面
+        \draw (C) -- (B) -- (A) ;
+        \draw[dashed] (C) -- (D) ;
+        \draw[dashed] (D) -- (A) ;
+        % 绘制侧面
+        \draw[dashed] (D) -- (D');
+        \draw (C) -- (C');
+        \draw (B) -- (B');
+        \draw (A) -- (A');
+        % 绘制顶面
+        \draw (D') -- (C') -- (B') -- (A') -- cycle;
+
+        % 标注顶点名称
+        \node[below left] at (A) {$A$};
+        \node[below right] at (B) {$B$};
+        \node[below right] at (C) {$C$};
+        \node[above left] at (D) {$D$};
+
+        \node[below left] at (A') {$A'$};
+        \node[below right] at (B') {$B'$};
+        \node[above right] at (C') {$C'$};
+        \node[above left] at (D') {$D'$};
+        % 绘制正四面体
+        \draw[red,thick] (D') -- (B');
+        \draw[red,thick] (A) -- (B');
+        \draw[red,thick] (C) -- (B');
+        \draw[dashed,red,thick] (A) -- (C);
+        \draw[dashed,red,thick] (A) -- (D');
+        \draw[dashed,red,thick] (C) -- (D');
+        % \draw[dashed,red,thick] (D') -- (B);
+    \end{tikzpicture}
+    \caption{正六面体中的正四面体}
+\end{figure}
+
+
+
+
+
+\section{圆柱}
+
+\begin{tikzpicture}[scale=1.5,
+    y={(0cm,-0.3cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+    % 定义圆柱的参数
+    \def\radius{1} % 圆柱底面半径
+    \def\height{2} % 圆柱的高度
+        % 绘制顶面圆
+        \begin{scope}
+            %绘制一个圆
+            % \draw(0,0,\height) circle (\radius);
+            \draw [blue,thick] (\radius,0,\height) arc (0:-180:\radius) ;
+            \draw [blue,thick] (\radius,0,\height) arc (0:180:\radius) ;
+        \end{scope}
+
+      
+        % 绘制底面圆
+        \begin{scope}
+            \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
+            \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+        \end{scope}
+
+        % 绘制母线
+        \begin{scope}
+            \draw[thick] (\radius,0,0) -- (\radius,0,\height);
+            \draw[thick] (-\radius,0,0) -- (-\radius,0,\height);
+        \end{scope}
+
+
+        % 绘制高线
+        \begin{scope}
+        \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
+        \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
+        \draw[thick,red,dashed] (0,0,0) -- (0,0,\height);
+
+
+        \end{scope}
+
+        % % 绘制括号
+        % \begin{scope}[on background layer]
+        %     \draw[decorate,decoration={brace,amplitude=10pt},thick] (0-0.1,0,0) -- (0-0.1,0,\height);
+        % \end{scope}
+
+
+
+\end{tikzpicture}
+
+
+
+
+
+
+\section{圆锥}
+\begin{tikzpicture}[scale=1.5,
+    y={(0cm,-0.3cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]
+    % 定义圆柱的参数
+    \def\radius{1} % 圆锥底面半径
+    \def\height{2} % 圆锥的高度
+      
+        % 绘制底面圆
+        \begin{scope}
+            \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
+            \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+        \end{scope}
+        % 绘制两母线
+        \begin{scope}
+            \draw[thick] (\radius,0,0) -- (0,0,\height);
+            \draw[thick] (-\radius,0,0) -- (0,0,\height);
+        \end{scope}
+        
+
+        % 绘制高线
+        \begin{scope}
+            \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
+            \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
+            \draw[thick,red,dashed] (0,0,0) -- (0,0,\height);
+        \end{scope}
+\end{tikzpicture}
+
+
+\section{球}
+
+
+\begin{tikzpicture}[scale=1.5,
+    y={(-0,-0.3cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+    % 定义圆柱的参数
+    \def\radius{1} % 圆锥底面半径
+    \def\height{2} % 圆锥的高度
+      
+        % 绘制正面圆
+
+        \begin{scope}[canvas is xz plane at y=0]
+            \draw[thick] (0,0) circle (\radius);
+        \end{scope}
+        % 绘制水平圆
+        \begin{scope}
+            \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
+            \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+        \end{scope}
+        % 绘制竖直圆 % 竖直圆有问题,不绘制
+        % \begin{scope}[canvas is yz plane at x=0]
+        %     \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
+            
+        %     \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+        % \end{scope}
+
+
+        % % 绘制两母线
+        % \begin{scope}
+        %     \draw[thick] (\radius,0,0) -- (0,0,\height);
+        %     \draw[thick] (-\radius,0,0) -- (0,0,\height);
+        % \end{scope}
+        
+
+        % % 绘制高线
+        % \begin{scope}
+        %     \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
+        %     \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
+        %     \draw[thick,red,dashed] (0,0,0) -- (0,0,\height);
+        % \end{scope}
+\end{tikzpicture}
+
+
+
+\begin{tikzpicture}
+    \shade[ball color = gray!40, opacity = 0.4] (0,0) circle (2cm);
+    \draw (0,0) circle (2cm);
+    \draw (-2,0) arc (180:360:2 and 0.6);
+    \draw[dashed] (2,0) arc (0:180:2 and 0.6);
+    \fill[fill=black] (0,0) circle (1pt);
+    \draw[dashed] (0,0 ) -- node[above]{$r$} (2,0);
+  \end{tikzpicture}
+
+
+
+  \begin{tikzpicture}[scale=3,
+    y={(-0,-0.2cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+    % 定义圆柱的参数
+    \def\radius{1} % 圆锥底面半径
+    \def\height{2} % 圆锥的高度
+    %这只是个一个文本替换
+    % \def\littleradius{{\radius*sqrt(3)/2}} % 底面小圆半径
+    \pgfmathsetmacro{\littleradius}{\radius*sqrt(3)/2}
+
+
+    %球心
+    \coordinate (O) at (0,0,0);
+    %小圆圆心
+    \coordinate (O') at (0,0,-\radius/2);
+    %小圆圆心
+    \coordinate (A) at ({\littleradius*sqrt(2)/2},{\littleradius*sqrt(2)/2},-\radius/2);
+
+
+    \node[above] at (O) {$O$};
+    \node[left] at (O') {$O'$};
+    % \node[below] at (A) {$A$};
+    \draw[dashed,red,thick] (O) -- node[above]{$R$} (A);
+    \draw[dashed,blue,thick] (O') -- node[above]{$r$} (A);
+    \draw[dashed,blue,thick] (O') -- node[left]{$d$} (O);
+
+
+
+      
+        % 绘制正面圆
+        \begin{scope}[canvas is xz plane at y=0]
+            \draw[thick] (0,0) circle (\radius);
+        \end{scope}
+
+
+        % 绘制水平圆
+        \begin{scope}[canvas is xy plane at z=0]
+            \draw [blue,thick,dashed] (\radius,0) arc (0:-180:\radius) ;
+            \draw [blue,thick] (\radius,0) arc (0:180:\radius) ;
+        \end{scope}
+
+
+        % 绘制水平小圆 这个小圆刚好是圆心下降一半的半径的位置
+        \begin{scope}[canvas is xy plane at z=-\radius/2]
+            \draw [red,thick,dashed] (\littleradius,0) arc (0:-180:\littleradius) ;
+            \draw [red,thick] (\littleradius,0) arc (0:180:\littleradius) ;
+        \end{scope}
+
+
+        % 绘制圆心
+        \begin{scope}
+            \fill[fill=black] (O) circle (1pt);
+            \fill[fill=black] (O') circle (1pt);
+            \fill[fill=red] (A) circle (1pt);
+        \end{scope}
+        
+
+        
+        %问题 怎么根据比例绘制圆弧上的点,我想要在圆弧上描点来连接球心.
+
+
+        % 绘制竖直圆 % 竖直圆有问题,不绘制
+        % 因为书本上的球,并不是使用斜二测画法绘制的
+        % \begin{scope}[canvas is yz plane at x=0]
+        %     \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
+            
+        %     \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+        % \end{scope}
+\end{tikzpicture}
+\clearpage
+
+
+\section{其他知识}
+\subsection{等边三角形相关结论}
+\input{立体几何复习/等边三角形相关结论}
+
+
+
+\end{document}
