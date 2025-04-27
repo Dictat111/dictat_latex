@@ -428,24 +428,35 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
     % 定义圆柱的参数
     \def\radius{1} % 圆锥底面半径
     \def\height{2} % 圆锥的高度
-      
+    % 一些坐标
+    \coordinate (O') at (0,0,\height);
+    \coordinate (O) at (0,0,0);
+    %上圆上一点
+    \coordinate (A') at ({\radius*sqrt(2)/2},{\radius*sqrt(2)/2},\height);
+    %下圆上一点
+    \coordinate (A) at ({\radius*sqrt(2)/2},{\radius*sqrt(2)/2},0);
+        % 底面半径
+        \draw[thin,dashed,red] (A) -- (O);
         % 绘制底面圆
         \begin{scope}
             \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
             \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+
         \end{scope}
-        % 绘制两母线
+        \fill[orange,opacity=0.5] (A) -- (O) -- (O') -- cycle;
+        % 绘制母线
         \begin{scope}
-            \draw[thick] (\radius,0,0) -- (0,0,\height);
-            \draw[thick] (-\radius,0,0) -- (0,0,\height);
+            \draw[thick,red] (\radius,0,0) -- (O');
+            \draw[thick,red] (-\radius,0,0) -- (O');
+            \draw[thick,red] (A) -- (O');
         \end{scope}
         
 
         % 绘制高线
         \begin{scope}
+            \draw[thin,dashed] (0,0,0) -- (0,0,\height);
             \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
             \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
-            \draw[thick,red,dashed] (0,0,0) -- (0,0,\height);
         \end{scope}
 \end{tikzpicture}
 
