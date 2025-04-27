@@ -1,5 +1,6 @@
 \documentclass{ctexart}
 \usepackage{amsmath}
+\usepackage{float}
 \usepackage{xcolor}
 \usepackage{tikz}
 \usepackage{tikz-3dplot}
@@ -17,7 +18,7 @@
 \renewcommand{\headrulewidth}{0pt} % 去除页眉横线
 \renewcommand{\footrulewidth}{0pt} % 去除页脚横线
 % 在页脚中央添加版权信息
-\fancyfoot[C]{\copyright\ 2025 钱皓楠。保留所有权利。}
+\fancyfoot[C]{\copyright\ 2025 钱皓楠\ -\ 保留所有权利}
 
 % 去除页眉和页脚的横线
 
@@ -48,18 +49,19 @@
     \coordinate (A') at (0,\b,\c);
 
     % 绘制底面
-    \draw (C) -- (B) -- (A) ;
+    \draw [blue,thick] (A) -- (B) ;
+    \draw (B) -- (C) ;
     \draw[dashed] (C) -- (D) ;
-    \draw[dashed] (D) -- (A) ;
+    \draw[dashed,blue,thick] (D) -- (A) ;
     % 绘制侧面
-    \draw[dashed] (D) -- (D');
+    \draw[dashed,red,thick] (D) -- (D');
     \draw (C) -- (C');
     \draw (B) -- (B');
     \draw (A) -- (A');
     % 绘制顶面
     \draw (D') -- (C') -- (B') -- (A') -- cycle;
 
-    \draw[dashed] (D) -- (B);
+    \draw[dashed,red,thick] (D) -- (B);%对角线
     \draw[dashed,red,thick] (D') -- (B);
 
     % % 标注顶点名称
@@ -72,10 +74,16 @@
     % \node[below right] at (B') {$B'$};
     % \node[above right] at (C') {$C'$};
     % \node[above left] at (D') {$D'$};
-\draw (A) -- (B) node[midway, below,blue] {$a$};
+% \draw (A) -- (B) node[midway, below,blue] {$a$};
+    % 在 A 和 B 中间下方标注字母 a
+\node[below, blue] at ($(A)!0.5!(B)$) {$a$};
+% \node[left=0.3pt,red] at ($(D)!0.5!(B)$) {\tiny $\sqrt{a^2+b^2}$};
 \draw (B) -- (C) node[midway, right,blue] {$b$};
 \draw (B) -- (B') node[midway, right,blue] {$c$};
 \end{tikzpicture}
+
+
+
 
 长方体\textcolor{red}{对角线}的长度为 
 \[
@@ -85,7 +93,7 @@
 
 \section{棱锥}
 % \subsection{定义}
-\textbf{棱锥的定义}:
+\subsection{棱锥的定义}:
 
 
 % 将代码中的顶点名称 A、B、C、D 替换为 D、C、B、A
@@ -159,9 +167,129 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
 \]
 
 
-\subsection{正四面体}
 
-\begin{figure}
+\subsection{常见的棱锥}
+
+\begin{figure}[H]
+\centering
+% 将代码中的顶点名称 A、B、C、D 替换为 D、C、B、A
+\begin{tikzpicture}[scale=3,
+    y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+\coordinate (D) at (0,0,0);
+\coordinate (C) at (1,0,0);
+\coordinate (B) at (1,1,0);
+\coordinate (A) at (0,1,0);
+\coordinate (V) at (0.5,0.5,1);
+
+\coordinate (H) at (0.5,0.5,0);
+% 计算中点
+\coordinate (H') at ($(A)!0.5!(B)$);
+\coordinate (H'') at ($(C)!0.5!(B)$);
+% %填充底面
+% \fill[lightgray,opacity=0.5] (D) -- (C) -- (B) -- (A) -- cycle;
+
+% 绘制底面
+\draw (C) -- (B) -- (A);
+
+% 绘制侧面
+\draw[dashed] (D) -- (V);
+\draw[dashed] (D) -- (A);
+\draw[dashed] (D) -- (C);
+\draw (C) -- (V);
+\draw (B) -- (V);
+\draw (A) -- (V);
+
+
+\draw[thick,blue,dashed] (H) -- (V); %棱柱的高
+
+% \draw[thick,red,dashed] (H') -- (V); %棱柱的斜高
+% \draw[thick,red,dashed] (H'') -- (V); %棱柱的斜高
+
+% 标记顶点
+\node[ left] at (D) {$D$};
+\node[ right] at (C) {$C$};
+\node[ right] at (B) {$B$};
+\node[left] at (A) {$A$};
+\node[above] at (V) {$V$};
+\node[right] at (H) {$H$};
+
+%绘制圆点
+\fill[blue] (V) circle (0.75pt);
+\fill[blue] (H) circle (0.75pt);
+% \fill[red] (H') circle (0.75pt);
+% \fill[red] (H'') circle (0.75pt);
+\end{tikzpicture}
+\caption{正四棱锥}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=3,
+        y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
+        x={(1cm,0cm)},            % 设置 y 轴方向
+        z={(0cm,1cm)}             % 设置 z 轴方向
+    ]%斜二测画法
+    % 定义底面正三角形的顶点
+    \coordinate (A) at (0,0,0);
+    \coordinate (C) at (1,0,0);
+    \coordinate (B) at (0.5,{sqrt(3)/2},0);
+    
+    % 定义顶点 V
+    \coordinate (V) at (0.5,{sqrt(3)/6},1);
+    
+    % 计算底面中心 H
+    \coordinate (H) at (0.5,{sqrt(3)/6},0);
+    
+    % 计算各边中点
+    \coordinate (H') at ($(A)!0.5!(C)$);
+    \coordinate (M) at ($(C)!0.5!(B)$);
+    \coordinate (H''') at ($(B)!0.5!(A)$);
+    
+    % 绘制底面
+    \draw[dashed] (A) -- (C);
+    \draw (A) -- (B);
+    \draw (C) -- (B);
+
+    %%高
+    \draw[dashed,red,thick] (A) -- (H);
+    \draw[dashed,blue,thick] (H) -- (M);
+
+
+    
+    % 绘制侧面
+    \draw (A) -- (V);
+    \draw (C) -- (V);
+    \draw (B) -- (V);
+    %% 斜高
+    \draw[blue,thick] (V) -- (M);
+    % 棱锥的高
+    \draw[thick,blue,dashed] (H) -- (V); 
+    
+    % 标记顶点
+    \node[left] at (A) {$A$};
+    \node[right] at (C) {$C$};
+    \node[left] at (B) {$B$};
+    \node[above] at (V) {$V$};
+    \node[below] at (H) {$H$};
+
+    \node[right] at (M) {$M$};
+
+    
+    % 绘制圆点
+    \fill[blue] (V) circle (0.75pt);
+    \fill[blue] (H) circle (0.75pt);
+    \fill[blue] (M) circle (0.75pt);
+    \end{tikzpicture}
+    \caption{正三棱锥}
+\end{figure} 
+ 
+
+线段 $VH$ 是正三棱锥的高, $M$ 是 $BC$ 边上的中点,$H$ 是底面正三角形 $\triangle ABC$ 的中心. 则 $\frac{|AH|}{|HM|} = 2$,即 $|HM|  = \frac{1}{3} |AM|$.
+    
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[scale=0.5,
         y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
@@ -217,10 +345,6 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
     \caption{正六面体中的正四面体}
 \end{figure}
 
-
-
-
-
 \section{圆柱}
 
 \begin{tikzpicture}[scale=1.5,
@@ -231,6 +355,28 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
     % 定义圆柱的参数
     \def\radius{1} % 圆柱底面半径
     \def\height{2} % 圆柱的高度
+    \coordinate (O') at (0,0,\height);
+    \coordinate (O) at (0,0,0);
+
+    %上圆上一点
+    \coordinate (A') at ({\radius*sqrt(2)/2},{\radius*sqrt(2)/2},\height);
+
+    %下圆上一点
+    \coordinate (A) at ({\radius*sqrt(2)/2},{\radius*sqrt(2)/2},0);
+
+        % 绘制母线
+        \begin{scope}
+            \draw[thick,red] (\radius,0,0) -- (\radius,0,\height);
+            \draw[thick,red] (-\radius,0,0) -- (-\radius,0,\height);
+        \end{scope}
+        % 绘制高线
+        \begin{scope}
+            \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
+            \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
+            \draw[thick,red,dashed] (0,0,0) -- (0,0,\height);
+            \draw[thick,red] (A) -- (A');
+            \end{scope}
+
         % 绘制顶面圆
         \begin{scope}
             %绘制一个圆
@@ -241,26 +387,23 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
 
       
         % 绘制底面圆
-        \begin{scope}
+        \begin{scope}[on background layer]
             \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
             \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
         \end{scope}
 
-        % 绘制母线
-        \begin{scope}
-            \draw[thick] (\radius,0,0) -- (\radius,0,\height);
-            \draw[thick] (-\radius,0,0) -- (-\radius,0,\height);
+        % 绘制底面顶面半径
+        \begin{scope}[on background layer]
+            %绘制一个圆
+            % \draw(0,0,\height) circle (\radius);
+            \draw [blue,thin,dashed] (O) -- (A) ;
+            \draw [blue,thin,dashed] (O') -- (A') ;
+            % \draw [blue,thick] (\radius,0,\height) arc (0:180:\radius) ;
         \end{scope}
 
-
-        % 绘制高线
-        \begin{scope}
-        \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
-        \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
-        \draw[thick,red,dashed] (0,0,0) -- (0,0,\height);
+    
 
 
-        \end{scope}
 
         % % 绘制括号
         % \begin{scope}[on background layer]
@@ -382,7 +525,7 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
     \coordinate (O) at (0,0,0);
     %小圆圆心
     \coordinate (O') at (0,0,-\radius/2);
-    %小圆圆心
+    %小圆上一点
     \coordinate (A) at ({\littleradius*sqrt(2)/2},{\littleradius*sqrt(2)/2},-\radius/2);
 
 
