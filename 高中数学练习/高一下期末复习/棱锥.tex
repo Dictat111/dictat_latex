@@ -1,0 +1,252 @@
+
+\subsection{棱锥}
+
+
+
+
+\begin{frame}{题目1:表面积、体积计算}
+  已知正四棱锥的底面边长为 \(a = 6 \, \text{cm}\)，侧棱长为 \(L = 5 \, \text{cm}\)，求其体积和表面积。
+
+  \pause
+
+  计算底面中心到边的距离 \(r\):
+  \[
+  r = \frac{a}{2} = \frac{6}{2} = 3 \, \text{cm}
+  \]
+
+  计算斜高 \(l\):
+ \[
+ l = \sqrt{L^2 - r^2} = \sqrt{5^2 - 3^2} = 4 \, \text{cm}
+ \]
+
+ 计算四棱锥的高 \(h\):
+ \[
+ h = \sqrt{l^2 - r^2} = \sqrt{4^2 - 3^2} = \sqrt{7} \, \text{cm}
+ \]
+
+ 计算体积 \(V\):
+ \[
+ V = \frac{1}{3} \cdot a^2 \cdot h = \frac{1}{3} \times 6^2 \times \sqrt{7} = 12\sqrt{7} \, \text{cm}^3
+ \]
+
+\end{frame}
+
+
+\begin{frame}{题目2：表面积计算}
+  \begin{block}{题目}
+      正四棱锥底面边长 \(a = 5 \, \text{cm}\)，斜高 \(l = 4 \, \text{cm}\)，求其表面积。
+  \end{block}
+  
+  \pause
+  
+  \begin{alertblock}{解答步骤}
+      \begin{enumerate}
+          \item 底面面积：\( S_{\text{底}} = a^2 = 5^2 = 25 \, \text{cm}^2 \)
+          \item 侧面面积：\( S_{\text{侧}} = \frac{1}{2} a l = \frac{1}{2} \times 5 \times 4 = 10 \, \text{cm}^2 \)
+          \item 总表面积：\( S = S_{\text{底}} + 4 S_{\text{侧}} = 25 + 4 \times 10 = 65 \, \text{cm}^2 \)
+      \end{enumerate}
+  \end{alertblock}
+\end{frame}
+
+
+\begin{frame}{题目3：侧棱长计算}
+  \begin{block}{题目}
+      已知正四棱锥底面边长 \(a = 6 \, \text{cm}\)，高 \(h = 4 \, \text{cm}\)，求侧棱长 \(L\)。
+  \end{block}
+  
+  \pause
+  
+  \begin{alertblock}{解答步骤}
+      \begin{enumerate}
+          \item 底面中心到边的距离：\( r = \frac{a}{2} = \frac{6}{2} = 3 \, \text{cm} \)
+          \item 斜高 :\( l = \sqrt{h^2 + r^2} = 5 \text{cm} \)
+          \item $L = \sqrt{l^2 + r^2} = \sqrt{34} \text{cm} $
+      \end{enumerate}
+  \end{alertblock}
+\end{frame}
+
+
+\begin{frame}{题目4：综合应用}
+  \begin{block}{题目}
+      正四棱锥表面积为 \(144 \, \text{cm}^2\)，底面边长 \(a = 6 \, \text{cm}\)，求体积。
+  \end{block}
+  
+  \pause
+  
+  \begin{alertblock}{解答步骤}
+      \begin{enumerate}
+          \item 底面面积：\( S_{\text{底}} = a^2 = 6^2 = 36 \, \text{cm}^2 \)
+          \item 侧面积总和：\( S_{\text{侧总}} = 144 - 36 = 108 \, \text{cm}^2 \)
+          \item 单个侧面面积：\( S_{\text{侧}} = \frac{108}{4} = 27 \, \text{cm}^2 \)
+          \item 斜高：\( l = \frac{2 S_{\text{侧}}}{a} = \frac{2 \times 27}{6} = 9 \, \text{cm} \)
+          \item 高：\( h = \sqrt{l^2 - \left(\frac{a}{2}\right)^2} = \sqrt{9^2 - 3^2} = 6\sqrt{2} \, \text{cm} \)
+          \item 体积：\( V = \frac{1}{3} S_{\text{底}} h = \frac{1}{3} \times 36 \times 6\sqrt{2} = 72\sqrt{2} \, \text{cm}^3 \)
+      \end{enumerate}
+  \end{alertblock}
+\end{frame}
+
+
+
+
+\subsubsection{正三棱锥知识点}
+
+
+\begin{frame}{正三棱锥结构图}
+
+  \begin{minipage}[t][\textheight][t]{\textwidth}
+    \centering
+\begin{columns}
+    \begin{column}{0.48\textwidth}
+    \centering
+    \begin{figure}
+      \resizebox{!}{3cm}{ % 高度固定为5cm，宽度自动调整
+      \input{高一下期末复习/tikz/正三棱锥立体图.tex}
+      }
+      \caption{正三棱锥立体图}
+\end{figure}
+
+    \end{column}
+    \hfill % 两栏之间的间隔
+    \begin{column}{0.48\textwidth}
+    \centering
+    \begin{figure}
+      \resizebox{!}{3cm}{ % 高度固定为5cm，宽度自动调整
+      \input{高一下期末复习/tikz/正三棱锥底面图.tex}}
+      \caption{底面图}
+    \end{figure}
+    \end{column}
+  \end{columns}
+  \end{minipage}
+  \end{frame}
+
+
+\subsubsection{正三棱锥}
+
+
+
+\begin{frame}{正三棱锥体积计算}
+    \begin{block}{题目}
+      正三棱锥底面边长为 \(6\)，侧棱长为 \(5\)，求其体积。
+    \end{block}
+  
+    \pause
+    \begin{enumerate}
+      \item[1.] \textbf{求底面中心到顶点的距离}  
+        底面为正三角形，边长 \(a = 6\)，中心到顶点的距离：  
+        \[
+        d = \frac{\sqrt{3}}{3}a = \frac{\sqrt{3}}{3} \times 6 = 2\sqrt{3}
+        \]
+  
+      \item[2.] \textbf{求三棱锥的高}  
+        侧棱长 \(l = 5\)，由勾股定理：  
+        \[
+        h = \sqrt{l^2 - d^2} = \sqrt{5^2 - (2\sqrt{3})^2} = \sqrt{25 - 12} = \sqrt{13}
+        \]
+  
+      \item[3.] \textbf{求底面积}  
+        正三角形面积公式：  
+        \[
+        S = \frac{\sqrt{3}}{4}a^2 = \frac{\sqrt{3}}{4} \times 6^2 = 9\sqrt{3}
+        \]
+  
+      \item[4.] \textbf{计算体积}  
+        体积公式 \(V = \frac{1}{3}Sh\)：  
+        \[
+        V = \frac{1}{3} \times 9\sqrt{3} \times \sqrt{13} = 3\sqrt{39}
+        \]
+    \end{enumerate}
+  
+  \end{frame}
+  
+  \begin{frame}{正三棱锥表面积计算}
+    \begin{block}{题目}
+      正三棱锥底面边长为 \(4\)，斜高为 \(3\)，求其表面积。
+    \end{block}
+    \pause
+  
+    \begin{enumerate}
+      \item[1.] \textbf{计算底面积 \(S_{\text{底}}\)}  
+        底面为正三角形，边长 \(a = 4\)：  
+        \[
+        S_{\text{底}} = \frac{\sqrt{3}}{4}a^2 = \frac{\sqrt{3}}{4} \times 4^2 = 4\sqrt{3}
+        \]
+  
+      \item[2.] \textbf{计算单个侧面面积 \(S_{\text{侧}}\)}  
+        侧面为等腰三角形，底为 \(a = 4\)，高为斜高 \(l = 3\)：  
+        \[
+        S_{\text{侧}} = \frac{1}{2} \times a \times l = \frac{1}{2} \times 4 \times 3 = 6
+        \]
+  
+      \item[3.] \textbf{计算总侧面积 \(S_{\text{侧总}}\)}  
+        正三棱锥有3个全等的侧面：  
+        \[
+        S_{\text{侧总}} = 3 \times S_{\text{侧}} = 3 \times 6 = 18
+        \]
+  
+      \item[4.] \textbf{计算表面积 \(S_{\text{表}}\)}  
+        表面积等于底面积加总侧面积：  
+        \[
+        S_{\text{表}} = S_{\text{底}} + S_{\text{侧总}} = 4\sqrt{3} + 18
+        \]
+    \end{enumerate}
+
+  \end{frame}
+  
+
+
+  \begin{frame}{正三棱锥求高计算}
+    \begin{block}{题目}
+      正三棱锥体积为 \(16\sqrt{3}\)，底面边长为 \(6\)，求其高。
+    \end{block}
+    \pause
+    \begin{enumerate}
+      \item[1.] \textbf{计算底面积 \(S_{\text{底}}\)}  
+
+        底面为正三角形，边长 \(a = 6\)：  
+        \[
+        S_{\text{底}} = \frac{\sqrt{3}}{4}a^2 = \frac{\sqrt{3}}{4} \times 6^2 = 9\sqrt{3}
+        \]
+  
+      \item[2.] \textbf{利用体积公式反推高 \(h\)}  
+      
+        体积公式 \(V = \frac{1}{3}S_{\text{底}}h\)，变形得：  
+        \[
+        h = \frac{3V}{S_{\text{底}}} = \frac{3 \times 16\sqrt{3}}{9\sqrt{3}} = \frac{48\sqrt{3}}{9\sqrt{3}} = \frac{16}{3}
+        \]
+    \end{enumerate}
+  
+    \begin{exampleblock}{答案}
+      \[
+      \boxed{\dfrac{16}{3}}
+      \]
+    \end{exampleblock}
+  \end{frame}
+  
+  \begin{frame}{正三棱锥侧棱长计算}
+    \begin{block}{题目}
+      正三棱锥高为 \(4\)，底面边长为 \(6\)，求其侧棱长。
+    \end{block}
+  \pause
+    \begin{enumerate}
+      \item[1.] \textbf{计算底面中心到顶点的距离 \(d\)}  
+      
+        底面为正三角形，边长 \(a = 6\)：  
+        \[
+        d = \frac{\sqrt{3}}{3}a = \frac{\sqrt{3}}{3} \times 6 = 2\sqrt{3}
+        \]
+  
+      \item[2.] \textbf{利用勾股定理求侧棱长 \(l\)}  
+      
+        高 \(h = 4\)，侧棱长、高与底面中心到顶点距离构成直角三角形：  
+        \[
+        l = \sqrt{h^2 + d^2} = \sqrt{4^2 + (2\sqrt{3})^2} = \sqrt{16 + 12} = \sqrt{28} = 2\sqrt{7}
+        \]
+    \end{enumerate}
+  
+    \begin{exampleblock}{答案}
+      \[
+      \boxed{2\sqrt{7}}
+      \]
+    \end{exampleblock}
+  \end{frame}
+  

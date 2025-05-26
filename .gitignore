@@ -21,6 +21,8 @@
 *.pdf    
 # 忽略 图片
 *.png    
+*.jpg
+*.jpeg 
 
 
 *.zip

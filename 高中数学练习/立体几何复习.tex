@@ -54,15 +54,15 @@
     \draw[dashed] (C) -- (D) ;
     \draw[dashed,blue,thick] (D) -- (A) ;
     % 绘制侧面
-    \draw[dashed,red,thick] (D) -- (D');
+    \draw[dashed,blue,thick] (D) -- (D');
     \draw (C) -- (C');
     \draw (B) -- (B');
     \draw (A) -- (A');
     % 绘制顶面
     \draw (D') -- (C') -- (B') -- (A') -- cycle;
 
-    \draw[dashed,red,thick] (D) -- (B);%对角线
-    \draw[dashed,red,thick] (D') -- (B);
+    \draw[dashed,blue,thick] (D) -- (B);%底面对角线
+    \draw[dashed,red,thick] (D') -- (B);%体对角线
 
     % % 标注顶点名称
     % \node[below left] at (A) {$A$};
@@ -85,7 +85,7 @@
 
 
 
-长方体\textcolor{red}{对角线}的长度为 
+长宽高分别为$a,b,c$的长方体\textcolor{red}{对角线}的长度为 
 \[
 \sqrt{a^2+b^2+c^2}.
 \]
@@ -95,59 +95,10 @@
 % \subsection{定义}
 \subsection{棱锥的定义}:
 
+\begin{center}
+  \input{几何图形/长方体对角线.tex}  
+\end{center}
 
-% 将代码中的顶点名称 A、B、C、D 替换为 D、C、B、A
-\begin{tikzpicture}[scale=3,
-    y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
-    x={(1cm,0cm)},            % 设置 y 轴方向
-    z={(0cm,1cm)}             % 设置 z 轴方向
-]%斜二测画法
-\coordinate (D) at (0,0,0);
-\coordinate (C) at (1,0,0);
-\coordinate (B) at (1,1,0);
-\coordinate (A) at (0,1,0);
-\coordinate (V) at (0.5,0.5,1);
-
-\coordinate (H) at (0.5,0.5,0);
-% 计算中点
-\coordinate (H') at ($(A)!0.5!(B)$);
-\coordinate (H'') at ($(C)!0.5!(B)$);
-%填充底面
-\fill[lightgray,opacity=0.5] (D) -- (C) -- (B) -- (A) -- cycle;
-
-% 绘制底面
-\draw (C) -- (B) -- (A);
-
-% 绘制侧面
-\draw[dashed] (D) -- (V);
-\draw[dashed] (D) -- (A);
-\draw[dashed] (D) -- (C);
-\draw (C) -- (V);
-\draw (B) -- (V);
-\draw (A) -- (V);
-
-
-\draw[thick,blue,dashed] (H) -- (V); %棱柱的高
-
-\draw[thick,red,dashed] (H') -- (V); %棱柱的斜高
-\draw[thick,red,dashed] (H'') -- (V); %棱柱的斜高
-
-% 标记顶点
-\node[ left] at (D) {$D$};
-\node[ right] at (C) {$C$};
-\node[ right] at (B) {$B$};
-\node[left] at (A) {$A$};
-\node[above] at (V) {$V$};
-\node[right] at (H) {$H$};
-
-%绘制圆点
-\fill[blue] (V) circle (0.75pt);
-\fill[blue] (H) circle (0.75pt);
-\fill[red] (H') circle (0.75pt);
-\fill[red] (H'') circle (0.75pt);
-% \node[circle, fill=blue, inner sep=1.5pt] at (V) {};
-% \node[circle, fill=blue, inner sep=1.5pt] at (H) {};
-\end{tikzpicture}
 
 这是一个正四棱锥,蓝色的线段是\textcolor{blue}{高},记为\textcolor{blue}{$h$},而红色的线段是\textcolor{red}{斜高},记为\textcolor{red}{$h'$}.
 
@@ -188,6 +139,7 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
 % 计算中点
 \coordinate (H') at ($(A)!0.5!(B)$);
 \coordinate (H'') at ($(C)!0.5!(B)$);
+\coordinate (M) at ($(C)!0.5!(B)$);
 % %填充底面
 % \fill[lightgray,opacity=0.5] (D) -- (C) -- (B) -- (A) -- cycle;
 
@@ -204,6 +156,8 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
 
 
 \draw[thick,blue,dashed] (H) -- (V); %棱柱的高
+\draw[thick,blue,dashed] (H) -- (M); %
+\draw[thick,blue] (V) -- (M); %斜高
 
 % \draw[thick,red,dashed] (H') -- (V); %棱柱的斜高
 % \draw[thick,red,dashed] (H'') -- (V); %棱柱的斜高
@@ -214,16 +168,21 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
 \node[ right] at (B) {$B$};
 \node[left] at (A) {$A$};
 \node[above] at (V) {$V$};
-\node[right] at (H) {$H$};
+\node[below] at (H) {$H$};
+\node[right] at (M) {$M$};
+
 
 %绘制圆点
 \fill[blue] (V) circle (0.75pt);
 \fill[blue] (H) circle (0.75pt);
+\fill[blue] (M) circle (0.75pt);
 % \fill[red] (H') circle (0.75pt);
 % \fill[red] (H'') circle (0.75pt);
 \end{tikzpicture}
 \caption{正四棱锥}
 \end{figure}
+线段 $VH$ 是正四棱锥的高, $M$ 是 $BC$ 边上的中点,则有,
+$$ |HM|^2 + |VH|^2 = |VM|^2. $$
 
 \begin{figure}[H]
     \centering
@@ -287,7 +246,8 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
 \end{figure} 
  
 
-线段 $VH$ 是正三棱锥的高, $M$ 是 $BC$ 边上的中点,$H$ 是底面正三角形 $\triangle ABC$ 的中心. 则 $\frac{|AH|}{|HM|} = 2$,即 $|HM|  = \frac{1}{3} |AM|$.
+线段 $VH$ 是正三棱锥的高, $M$ 是 $BC$ 边上的中点,$H$ 是底面正三角形 $\triangle ABC$ 的中心. 则 $\frac{|AH|}{|HM|} = 2$,即 $|HM|  = \frac{1}{3} |AM|$.同样的有,
+$$ |HM|^2 + |VH|^2 = |VM|^2. $$
     
 \begin{figure}[H]
     \centering
@@ -461,65 +421,35 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
 \end{tikzpicture}
 
 
+设圆锥的底面半径为 $r$ ,母线长为 $l$ , 则其底面积为  $\pi r^2$.侧面展开的扇形的圆弧长为 $2 \pi r$ ,则侧面积为 $\frac{1}{2}(2 \pi r) l = \pi r l$.
+
+
+% 圆弧的圆心角为 $\farc{2 \pi r }{l}$
 \section{球}
 
 
-\begin{tikzpicture}[scale=1.5,
-    y={(-0,-0.3cm)}, % 设置 x 轴方向
-    x={(1cm,0cm)},            % 设置 y 轴方向
-    z={(0cm,1cm)}             % 设置 z 轴方向
-]%斜二测画法
-    % 定义圆柱的参数
-    \def\radius{1} % 圆锥底面半径
-    \def\height{2} % 圆锥的高度
-      
-        % 绘制正面圆
 
-        \begin{scope}[canvas is xz plane at y=0]
-            \draw[thick] (0,0) circle (\radius);
-        \end{scope}
-        % 绘制水平圆
-        \begin{scope}
-            \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
-            \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
-        \end{scope}
-        % 绘制竖直圆 % 竖直圆有问题,不绘制
-        % \begin{scope}[canvas is yz plane at x=0]
-        %     \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
-            
-        %     \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
-        % \end{scope}
-
-
-        % % 绘制两母线
-        % \begin{scope}
-        %     \draw[thick] (\radius,0,0) -- (0,0,\height);
-        %     \draw[thick] (-\radius,0,0) -- (0,0,\height);
-        % \end{scope}
-        
-
-        % % 绘制高线
-        % \begin{scope}
-        %     \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
-        %     \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
-        %     \draw[thick,red,dashed] (0,0,0) -- (0,0,\height);
-        % \end{scope}
+\begin{figure}[H]
+    \centering
+\begin{tikzpicture}[thick]
+    % \shade[ball color = gray!40, opacity = 0.4] (0,0) circle (2cm);
+    \draw (0,0) circle (2cm);
+    \draw[blue] (-2,0) arc (180:360:2 and 0.6);
+    \draw[dashed,blue] (2,0) arc (0:180:2 and 0.6);
+    \draw[dashed,red] (0,0 ) -- node[above]{$R$} (2,0);
+    \fill[fill=black] (0,0) circle (2pt);
+    \node[above] at (0,0) {$O$};
 \end{tikzpicture}
 
-
-
-\begin{tikzpicture}
-    \shade[ball color = gray!40, opacity = 0.4] (0,0) circle (2cm);
-    \draw (0,0) circle (2cm);
-    \draw (-2,0) arc (180:360:2 and 0.6);
-    \draw[dashed] (2,0) arc (0:180:2 and 0.6);
-    \fill[fill=black] (0,0) circle (1pt);
-    \draw[dashed] (0,0 ) -- node[above]{$r$} (2,0);
-  \end{tikzpicture}
+\caption{球的大圆}
+\end{figure} 
+如上图所示,经过球心的球截面称之为大圆,其半径$R$和球的半径相同.
 
 
 
-  \begin{tikzpicture}[scale=3,
+\begin{figure}[H]
+    \centering
+  \begin{tikzpicture}[scale=2,
     y={(-0,-0.2cm)}, % 设置 x 轴方向
     x={(1cm,0cm)},            % 设置 y 轴方向
     z={(0cm,1cm)}             % 设置 z 轴方向
@@ -590,10 +520,17 @@ S_\text{正棱锥侧} =\frac{1}{2} c h'.
         %     \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
         % \end{scope}
 \end{tikzpicture}
+\caption{球的小圆}
+\end{figure} 
+
+如图,球的半径为 $R$ , 小圆的半径为 $r$ ,球心 $O$ 到小圆圆面的距离为 $d$,则根据勾股定理有
+$$
+r^2 + d^2 =R^2.
+$$
 \clearpage
 
 
-\section{其他知识}
+\section{补充知识}
 \subsection{等边三角形相关结论}
 \input{立体几何复习/等边三角形相关结论}
 

@@ -1,0 +1,52 @@
+\documentclass{ctexart}
+\usepackage{amsmath}
+\usepackage{tcolorbox}
+\usepackage[fontsize=15pt]{fontsize}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % 清除当前头部和脚部的所有内容
+\renewcommand{\headrulewidth}{0pt} % 去掉上边线
+% \cfoot{\large\thepage} % 将页码置于中央位置
+
+\usepackage{xeCJK} % 用于处理中文排版
+\setCJKmainfont[AutoFakeBold=true]{STKaiti} % 设置中文主字体为华文楷体 %AutoFakeBold 添加加粗的效果(自动伪粗体),能使用 \textbf了
+\usepackage{fontspec}
+% 设置英文主字体为 Times New Roman
+\setmainfont{Times New Roman}
+\usepackage{graphicx}
+\begin{document}
+
+\begin{tcolorbox}[colback=gray!20, colframe=blue]
+    \begin{quote}
+        我所热爱的少女\\
+        河流的少女\\
+        头发变成了树叶\\
+        两臂变成了树干
+
+        你既然不能做我的妻子\\
+        你一定要成为我的王冠\\
+        我将和人间的伟大诗人一同佩戴\\
+        用你美丽的叶子缠绕我的竖琴和箭袋  ...\\
+    \end{quote}
+\end{tcolorbox}
+这是诗人海子写的 《十四行：王冠》里的句子.用了希腊神话\footnote{故事实则出自罗马诗人奥维德的《变形记》，但仍是希腊神话体系.}中达芙尼和阿波罗的故事.达芙尼为阿波罗所追求,在惊慌之下竟向她的河神父亲求助
+——甘愿变成一棵月桂树.
+
+
+% \begin{figure}[htbp]
+%     \centering
+%     \includegraphics{工作流/pdf转化为图片/1.jpg}
+%     \caption{示例图片}
+%     \label{fig:example}
+% \end{figure}
+
+
+\end{document}
+
+
+% convert -density 150 -quality 90 input.pdf output-%3d.jpg
+
+% 3d用于指定生成图像的文件名格式，生成的图像将被命名为output-001.jpg、output-002.jpg等
+
+% 转化第三页为图片
+% convert input.pdf[2] output.jpg
