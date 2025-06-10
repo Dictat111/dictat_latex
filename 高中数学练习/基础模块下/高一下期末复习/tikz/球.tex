@@ -1,0 +1,9 @@
+\begin{tikzpicture}[thick]
+    % \shade[ball color = gray!40, opacity = 0.4] (0,0) circle (2cm);
+    \draw (0,0) circle (2cm);
+    \draw[blue] (-2,0) arc (180:360:2 and 0.6);
+    \draw[dashed,blue] (2,0) arc (0:180:2 and 0.6);
+    \draw[dashed,red] (0,0 ) -- node[above]{$R$} (2,0);
+    \fill[fill=black] (0,0) circle (2pt);
+    \node[above] at (0,0) {$O$};
+\end{tikzpicture}

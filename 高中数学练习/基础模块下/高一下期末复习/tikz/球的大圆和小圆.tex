@@ -1,0 +1,71 @@
+\begin{tikzpicture}[scale=2,
+    y={(-0,-0.2cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+    % 定义圆柱的参数
+    \def\radius{1} % 圆锥底面半径
+    \def\height{2} % 圆锥的高度
+    %这只是个一个文本替换
+    % \def\littleradius{{\radius*sqrt(3)/2}} % 底面小圆半径
+    \pgfmathsetmacro{\littleradius}{\radius*sqrt(3)/2}
+
+
+    %球心
+    \coordinate (O) at (0,0,0);
+    %小圆圆心
+    \coordinate (O') at (0,0,-\radius/2);
+    %小圆上一点
+    \coordinate (A) at ({\littleradius*sqrt(2)/2},{\littleradius*sqrt(2)/2},-\radius/2);
+
+
+    \node[above] at (O) {$O$};
+    \node[left] at (O') {$O'$};
+    % \node[below] at (A) {$A$};
+    \draw[dashed,red,thick] (O) -- node[above]{$R$} (A);
+    \draw[dashed,blue,thick] (O') -- node[above]{$r$} (A);
+    \draw[dashed,blue,thick] (O') -- node[left]{$d$} (O);
+
+
+
+      
+        % 绘制正面圆
+        \begin{scope}[canvas is xz plane at y=0]
+            \draw[thick] (0,0) circle (\radius);
+        \end{scope}
+
+
+        % 绘制水平圆
+        \begin{scope}[canvas is xy plane at z=0]
+            \draw [blue,thick,dashed] (\radius,0) arc (0:-180:\radius) ;
+            \draw [blue,thick] (\radius,0) arc (0:180:\radius) ;
+        \end{scope}
+
+
+        % 绘制水平小圆 这个小圆刚好是圆心下降一半的半径的位置
+        \begin{scope}[canvas is xy plane at z=-\radius/2]
+            \draw [red,thick,dashed] (\littleradius,0) arc (0:-180:\littleradius) ;
+            \draw [red,thick] (\littleradius,0) arc (0:180:\littleradius) ;
+        \end{scope}
+
+
+        % 绘制圆心
+        \begin{scope}
+            \fill[fill=black] (O) circle (1pt);
+            \fill[fill=black] (O') circle (1pt);
+            \fill[fill=red] (A) circle (1pt);
+        \end{scope}
+        
+
+        
+        %问题 怎么根据比例绘制圆弧上的点,我想要在圆弧上描点来连接球心.
+
+
+        % 绘制竖直圆 % 竖直圆有问题,不绘制
+        % 因为书本上的球,并不是使用斜二测画法绘制的
+        % \begin{scope}[canvas is yz plane at x=0]
+        %     \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
+            
+        %     \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+        % \end{scope}
+\end{tikzpicture}

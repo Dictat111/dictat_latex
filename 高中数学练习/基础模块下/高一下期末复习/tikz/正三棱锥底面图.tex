@@ -1,0 +1,34 @@
+\begin{tikzpicture}[scale=1]
+    % 定义正三角形的边长
+    \def\sideLength{3}
+    % 定义点（按 B、C、A 顺序）
+    \coordinate (B) at (0,0);        % 原 A 点改为 B
+    \coordinate (C) at (\sideLength,0);  % 原 B 点改为 C
+    \coordinate (A) at (\sideLength/2,{sqrt(3)*\sideLength/2}); % 原 C 点改为 A
+    
+    % 计算 BC 的中点（原 AB 中点改为 BC 中点，H 改为 M）
+    \coordinate (M) at ($(B)!0.5!(C)$); % 中点 M 对应新的边 BC
+    \coordinate (O) at ($(M)!0.3333!(A)$); % 重心 O（原指向 C，现指向新顶点 A）
+
+    % 填涂区域（保持原逻辑，随顶点变化自动调整）
+    \fill[blue!20] (B) -- (O) -- (M) -- cycle; % 顶点改为 B、O、M
+
+    % 绘制正三角形（边改为 B-C-A-B）
+    \draw (B) -- (C) -- (A) -- cycle;
+    
+    % 绘制辅助线（调整指向新顶点）
+    \draw[dashed,ultra thick, red] (A) -- (O); % 原 C-O 改为 A-O（红色）
+    \draw[dashed,ultra thick,blue] (O) -- (M); % 保持 O-M 不变（蓝色）
+    \draw[dashed] (B) -- ($(A)!0.5!(C)$); % 原 A 到 BC 中点，现 B 到 AC 中点
+    \draw[dashed] (C) -- ($(A)!0.5!(B)$); % 原 B 到 AC 中点，现 C 到 AB 中点
+
+    % 标记顶点（全部改为新标签）
+    \node[below left] at (B) {$B$};  % 原 A 标签改为 B
+    \node[below right] at (C) {$C$};  % 原 B 标签改为 C
+    \node[above] at (A) {$A$};       % 原 C 标签改为 A
+    \node[below] at (M) {$M$}; % 中点 M 标签（原 H 改为 M）
+    \node[right=3pt,red] at (O) {$O$}; % 重心 O 标签不变
+    \fill[blue] (O) circle (2pt);% 填涂测试点
+    \fill[blue] (M) circle (2pt);% 填涂测试点
+\end{tikzpicture}
+% \captionof{这是一个简单的圆形}  % 添加标题

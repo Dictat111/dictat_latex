@@ -1,0 +1,67 @@
+
+\begin{tikzpicture}[scale=1.5,
+    y={(0cm,-0.4cm)}, % 设置 x 轴方向
+    x={(1cm,0cm)},            % 设置 y 轴方向
+    z={(0cm,1cm)}             % 设置 z 轴方向
+]%斜二测画法
+    % 定义圆柱的参数
+    \def\radius{1} % 圆柱底面半径
+    \def\height{2} % 圆柱的高度
+    \coordinate (O') at (0,0,\height);
+    \coordinate (O) at (0,0,0);
+    \coordinate (R') at (\radius,0,\height);
+    \coordinate (R) at (\radius,0,0);
+    \coordinate (R'') at (-\radius,0,\height);
+    \coordinate (R''') at (-\radius,0,0);
+
+
+    % %上圆上一点
+    % \coordinate (A') at ({\radius*sqrt(2)/2},{\radius*sqrt(2)/2},\height);
+
+    % %下圆上一点
+    % \coordinate (A) at ({\radius*sqrt(2)/2},{\radius*sqrt(2)/2},0);
+
+
+    % \fill[orange,opacity=0.5](A') -- (A) -- (O) -- (O') -- cycle; %填充颜色
+
+    % \fill[orange,opacity=0.5](O') -- (O) -- (R) -- (R') -- cycle; %填充颜色
+    \fill[orange,opacity=0.5](R) -- (R') -- (R'') -- (R''') -- cycle; %填充颜色
+    \draw[blue,thick] (R) -- (R') -- (R'') -- (R''') -- cycle; %填充颜色
+
+
+
+    \draw[<->] ($(R''')+(0,0,-0.1)$)-- ($(R)+(0,0,-0.1)$) node[midway,below]{\( 2r \)};
+
+    \draw[<->] ($(R)+(0.1,0,0)$)-- ($(R')+(0.1,0,0)$) node[midway,right]{\( h \)};
+    % ($(0,0) + (1,1)$)
+
+        % 绘制母线
+        \begin{scope}
+            \draw[thick,red] (\radius,0,0) -- (\radius,0,\height);
+            \draw[thick,red] (-\radius,0,0) -- (-\radius,0,\height);
+        \end{scope}
+        % 绘制高线
+        \begin{scope}
+            \fill[red] (0,0,0) circle (0.75pt);  % 绘制一个点测试一下 
+            \fill[red] (0,0,\height) circle (0.75pt);  % 绘制一个点测试一下 
+            \draw[thick,red] (0,0,0) -- (0,0,\height);
+            \end{scope}
+
+        % 绘制顶面圆
+        \begin{scope}
+            %绘制一个圆
+            % \draw(0,0,\height) circle (\radius);
+            %上半圆
+            \draw [blue,thick] (\radius,0,\height) arc (0:-180:\radius) ;
+            % \draw [blue,thick] (\radius,0,\height) arc (0:180:\radius) ;
+        \end{scope}
+
+      
+        % 绘制底面圆
+        \begin{scope}[on background layer]
+            \draw [blue,thick,dashed] (\radius,0,0) arc (0:-180:\radius) ;
+            % \draw [blue,thick] (\radius,0,0) arc (0:180:\radius) ;
+        \end{scope}
+
+
+\end{tikzpicture}

@@ -2,6 +2,7 @@
 \usepackage{ctex}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta} % 引入一些箭头
+\usetikzlibrary{calc} % 引入一些箭头
 \usepackage{pgfplots} % 引入绘图宏包
 \begin{document}
 
@@ -58,13 +59,6 @@
     \draw[domain=-1.5:1.5 ,color=orange] plot (\x,{exp(\x)}) ;
 \end{tikzpicture}
 
-
-
-
-
-
-
-    
 
 
 
@@ -213,12 +207,130 @@
 
 
 
+\section{使用循环}
+
+使用循环产生几个点\\
+\begin{tikzpicture}
+    % 语法：\foreach \变量 [选项] in {值列表} {命令}
+    \foreach \x in {1,2,3,4,5} {
+      \fill (\x, 0) circle (2pt);
+    }
+  \end{tikzpicture}
+  
 
 
-
-
-
-
-
+绘制几何图形\\
+  \begin{tikzpicture}
+    % 绘制正六边形
+    \def\n{6}  % 边数
+    \def\r{2}  % 半径
     
+    % 计算每个顶点的坐标
+    \foreach \i in {1,...,\n} {
+      \coordinate (P\i) at (\i*360/\n:\r);
+    }
+    % 连接所有顶点形成多边形
+    \draw (P1) -- (P2) -- (P3) -- (P4) -- (P5) -- (P6) -- cycle;
+    % 为每个顶点添加标签
+    \foreach \i in {1,...,\n} {
+      \node[above] at (P\i) {$\i$};
+    }
+  \end{tikzpicture}
+
+
+  嵌套循环：绘制网格或矩阵\\
+  \begin{tikzpicture}
+    % 绘制3×3网格
+    \foreach \x in {0,1,2} {
+      \foreach \y in {0,1,2} {
+        \draw[fill=gray!20] (\x,\y) rectangle ++(1,1);
+        \node at (\x+0.5,\y+0.5) {$\x,\y$};
+      }
+    }
+  \end{tikzpicture}
+
+
+  使用数学表达式生成序列\\
+  \begin{tikzpicture}[scale=0.5]
+    % 绘制f(x)=x²上的点
+    \foreach \x in {-3,-2.5,...,3} {
+      \fill[red] (\x, \x*\x) circle (2pt);
+    }
+  \end{tikzpicture}
+  
+  
+  
+  \begin{tikzpicture}[scale=0.5]
+    \foreach \i in {-3,-2,-1,1,2,3} {
+        \node at (\i,-0.2) {\i};
+        \node at (-0.2,\i) {\i};
+        }
+  \end{tikzpicture}
+
+  \begin{tikzpicture}[scale=0.8]
+\foreach \i in {10,20,...,360} \draw (\i:1) circle (1);  %(\i:1) 表示 极坐标的圆心 (角度:半径)
+  \end{tikzpicture}
+  
+  \begin{tikzpicture}[scale=0.8]
+    \filldraw[even odd rule] \foreach \i in {10,20,...,360}
+    {(\i:1) circle (1)};
+  \end{tikzpicture}
+  
+  
+  \begin{tikzpicture}[scale=2]
+    \foreach \i in {0,0.025,...,1}
+    \draw ($(0,0)!\i!\i*360:(1,0)$) circle(0.08*\i); %\i*360:(1,0) 将点 (1,0) 绕原点顺时针旋转 \i*360 度
+  \end{tikzpicture}
+  
+  
+  \begin{tikzpicture}[scale=2]
+    \foreach \i in {0,0.025,...,1}
+    \draw ($(0,0)!\i!-\i*360:(1,0)$) circle(0.08*\i); 
+  \end{tikzpicture}
+  
+  \begin{center}
+      \begin{tikzpicture}[scale=0.8]
+    \foreach \i in {0,0.025,...,6}
+    \draw[shading=ball] ($(0,0)!\i!\i*360:(1,0)$)
+    circle(0.08*\i);
+  \end{tikzpicture}
+  \end{center}
+
+  
+  \begin{center}
+    \begin{tikzpicture}[]
+        % 标记点A, B, C
+        \coordinate[label=left:{$A$}] (A) at (0,2);
+        \coordinate[label=right:{$B$}] (B) at (5,2);
+        \coordinate[label=below right:{$C$}] (C) at (5,0);
+
+        % 绘制线段AB, AC
+        \draw (A) -- (B);
+        \draw (A) -- (C);
+
+        % 等分线段AC
+        \foreach \i in {1,...,5}
+            {
+                \coordinate[label=below:{$\i'$}] (a\i) at ($(A)!\i/5!(C)$);
+                \coordinate[label=above:{$\i$}] (b\i) at ($(A)!\i/5!(B)$);
+                \draw (a\i) -- (b\i);
+            }
+
+    \end{tikzpicture}
+  \end{center}
+\section{其他例子}
+
+
+\begin{tikzpicture}[]
+
+  \foreach \i in {0,0.025,...,1}
+  \draw ($(0,0)!2!-\i*360:(1,0)$) circle(0.08*\i); 
+\end{tikzpicture}
+
+
+
+
+
+
+
 \end{document}

@@ -1,0 +1,194 @@
+
+\subsection{球}
+\begin{frame}{球的基本概念}
+    \begin{block}{定义}
+        空间中到定点（球心）的距离等于定长（半径 \(R\)）的点的集合。
+    \end{block}
+    
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{exampleblock}{参数}
+            \begin{itemize}
+                \item 球心：\(O\)
+                \item 半径：\(R\)
+                \item 直径：\(D = 2R\)
+            \end{itemize}
+        \end{exampleblock}
+        
+        \column{0.5\textwidth}
+        \input{高一下期末复习/tikz/球.tex}
+    \end{columns}
+  \end{frame}
+  
+  \begin{frame}{球的截面性质}
+    \begin{block}{定理}
+        球心到截面的距离 \(d\)、截面圆半径 \(r\) 与球半径 \(R\) 满足：
+        \[
+        r = \sqrt{R^2 - d^2}
+        \]
+    \end{block} 
+    
+    \begin{columns}
+        \column{0.6\textwidth}
+        \begin{exampleblock}{特殊截面}
+            \begin{enumerate}
+                \item 当 \(d = 0\) 时，\(r = R\)，截面为\textcolor{blue}{大圆}
+                \item 当 \(0 < d < R\) 时，截面为\textcolor{red}{小圆}
+            \end{enumerate}
+        \end{exampleblock}
+        
+        \column{0.4\textwidth}
+        \input{高一下期末复习/tikz/球的大圆和小圆.tex}
+    \end{columns}
+  \end{frame}
+  
+  
+  
+  
+  \begin{frame}{表面积与体积公式}
+    \begin{block}{核心公式}
+        \begin{itemize}
+            \item 表面积：\[ S = 4\pi R^2 \]
+            \item 体积：\[ V = \frac{4}{3}\pi R^3 \]
+        \end{itemize}
+    \end{block}
+  \end{frame}
+  
+  
+  \begin{frame}{球与多面体的关系}
+    \begin{block}{外接球}
+        多面体的所有顶点都在球面上，球心到各顶点距离相等。
+        \begin{itemize}
+            \item 正方体的外接球半径：\( R = \frac{\sqrt{3}}{2}a \)（\(a\) 为棱长）
+            \item 长方体的外接球半径：\( R = \frac{\sqrt{a^2 + b^2 + c^2}}{2} \)
+        \end{itemize}
+    \end{block}
+    
+    \begin{block}{内切球}
+        球与多面体的各面都相切，球心到各面距离相等。
+        \begin{itemize}
+            % \item 正四面体的内切球半径：\( r = \frac{\sqrt{6}}{12}a \)（\(a\) 为棱长）
+            \item 正方体的内切球半径：\( r = \frac{a}{2} \)
+        \end{itemize}
+    \end{block}
+  \end{frame}
+  
+  
+  \begin{frame}{典型例题}
+    \begin{exampleblock}{例题1}
+        已知球的表面积为 \(100\pi\)，求其体积。
+    \end{exampleblock}
+    
+    \pause
+    
+    \begin{alertblock}{解答}
+        \[
+        S = 4\pi R^2 = 100\pi \implies R^2 = 25 \implies R = 5
+        \]
+        \[
+        V = \frac{4}{3}\pi R^3 = \frac{4}{3}\pi \times 5^3 = \frac{500}{3}\pi
+        \]
+    \end{alertblock}
+  \end{frame}
+  
+  
+  \begin{frame}{典型例题}
+    \begin{exampleblock}{例题2}
+        球的截面圆面积为 \(9\pi\)，球心到截面的距离为 \(4\)，求球的半径。
+    \end{exampleblock}
+    
+    \pause
+    
+    \begin{alertblock}{解答}
+        \[
+        \text{截面圆半径：} \pi r^2 = 9\pi \implies r = 3
+        \]
+        \[
+        \text{由勾股定理：} R = \sqrt{r^2 + d^2} = \sqrt{3^2 + 4^2} = 5
+        \]
+    \end{alertblock}
+  \end{frame}
+  
+  \begin{frame}{典型例题}
+    \begin{exampleblock}{例题3}
+        已知球的半径为 \(5\)，求其表面积和体积之比。
+    \end{exampleblock}
+    
+    \pause
+    
+    \begin{alertblock}{解答}
+        \[
+        \text{表面积：} S = 4\pi R^2 = 4\pi \times 5^2 = 100\pi
+        \]
+        \[
+        \text{体积：} V = \frac{4}{3}\pi R^3 = \frac{4}{3}\pi \times 5^3 = \frac{500}{3}\pi
+        \]
+        \[
+        \text{比值：} \frac{S}{V} = \frac{100\pi}{\frac{500}{3}\pi} = \frac{3}{5}
+        \]
+    \end{alertblock}
+  \end{frame}
+  
+  
+  \begin{frame}{典型例题}
+    \begin{exampleblock}{例题4}
+        正方体的外接球体积为 \(36\pi\)，求正方体的棱长。
+    \end{exampleblock}
+    
+    \pause
+    
+    \begin{alertblock}{解答}
+        \[
+        \text{设球半径为 } R,\frac{4}{3}\pi R^3 = 36\pi \implies R^3 = 27 \implies R = 3
+        \]
+        \[
+        \text{正方体体对角线长 } l = 2R = 6
+        \]
+        \[
+        \text{设正方体棱长为 } a,则 \sqrt{3}a = 6 \implies a = \frac{6}{\sqrt{3}} = 2\sqrt{3}
+        \]
+    \end{alertblock}
+  \end{frame}
+  
+  
+  \begin{frame}{典型例题}
+    \begin{exampleblock}{例题5}
+        两个球的表面积之比为 \(4:9\)，求它们的体积之比。
+    \end{exampleblock}
+    
+    \pause
+    
+    \begin{alertblock}{解答}
+        \[
+        \text{设两球半径为 } R_1, R_2，\frac{4\pi R_1^2}{4\pi R_2^2} = \frac{4}{9} \implies \left(\frac{R_1}{R_2}\right)^2 = \frac{4}{9} \implies \frac{R_1}{R_2} = \frac{2}{3}
+        \]
+        \[
+        \text{体积之比：} \frac{\frac{4}{3}\pi R_1^3}{\frac{4}{3}\pi R_2^3} = \left(\frac{R_1}{R_2}\right)^3 = \left(\frac{2}{3}\right)^3 = \frac{8}{27}
+        \]
+    \end{alertblock}
+  \end{frame}
+  
+  
+  
+  
+  \begin{frame}{典型例题}
+    \begin{exampleblock}{例题6}
+        已知正方体内切球的表面积为 \(36\pi\)，求正方体的棱长和体积。
+    \end{exampleblock}
+    
+    \pause
+    
+    \begin{alertblock}{解答}
+        \[
+        \text{设内切球半径为 } r，\quad 4\pi r^2 = 36\pi \quad \Rightarrow \quad r^2 = 9 \quad \Rightarrow \quad r = 3
+        \]
+        \[
+        \text{正方体棱长：} \quad a = 2r = 6
+        \]
+        \[
+        \text{正方体体积：} \quad V = a^3 = 6^3 = 216
+        \]
+    \end{alertblock}
+  \end{frame}
+  
+  

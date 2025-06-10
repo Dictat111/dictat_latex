@@ -1,0 +1,59 @@
+
+% \begin{figure}[H]
+    \begin{tikzpicture}[scale=2.5,
+        y={(-0.353cm,-0.353cm)}, % 设置 x 轴方向
+        x={(1cm,0cm)},            % 设置 y 轴方向
+        z={(0cm,1cm)}             % 设置 z 轴方向
+    ]%斜二测画法
+    % 定义底面正三角形的顶点
+    \coordinate (A) at (0,0,0);
+    \coordinate (C) at (1,0,0);
+    \coordinate (B) at (0.5,{sqrt(3)/2},0);
+    
+    % 定义顶点 V
+    \coordinate (V) at (0.5,{sqrt(3)/6},1);
+    
+    % 计算底面中心 O
+    \coordinate (O) at (0.5,{sqrt(3)/6},0);
+    
+    % 计算各边中点
+    \coordinate (O') at ($(A)!0.5!(C)$);
+    \coordinate (M) at ($(C)!0.5!(B)$);
+    \coordinate (O''') at ($(B)!0.5!(A)$);
+    
+    % 绘制底面
+    \draw[dashed] (A) -- (C);
+    \draw (A) -- (B);
+    \draw (C) -- (B);
+  
+    %%高
+    \draw[dashed,red,thick] (A) -- (O);
+    \draw[dashed,blue,thick] (O) -- (M);
+  
+  
+    
+    % 绘制侧面
+    \draw (A) -- (V);
+    \draw (C) -- (V);
+    \draw (B) -- (V);
+    %% 斜高
+    \draw[blue,thick] (V) -- (M);
+    % 棱锥的高
+    \draw[thick,blue,dashed] (O) -- (V); 
+    
+    % 标记顶点
+    \node[left] at (A) {$A$};
+    \node[right] at (C) {$C$};
+    \node[left] at (B) {$B$};
+    \node[above] at (V) {$V$};
+    \node[below] at (O) {$O$};
+  
+    \node[right] at (M) {$M$};
+    % 绘制圆点
+    \fill[blue] (V) circle (0.75pt);
+    \fill[blue] (O) circle (0.75pt);
+    \fill[blue] (M) circle (0.75pt);
+    \end{tikzpicture}
+    % \caption{正三棱锥立体图}
+% \end{figure} 
+  
