@@ -9,6 +9,8 @@
         ],
         "description": "Print 'Hello, World!' in Python"
     },
+
+
     "Function Definition": {
         "prefix": "def",
         "body": [
@@ -19,7 +21,7 @@
         "description": "Define a function in Python"
     },
 
-    
+    // myctexart 模板
         "LaTeX CTEX Template": {
             "prefix": "myctexart",
             "body": [
@@ -47,4 +49,37 @@
         },
     
     
+
+
+        // mystandalone 模板
+"LaTeX Standalone Template": {
+    "prefix": "mystandalone",
+    "body": [
+        "\\documentclass[border=2mm]{standalone}",
+        "\\usepackage{amsmath}",
+        "\\usepackage{tcolorbox}",
+        "\\usepackage[fontsize=15pt]{fontsize}",
+        "% standalone 类通常不需要页眉页脚设置",
+        "",
+        "\\usepackage{xeCJK} % 用于处理中文排版",
+        "\\setCJKmainfont[AutoFakeBold=true]{STKaiti} % 设置中文主字体为华文楷体",
+        "\\usepackage{fontspec}",
+        "% 设置英文主字体为 Times New Roman",
+        "\\setmainfont{Times New Roman}",
+        "\\usepackage{graphicx}",
+        "% 如果需要使用tikz绘图，取消下面的注释",
+        "% \\usepackage{tikz}",
+        "% \\usetikzlibrary{...}",
+        "",
+        "\\begin{document}",
+        "$1",
+        "\\end{document}"
+    ],
+    "description": "Standalone Template with Chinese Support"
+}
+
+
+
+
+
 }    

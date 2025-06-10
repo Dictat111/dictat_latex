@@ -1,0 +1,193 @@
+\documentclass{ctexart}
+\usepackage{amsmath,}
+\usepackage{tcolorbox}
+\usepackage[fontsize=12pt]{fontsize}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % 清除当前头部和脚部的所有内容
+\renewcommand{\headrulewidth}{0pt} % 去掉上边线
+% \cfoot{\large\thepage} % 将页码置于中央位置
+
+\usepackage{xeCJK} % 用于处理中文排版
+\setCJKmainfont[AutoFakeBold=true]{STKaiti} % 设置中文主字体为华文楷体 %AutoFakeBold 添加加粗的效果(自动伪粗体),能使用 \textbf了
+\usepackage{fontspec}
+% 设置英文主字体为 Times New Roman
+\setmainfont{Times New Roman}
+\usepackage{graphicx}
+% 定义定理环境
+\newtheorem{definition}{定义}
+\newtheorem{theorem}{定理} % 定义定理环境
+\newtheorem{proof}{证} % 定义定理环境
+\DeclareMathOperator{\Orb}{Orb} % 定义轨道算子
+\DeclareMathOperator{\Fix}{Fix}
+\begin{document}
+
+\begin{definition}[群作用]
+    设 \( G \) 是一个群，\( X \) 是一个集合。群 \( G \) 在集合 \( X \) 上的一个\textbf{左作用}是一个映射
+    \[
+    \cdot \colon G \times X \to X, \quad (g, x) \mapsto g \cdot x,
+    \]
+    满足以下两个条件：
+    \begin{enumerate}
+        \item \textbf{单位元作用}：对于所有 \( x \in X \)，有 \( e \cdot x = x \)，其中 \( e \) 是群 \( G \) 的单位元。
+        \item \textbf{结合律}：对于所有 \( g, h \in G \) 和 \( x \in X \)，有 \( g \cdot (h \cdot x) = (gh) \cdot x \)。
+    \end{enumerate}
+    类似地，群 \( G \) 在集合 \( X \) 上的一个\textbf{右作用}是一个映射
+    \[
+    \cdot \colon X \times G \to X, \quad (x, g) \mapsto x \cdot g,
+    \]
+    满足：
+    \begin{enumerate}
+        \item 对于所有 \( x \in X \)，有 \( x \cdot e = x \)。
+        \item 对于所有 \( g, h \in G \) 和 \( x \in X \)，有 \( (x \cdot g) \cdot h = x \cdot (gh) \)。
+    \end{enumerate}
+\end{definition}
+
+
+\begin{definition}[二面体群 \( D_4 \)]
+    二面体群 \( D_4 \) 是正方形的对称群，包含8个元素。它可以通过以下两种方式定义：
+    
+    \textbf{几何定义：}
+    \[
+    D_4 = \{ e, r, r^2, r^3, s, sr, sr^2, sr^3 \}
+    \]
+    其中：
+    \begin{itemize}
+        \item \( e \) 是恒等变换，
+        \item \( r \) 是逆时针旋转90度，满足 \( r^4 = e \)，
+        \item \( s \) 是关于某条对称轴的反射，满足 \( s^2 = e \)，
+        \item 反射与旋转满足关系 \( sr = r^{-1}s \)。
+    \end{itemize}
+    
+    \textbf{生成元与关系定义：}
+    \[
+    D_4 = \langle r, s \mid r^4 = s^2 = e, sr = r^{-1}s \rangle
+    \]
+    \end{definition}
+
+    \begin{definition}[群作用下的轨道]
+
+        对于元素 \( x \in X \)，其在群 \( G \) 作用下的轨道定义为：
+        \[
+        \Orb_G(x) = \{ g \cdot x \mid g \in G \}
+        \]
+    \end{definition}
+
+    \begin{theorem}[轨道-稳定化子定理]
+        设有限群 \( G \) 作用于集合 \( X \)，对任意 \( x \in X \)，其轨道 \( \Orb_G(x) \) 和稳定化子群 \( G_x \) 满足：
+        \[
+        |G| = |\Orb_G(x)| \cdot |G_x|
+        \]
+        其中稳定化子群 \( G_x = \{ g \in G \mid g \cdot x = x \} \)。
+    \end{theorem}
+
+    
+
+\begin{proof}
+我们通过构造双射来建立群基数的关系。
+
+
+定义左陪集空间到轨道的映射：
+\[
+\phi: G / G_x \to \Orb_G(x), \quad \phi(gG_x) = g \cdot x
+\]
+其中 \( G / G_x \) 为 \( G_x \) 在 \( G \) 中的左陪集族。
+
+
+设 \( g_1 G_x = g_2 G_x \)，则存在 \( h \in G_x \) 使得 \( g_2 = g_1 h \)。  
+由稳定化子群定义，\( h \cdot x = x \)，故：
+\[
+g_2 \cdot x = (g_1 h) \cdot x = g_1 \cdot (h \cdot x) = g_1 \cdot x
+\]
+因此 \( \phi(g_1 G_x) = \phi(g_2 G_x) \)，映射 \( \phi \) 良定。
+
+
+若 \( \phi(g_1 G_x) = \phi(g_2 G_x) \)，即 \( g_1 \cdot x = g_2 \cdot x \)，  
+左乘 \( g_1^{-1} \) 得：
+\[
+g_1^{-1} g_2 \cdot x = x \implies g_1^{-1} g_2 \in G_x \implies g_1 G_x = g_2 G_x
+\]
+故 \( \phi \) 为单射。
+
+对任意 \( y \in \Orb_G(x) \)，存在 \( g \in G \) 使得 \( g \cdot x = y \)，  
+显然 \( \phi(g G_x) = y \)，故 \( \phi \) 为满射。
+
+由双射 \( \phi \) 知：
+\[
+|G / G_x| = |\Orb_G(x)|
+\]
+根据拉格朗日定理：
+\[
+|G / G_x| = \frac{|G|}{|G_x|}
+\]
+联立得：
+\[
+\frac{|G|}{|G_x|} = |\Orb_G(x)| \implies |G| = |\Orb_G(x)| \cdot |G_x|
+\]
+定理得证。
+\end{proof}
+
+\begin{theorem}[Burnside引理]
+    设有限群 \( G \) 作用于有限集合 \( X \)，则轨道数 \( N \) 满足：
+    \[
+    N = \frac{1}{|G|} \sum_{g \in G} |\Fix(g)|
+    \]
+    其中 \( \Fix(g) = \{ x \in X \mid g \cdot x = x \} \) 表示元素 \( g \) 的不动点集。
+    \end{theorem}
+
+
+
+    \begin{proof}
+        我们通过双重计数和轨道-稳定子定理来证明。
+        
+        \subsection*{步骤1：建立双重计数等式}
+        考虑集合 \( S = \{ (g, x) \in G \times X \mid g \cdot x = x \} \)。我们可以从两个角度计算其基数：
+        
+        \subsubsection*{角度1：按群元素划分}
+        对于每个 \( g \in G \)，满足 \( g \cdot x = x \) 的 \( x \) 的数量为 \( |\Fix(g)| \)，因此：
+        \[
+        |S| = \sum_{g \in G} |\Fix(g)|
+        \]
+        
+        \subsubsection*{角度2：按集合元素划分}
+        对于每个 \( x \in X \)，满足 \( g \cdot x = x \) 的 \( g \) 的数量为稳定子群 \( G_x \) 的基数，因此：
+        \[
+        |S| = \sum_{x \in X} |G_x|
+        \]
+        
+        联立两个角度的计数结果，得到：
+        \[
+        \sum_{g \in G} |\Fix(g)| = \sum_{x \in X} |G_x| \tag{1}
+        \]
+        
+        \subsection*{步骤2：应用轨道-稳定子定理}
+        根据轨道-稳定子定理，对每个 \( x \in X \)，有：
+        \[
+        |G| = |\Orb(x)| \cdot |G_x| \implies |G_x| = \frac{|G|}{|\Orb(x)|}
+        \]
+        代入式(1)得：
+        \[
+        \sum_{g \in G} |\Fix(g)| = \sum_{x \in X} \frac{|G|}{|\Orb(x)|} = |G| \sum_{x \in X} \frac{1}{|\Orb(x)|} \tag{2}
+        \]
+        
+        \subsection*{步骤3：按轨道合并求和}
+        将 \( X \) 划分为互不相交的轨道 \( \Orb(x_1), \Orb(x_2), \dots, \Orb(x_N) \)，其中 \( N \) 为轨道数。对于同一轨道 \( \Orb(x_i) \) 中的每个元素 \( x \)，有 \( |\Orb(x)| = |\Orb(x_i)| \)，且轨道中的元素个数为 \( |\Orb(x_i)| \)，因此：
+        \[
+        \sum_{x \in \Orb(x_i)} \frac{1}{|\Orb(x)|} = \sum_{x \in \Orb(x_i)} \frac{1}{|\Orb(x_i)|} = |\Orb(x_i)| \cdot \frac{1}{|\Orb(x_i)|} = 1
+        \]
+        对所有 \( N \) 个轨道求和，得到：
+        \[
+        \sum_{x \in X} \frac{1}{|\Orb(x)|} = \sum_{i=1}^N \left( \sum_{x \in \Orb(x_i)} \frac{1}{|\Orb(x)|} \right) = \sum_{i=1}^N 1 = N \tag{3}
+        \]
+        
+        \subsection*{步骤4：联立等式得出结论}
+        将式(3)代入式(2)，得：
+        \[
+        \sum_{g \in G} |\Fix(g)| = |G| \cdot N
+        \]
+        两边除以 \( |G| \)，即得Burnside引理：
+        \[
+        N = \frac{1}{|G|} \sum_{g \in G} |\Fix(g)|
+        \]
+        \end{proof}
+\end{document}
