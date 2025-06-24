@@ -76,8 +76,33 @@
         "\\end{document}"
     ],
     "description": "Standalone Template with Chinese Support"
-}
+},
 
+"LaTeX 分隔线": {
+        "scope": "latex",
+        "prefix": "hline",
+        "body": [
+        "%-----------------------------------------------------------------------------------------------------------------------",
+        "$TM_SELECTED_TEXT",  
+        ],
+        "description": "插入一个 LaTeX 分隔线"
+    },
+
+    "LaTeX 圈选文字": {
+        "scope": "latex",
+        "prefix": "wrap",
+        "body": [
+            "\t%---",
+            "$TM_SELECTED_TEXT",  
+            //TM_SELECTED_TEXT 是 VS Code 代码片段（Snippet） 中的一个 内置变量，
+            // 用于获取用户当前选中的文本。当你创建一个 snippet 并使用这个变量时，
+            // VS Code 会自动将其替换为你在编辑器中选中的内容。
+
+            //制表符,使其跟随文本缩进
+            ""
+        ],
+        "description": "将选中的文字用分隔线圈起来"
+    } 
 
 
 

@@ -1,0 +1,283 @@
+\documentclass{article}
+
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{enumitem}
+\renewcommand{\labelitemi}{\textbullet} % 第一级，默认的实心圆点
+\renewcommand{\labelitemii}{\textopenbullet} % 第二级，空心圆点
+\renewcommand{\labelitemiii}{$\triangleright$} % 右尖三角形
+
+\title{基础模块下数学公式整理}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{指数函数与对数函数}
+
+\subsection{指数函数的定义与性质}
+\textbf{定义}：形如 \( f(x) = a^x \)（\( a > 0 \) 且 \( a \neq 1 \)）的函数称为指数函数，其中 \( a \) 为底数，\( x \) 为指数。
+
+\begin{itemize}
+    \item \textbf{基本性质}：
+    \begin{itemize}
+        \item 定义域：\( (-\infty, +\infty) \)
+        \item 值域：\( (0, +\infty) \)
+        \item 过定点：\( (0, 1) \)，即 \( x=0 \) 时，\( f(0) = 1 \)
+        \item 单调性：
+        \begin{itemize}
+            \item 当 \( a > 1 \) 时，函数在定义域内单调递增；
+            \item 当 \( 0 < a < 1 \) 时，函数在定义域内单调递减。
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{指数运算公式}（设 \( a, b > 0 \)，\( m, n \in \mathbb{R} \)）：
+    \begin{enumerate}
+        \item \( a^m \cdot a^n = a^{m+n} \)
+        \item \( (a^m)^n = a^{mn} \)
+        \item \( (ab)^n = a^n b^n \)
+        \item \( \dfrac{a^m}{a^n} = a^{m-n} \)
+        \item \( \left( \dfrac{a}{b} \right)^n = \dfrac{a^n}{b^n} \)
+        \item \( a^0 = 1 \)（\( a \neq 0 \)）
+        \item \( a^{-n} = \dfrac{1}{a^n} \)
+        \item \( a^{\frac{m}{n}} = \sqrt[n]{a^m} \)
+    \end{enumerate}
+\end{itemize}
+
+\subsection{对数函数的定义与性质}
+\textbf{定义}：形如 \( f(x) = \log_a x \)（\( a > 0 \) 且 \( a \neq 1 \)）的函数称为对数函数，其中 \( a \) 为底数，\( x \) 为真数（\( x > 0 \)）。
+
+\begin{itemize}
+    \item \textbf{基本性质}：
+    \begin{itemize}
+        \item 定义域：\( (0, +\infty) \)
+        \item 值域：\( (-\infty, +\infty) \)
+        \item 过定点：\( (1, 0) \)，即 \( x=1 \) 时，\( f(1) = 0 \)
+        \item 单调性：
+        \begin{itemize}
+            \item 当 \( a > 1 \) 时，函数在定义域内单调递增；
+            \item 当 \( 0 < a < 1 \) 时，函数在定义域内单调递减。
+        \end{itemize}
+    \end{itemize}
+    
+    \item \textbf{对数运算公式}（设 \( a > 0 \) 且 \( a \neq 1 \)，\( M, N > 0 \)，\( b > 0 \) 且 \( b \neq 1 \)，\( n \in \mathbb{R} \)）：
+    \begin{enumerate}
+        \item 乘积法则：\( \log_a(MN) = \log_a M + \log_a N \)
+        \item 商数法则：\( \log_a \dfrac{M}{N} = \log_a M - \log_a N \)
+        \item 幂数法则：\( \log_a M^n = n \log_a M \)
+        \item 换底公式 \footnote{了解即可}：\( \log_a b = \dfrac{\log_c b}{\log_c a} \)
+        \item 自然对数与常用对数：
+        \begin{itemize}
+            \item 自然对数：\( \ln x = \log_e x \)
+            \item 常用对数：\( \lg x = \log_{10} x \)
+        \end{itemize}
+        \item 对数恒等式：
+        \begin{itemize}
+            \item \( a^{\log_a x} = x \)
+            \item \( \log_a a^x = x \)
+        \end{itemize}
+        \item 倒数关系\footnote{了解即可}：\( \log_a b = \dfrac{1}{\log_b a} \)
+    \end{enumerate}
+\end{itemize}
+
+
+\begin{itemize}
+    \item \textbf{指数与对数的转换}：
+    \( a^b = N \iff \log_a N = b \)（\( a > 0 \), \( a \neq 1 \), \( N > 0 \)）。
+\end{itemize}
+
+\begin{enumerate}
+    \item \textbf{特殊值}：
+    \begin{itemize}
+        \item \( \log_a a = 1 \)，\( \log_a 1 = 0 \)(转化为指数式理解一下)；
+        \item \( e^{\ln x} = x \)，\( \ln e^x = x \)；
+        \item \( 10^{\lg x} = x \)，\( \lg 10^x = x \)。
+    \end{itemize}
+\end{enumerate}
+
+\section{直线和圆的方程}
+\subsection{直线的方程}
+\subsubsection{基本公式}
+\begin{itemize}
+    \item 两点间距离公式：\\
+          设两点 \( P_1(x_1, y_1) \)，\( P_2(x_2, y_2) \)，则距离为：
+          \[
+          d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+          \]
+    \item 中点坐标公式：\\
+          线段 \( P_1P_2 \) 的中点 \( M \) 的坐标为：
+          \[
+          M\left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2} \right)
+          \]
+\end{itemize}
+
+\subsubsection{直线的斜率}
+\begin{itemize}
+    \item 定义式：\\
+          若直线过两点 \( P_1(x_1, y_1) \)，\( P_2(x_2, y_2) \)，则斜率为：
+          \[
+          k = \frac{y_2 - y_1}{x_2 - x_1} \quad (x_1 \neq x_2)
+          \]
+          
+    \item 倾斜角与斜率关系：\\
+          若直线倾斜角\footnote{倾斜角的范围是 $[0,\pi)$}为 \( \alpha \)（\( \alpha \neq \frac{\pi}{2}  \),即斜率存在时），则：
+          \[
+          k = \tan \alpha
+          \]
+\end{itemize}
+
+\subsubsection{直线方程的形式}
+\begin{itemize}
+    \item 点斜式：\\
+          过点 \( (x_0, y_0) \)，斜率为 \( k \) 的直线方程：
+          \[
+          y - y_0 = k(x - x_0)
+          \]
+          
+    \item 斜截式：\\
+          斜率为 \( k \)，$y$轴截距为 \( b \) 的直线方程：
+          \[
+          y = kx + b
+          \]
+
+          
+
+    \item 一般式：
+          \[
+          Ax + By + C = 0 \quad (A^2 + B^2 \neq 0)
+          \]
+\end{itemize}
+
+\subsection{两条直线的位置关系}
+\subsubsection{平行与垂直的判定}
+下面是$k$存在时的情况
+\begin{itemize}
+    \item 平行：\\
+          直线 \( l_1: y = k_1x + b_1 \) 和 \( l_2: y = k_2x + b_2 \) 平行的充要条件：
+          \[
+          k_1 = k_2 \quad \text{且} \quad b_1 \neq b_2
+          \]
+          
+    \item 垂直：\\
+          直线 \( l_1 \) 和 \( l_2 \) 垂直的充要条件：
+          \[
+          k_1 \cdot k_2 = -1
+          \]
+\end{itemize}
+思考:斜率不存在时要怎么判断?
+
+
+\subsubsection{点到直线的距离}
+点 \( (x_0, y_0) \) 到直线 \( Ax + By + C = 0 \) 的距离：
+\[
+d = \frac{|Ax_0 + By_0 + C|}{\sqrt{A^2 + B^2}}
+\]
+
+\subsubsection{两条平行直线间的距离}
+直线 \( Ax + By + C_1 = 0 \) 和 \( Ax + By + C_2 = 0 \) 间的距离：
+\[
+d = \frac{|C_1 - C_2|}{\sqrt{A^2 + B^2}}
+\]
+也不需要记这个公式,在其中一条直线上取一点,计算该点到另一条直线的距离即可.
+
+\subsection{圆的方程}
+\subsubsection{标准方程}
+\begin{itemize}
+    \item 圆心为 \( (a, b) \)，半径为 \( r \) 的圆：
+          \[
+          (x - a)^2 + (y - b)^2 = r^2
+          \]
+          
+    \item 圆心在原点的圆：
+          \[
+          x^2 + y^2 = r^2
+          \]
+\end{itemize}
+
+\subsubsection{一般方程}
+圆的一般方程：
+\[
+x^2 + y^2 + Dx + Ey + F = 0 \quad (D^2 + E^2 - 4F > 0)
+\]
+圆心坐标为 \( \left( -\frac{D}{2}, -\frac{E}{2} \right) \)，半径为 \( r = \frac{1}{2}\sqrt{D^2 + E^2 - 4F} \)。
+
+不需要硬记,使用配方法即可将圆的一般方程转化为标准方程.
+
+
+
+\subsection{直线与圆的位置关系}
+设直线 \( l: Ax + By + C = 0 \)，圆 \( (x - a)^2 + (y - b)^2 = r^2 \)，圆心到直线的距离为 \( d = \frac{|Aa + Bb + C|}{\sqrt{A^2 + B^2}} \)，则：
+\begin{itemize}
+    \item 相离：\( d > r \)；
+    \item 相切：\( d = r \)；
+    \item 相交：\( d < r \)。
+\end{itemize}
+
+
+
+\subsection{过圆外一点 \( P(x_0, y_0) \) 的切线}
+已知圆 \( (x - a)^2 + (y - b)^2 = r^2 \)，点 \( P(x_0, y_0) \) 在圆外，求过点 \( P \) 的圆的切线方程：
+\begin{enumerate}
+    \item 设切线方程为 \( y - y_0 = k(x - x_0) \)，即 \( kx - y + (y_0 - kx_0) = 0 \)；
+    \item 根据圆心到切线的距离等于半径，列出方程：
+          \[
+          \frac{|ka  - b + (y_0 - kx_0)|}{\sqrt{k^2 + 1}} = r
+          \]
+    \item 解方程求出 \( k \) 的值（通常有两个解）；
+    \item 将 \( k \) 代入切线方程。
+    
+    \textbf{特殊情况}：若上述方程只有一个解，说明存在一条垂直于 \( x \)-轴的切线，其方程为 \( x = x_0 \)。
+\end{enumerate}
+\section{简单几何体}
+% \subsection{基本几何体的定义与分类}
+% \begin{itemize}
+%     \item \textbf{棱柱}：有两个面互相平行，其余各面都是四边形，且每相邻两个四边形的公共边都互相平行。
+%     \item \textbf{棱锥}：有一个面是多边形，其余各面都是有一个公共顶点的三角形。
+%     \item \textbf{圆柱}：以矩形的一边所在直线为轴旋转，其余三边旋转形成的曲面所围成的几何体。
+%     \item \textbf{圆锥}：以直角三角形的一条直角边为旋转轴，旋转一周所形成的几何体。
+%     \item \textbf{球}：以半圆的直径所在直线为旋转轴，半圆面旋转一周形成的几何体。
+% \end{itemize}
+
+% \subsection{表面积与体积公式}
+\begin{enumerate}
+    \item \textbf{棱柱（直棱柱）}：
+          \begin{itemize}
+              \item 表面积 \( S = 2S_{\text{底}} + C_{\text{底}} \cdot h \)（\( S_{\text{底}} \)为底面积，\( C_{\text{底}} \)为底面周长，\( h \)为高）
+              \item 体积 \( V = S_{\text{底}} \cdot h \)
+              \item \textbf{特殊情况}：正方体（棱长为 \( a \)）
+                    \[
+                    S = 6a^2, \quad V = a^3
+                    \]
+          \end{itemize}
+          
+    \item \textbf{棱锥（正棱锥）}：
+          \begin{itemize}
+              \item 表面积 \( S = S_{\text{底}} + \frac{1}{2}C_{\text{底}} \cdot h' \)（\( h' \)为斜高）
+              \item 体积 \( V = \frac{1}{3}S_{\text{底}} \cdot h \)
+
+          \end{itemize}
+          
+    \item \textbf{圆柱}：
+          \begin{itemize}
+              \item 表面积 \( S = 2\pi r^2 + 2\pi r h \)（\( r \)为底面半径，\( h \)为高）
+              \item 体积 \( V = \pi r^2 h \)
+          \end{itemize}
+          
+    \item \textbf{圆锥}：
+          \begin{itemize}
+              \item 表面积 \( S = \pi r^2 + \pi r l \)（\( l \)为母线长，\( l = \sqrt{r^2 + h^2} \)）
+              \item 体积 \( V = \frac{1}{3}\pi r^2 h \)
+          \end{itemize}
+          
+    \item \textbf{球}：
+          \begin{itemize}
+              \item 表面积 \( S = 4\pi R^2 \)（\( R \)为球半径）
+              \item 体积 \( V = \frac{4}{3}\pi R^3 \)
+          \end{itemize}
+\end{enumerate}
+
+\end{document}
