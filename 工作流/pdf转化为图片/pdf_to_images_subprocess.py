@@ -27,6 +27,6 @@ def pdf_to_images(pdf_path, density=600, quality=100):
 
 
 if __name__ == "__main__": #这句话会对地址产生怎么样的影响
-    pdf_file_path = "工作流/pdf转化为图片/test.pdf"
+    pdf_file_path = "工作流/pdf转化为图片/myth_research.pdf"
     pdf_to_images(pdf_file_path)
     

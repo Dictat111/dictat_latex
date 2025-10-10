@@ -1,0 +1,315 @@
+\documentclass{exam-zh}
+\usepackage{siunitx}
+\usepackage{array} % 用于指定列宽
+
+% 定义新的列类型，指定列宽为 0.80cm 且内容居中
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.80cm}} %设置表格宽度
+
+% % 显示答案
+% \examsetup{
+%   page/size=a4paper,
+%   paren/show-paren=true,
+%   paren/show-answer=true,
+%   paren/text-color=red,
+%   fillin/show-answer=true,
+%   fillin/text-color=blue,
+%   solution/text-color=blue,
+%   solution/show-solution=show-stay,
+% }
+
+% 不显示答案（如需隐藏答案，可注释上方“显示答案”配置，启用下方代码）
+\examsetup{
+  page/size=a4paper,
+  paren/show-paren=true,
+  paren/show-answer=false,
+  paren/text-color=red,
+  fillin/show-answer=false,
+  fillin/text-color=blue,
+  fillin/no-answer-type=none, %去除横线上的三角
+  solution/show-solution=hide,
+  solution/blank-type=manual, % 不显示solution 的时候添加空白
+  solution/blank-vsep=60ex plus 1ex minus 1ex %控制添加空白的大小
+}
+
+\everymath{\displaystyle}
+
+\usepackage{tasks}
+\usepackage{tabularx}
+
+\begin{document} 
+
+\title{专升本高等数学测试卷——极限、连续与一元函数微积分}
+\maketitle
+
+\information{
+班级\underline{\hspace{6em}},
+姓名\underline{\hspace{6em}},
+学号\underline{\hspace{6em}}
+}
+
+\section{选择题：本题共 10 小题，每小题 3 分，共 30 分。}
+
+\begin{question}
+    极限 $\lim\limits_{x \to 0} \dfrac{\sin 5x}{x}$ 的值为\paren[C]
+    \begin{choices}
+    \item $0$
+    \item $1$
+    \item $5$
+    \item $\dfrac{1}{5}$
+    \end{choices}
+\end{question}
+
+\begin{question}
+    函数 $f(x) = \dfrac{x^2 - 4}{x - 2}$ 在 $x = 2$ 处的极限为\paren[A]
+    \begin{choices}
+    \item $4$
+    \item $2$
+    \item $0$
+    \item 不存在
+    \end{choices}
+\end{question}
+
+\begin{question}
+  极限 $\lim\limits_{x \to \infty} \left(1 + \dfrac{3}{x}\right)^{2x}$ 的值为\paren[D]
+  \begin{choices}
+  \item $e^3$
+  \item $e^2$
+  \item $e^5$
+  \item $e^6$
+  \end{choices}
+\end{question}
+
+\begin{question}
+  函数 $f(x) = \dfrac{1}{\ln(x-1)}$ 的连续区间是\paren[B]
+  \begin{choices}
+  \item $(1, +\infty)$
+  \item $(1,2) \cup (2, +\infty)$
+  \item $[1,2) \cup (2, +\infty)$
+  \item $(1,2]$
+  \end{choices}
+\end{question}
+
+\begin{question}
+  设 $y = x^3 \cos x$，则 $y'$ 等于\paren[C]
+  \begin{choices}
+  \item $3x^2 \cos x$
+  \item $-x^3 \sin x$
+  \item $3x^2 \cos x - x^3 \sin x$
+  \item $3x^2 \cos x + x^3 \sin x$
+  \end{choices}
+\end{question}
+
+\begin{question}
+  设 $y = \ln(1 + x^2)$，则 $dy$ 等于\paren[A]
+  \begin{choices}
+  \item $\dfrac{2x}{1 + x^2}dx$
+  \item $\dfrac{2x}{1 + x^2}$
+  \item $\dfrac{1}{1 + x^2}dx$
+  \item $\dfrac{1}{1 + x^2}$
+  \end{choices}
+\end{question}
+
+\begin{question}
+  曲线 $y = x^2 - 4x + 3$ 在点 $(2, -1)$ 处的切线方程为\paren[B]
+  \begin{choices}
+  \item $y = 2x - 5$
+  \item $y = -1$
+  \item $x = 2$
+  \item $y = 4x - 9$
+  \end{choices}
+\end{question}
+
+\begin{question}
+  函数 $f(x) = x^3 - 3x + 1$ 在区间 $[-2, 2]$ 上的极小值为\paren[D]
+  \begin{choices}
+  \item $3$
+  \item $-1$
+  \item $-3$
+  \item $-1$
+  \end{choices}
+\end{question}
+
+\begin{question}
+  不定积分 $\int (x^2 + \sin x) dx$ 等于\paren[C]
+  \begin{choices}
+  \item $\dfrac{x^3}{3} + \cos x + C$
+  \item $2x - \cos x + C$
+  \item $\dfrac{x^3}{3} - \cos x + C$
+  \item $2x + \cos x + C$
+  \end{choices}
+\end{question}
+
+\begin{question}
+  不定积分 $\int x e^{x^2} dx$ 等于\paren[A]
+  \begin{choices}
+  \item $\dfrac{1}{2} e^{x^2} + C$
+  \item $e^{x^2} + C$
+  \item $2 e^{x^2} + C$
+  \item $\dfrac{1}{2} e^x + C$
+  \end{choices}
+\end{question}
+
+\section{填空题：本题共 10 小题，每小题 3 分，共 30 分。}
+
+\begin{question}
+  极限 $\lim\limits_{x \to 1} \dfrac{x^2 - 2x + 1}{x - 1} =$ \fillin[$0$].
+\end{question}
+
+\begin{question}
+  极限 $\lim\limits_{x \to 0} \dfrac{\sqrt{1 + x} - 1}{x} =$ \fillin[$\dfrac{1}{2}$].
+\end{question}
+
+\begin{question}
+  若函数 $f(x) = \begin{cases} 
+  x + 1, & x \leq 0 \\
+  e^x + a, & x > 0 
+  \end{cases}$ 在 $x = 0$ 处连续，则 $a =$ \fillin[$0$].
+\end{question}
+% %
+\begin{question}
+    函数 $f(x) = x^2 - 4x + 5$ 的单调递增区间是 \fillin [$\lbrack 2, +\infty)$].
+  \end{question}
+  
+\begin{question}
+  设 $y = \sin(3x - 1)$，则 $y'' =$ \fillin[$-9\sin(3x - 1)$].
+\end{question}
+
+\begin{question}
+  曲线 $y = x^3 - 3x$ 上切线斜率为 $0$ 的点的坐标是 \fillin[$(1, -2)$ 和 $(-1, 2)$].
+\end{question}
+
+\begin{question}
+  函数 $f(x) = x + \dfrac{1}{x}$ 在区间 $[1, 2]$ 上的最大值为 \fillin[$\dfrac{5}{2}$].
+\end{question}
+
+\begin{question}
+  不定积分 $\int \dfrac{1}{x^2} dx =$ \fillin[$-\dfrac{1}{x} + C$].
+\end{question}
+
+\begin{question}
+  不定积分 $\int \cos(2x + 3) dx =$ \fillin[$\dfrac{1}{2}\sin(2x + 3) + C$].
+\end{question}
+
+\begin{question}
+  不定积分 $\int x \ln x dx =$ \fillin[$\dfrac{1}{2}x^2 \ln x - \dfrac{1}{4}x^2 + C$].
+\end{question}
+
+% 选择题填涂区域
+\section*{一、选择题}
+\begin{table}[h]
+\centering
+\begin{tabular}{|C|C|C|C|C|C|C|C|C|C|}
+  \hline
+  1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+  \hline
+    &   &   &   &   &   &   &   &   &    \\
+  \hline
+\end{tabular}
+\end{table}
+
+% 填空题答题区域
+\section*{一、填空题}
+\begin{tasks}[label=\arabic*.](5)
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+  \task \underline{\hspace{2cm}}
+\end{tasks}  
+
+\clearpage
+
+\section{解答题：本题共 4 小题，共 40 分。解答应写出文字说明、证明过程或者演算步骤。}
+
+\begin{problem}[points = 10]
+  计算下列极限:
+
+  \begin{tasks}[label=(\arabic*)](2)
+      \task $\lim\limits_{x \to 2} \dfrac{x^2 - 5x + 6}{x^2 - 4}$;
+      \task $\lim\limits_{x \to 0} \dfrac{1 - \cos 2x}{x \sin x}$.
+  \end{tasks}
+\end{problem}
+
+\begin{solution}\\
+  (1) 
+  \begin{align*}
+  \lim\limits_{x \to 2} \dfrac{x^2 - 5x + 6}{x^2 - 4} &= \lim\limits_{x \to 2} \dfrac{(x-2)(x-3)}{(x-2)(x+2)} \\
+  &= \lim\limits_{x \to 2} \dfrac{x-3}{x+2} = \dfrac{2-3}{2+2} = -\dfrac{1}{4}.
+  \end{align*}
+
+  (2)
+    \begin{align*}
+  \lim\limits_{x \to 0} \dfrac{1 - \cos 2x}{x \sin x} &= \lim\limits_{x \to 0} \dfrac{2\sin^2 x}{x \sin x} \\
+  &= \lim\limits_{x \to 0} \dfrac{2\sin x}{x} = 2.
+    \end{align*}
+\end{solution}
+
+\begin{problem}[points = 10]
+  设函数 $f(x) = \begin{cases} 
+  x^2, & x \leq 1 \\
+  ax + b, & x > 1 
+  \end{cases}$，试确定 $a, b$ 的值，使 $f(x)$ 在 $x = 1$ 处可导。
+\end{problem}
+
+\begin{solution}
+  函数在 $x=1$ 处可导的必要条件是在该点连续：\\
+  $\lim\limits_{x \to 1^-} f(x) = 1^2 = 1$，$\lim\limits_{x \to 1^+} f(x) = a \cdot 1 + b = a + b$，\\
+  由连续性得 $a + b = 1$。
+
+  函数在 $x=1$ 处可导需左右导数相等：\\
+  左导数：$f'_-(1) = \lim\limits_{h \to 0^-} \dfrac{(1+h)^2 - 1}{h} = \lim\limits_{h \to 0^-} (2 + h) = 2$，\\
+  右导数：$f'_+(1) = \lim\limits_{h \to 0^+} \dfrac{a(1+h) + b - 1}{h} = a$，\\
+  由可导性得 $a = 2$，代入 $a + b = 1$ 得 $b = -1$。
+
+  故 $a = 2$，$b = -1$ 时，$f(x)$ 在 $x = 1$ 处可导。
+\end{solution}
+
+\clearpage
+
+\begin{problem}[points = 10]
+  求下列函数的导数或微分:
+  \begin{tasks}[label=(\arabic*)](2)
+    \task 设 $y = x^2 e^x$，求 $y'$；
+    \task 设 $y = \ln \sqrt{1 + x^2}$，求 $dy$。
+  \end{tasks}
+\end{problem}
+
+\begin{solution}
+  (1) 由乘积法则：
+  \[
+  y' = (x^2)' e^x + x^2 (e^x)' = 2x e^x + x^2 e^x = e^x (x^2 + 2x)
+  \]
+
+  (2) 先化简函数：$y = \dfrac{1}{2} \ln(1 + x^2)$，则
+  \[
+  y' = \dfrac{1}{2} \cdot \dfrac{2x}{1 + x^2} = \dfrac{x}{1 + x^2}
+  \]
+  故 $dy = \dfrac{x}{1 + x^2} dx$
+\end{solution}
+
+\begin{problem}[points = 10]
+  计算下列不定积分:
+  \begin{tasks}[label=(\arabic*)](2)
+    \task $\int x \cos 2x dx$;
+    \task $\int \ln x dx$。
+  \end{tasks}
+\end{problem}
+
+\begin{solution}
+  (1) 使用分部积分法，设 $u = x$，$dv = \cos 2x dx$，则 $du = dx$，$v = \dfrac{1}{2} \sin 2x$
+  \[
+  \int x \cos 2x dx = \dfrac{1}{2} x \sin 2x - \dfrac{1}{2} \int \sin 2x dx = \dfrac{1}{2} x \sin 2x + \dfrac{1}{4} \cos 2x + C
+  \]
+
+  (2) 使用分部积分法，设 $u = \ln x$，$dv = dx$，则 $du = \dfrac{1}{x} dx$，$v = x$
+  \[
+  \int \ln x dx = x \ln x - \int x \cdot \dfrac{1}{x} dx = x \ln x - x + C
+  \]
+\end{solution}
+
+\end{document}

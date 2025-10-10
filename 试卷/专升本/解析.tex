@@ -1,0 +1,204 @@
+\documentclass{exam-zh}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{verbatim} % 用于代码框展示解析
+\usepackage{amsmath,amssymb}
+
+% 页面与格式配置
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.80cm}}
+\examsetup{
+  page/size=a4paper,
+  paren/text-color=red,
+  fillin/text-color=blue,
+  solution/text-color=blue,
+}
+
+\everymath{\displaystyle}
+\usepackage{tasks}
+\usepackage{tabularx}
+
+\begin{document}
+
+\title{专升本高等数学测试卷——答案与详细解析}
+\maketitle
+
+\information{
+  适用范围：专升本数学（极限、连续、一元导数、不定积分）\\
+  解析说明：每题解析含“考点”“思路”“步骤”三部分，关键公式标注清晰
+}
+
+% 一、选择题解析
+\section*{一、选择题（每题3分，共30分）}
+
+\subsection*{1. 极限 $\lim\limits_{x \to 0} \dfrac{\sin 5x}{x}$ 的值}
+\noindent \textbf{答案：C（5）}
+\begin{verbatim}
+【考点】重要极限（$\lim\limits_{t \to 0} \dfrac{\sin t}{t} = 1$）
+【思路】通过“凑项”将原式变形为重要极限的形式，令 $t = 5x$，当 $x \to 0$ 时 $t \to 0$。
+【解析步骤】
+$\lim\limits_{x \to 0} \dfrac{\sin 5x}{x} = \lim\limits_{x \to 0} \left( \dfrac{\sin 5x}{5x} \times 5 \right)$
+= $5 \times \lim\limits_{t \to 0} \dfrac{\sin t}{t}$（令 $t = 5x$）
+= $5 \times 1 = 5$
+\end{verbatim}
+
+\subsection*{2. 函数 $f(x) = \dfrac{x^2 - 4}{x - 2}$ 在 $x = 2$ 处的极限}
+\noindent \textbf{答案：A（4）}
+\begin{verbatim}
+【考点】分式函数极限（可去间断点）
+【思路】$x \to 2$ 时分子分母均为0（$\frac{0}{0}$型），先因式分解消去零因子。
+【解析步骤】
+分子因式分解：$x^2 - 4 = (x - 2)(x + 2)$
+原式 = $\lim\limits_{x \to 2} \dfrac{(x - 2)(x + 2)}{x - 2}$（$x \neq 2$，可消去 $x - 2$）
+= $\lim\limits_{x \to 2} (x + 2) = 2 + 2 = 4$
+\end{verbatim}
+
+\subsection*{3. 极限 $\lim\limits_{x \to \infty} \left(1 + \dfrac{3}{x}\right)^{2x}$ 的值}
+\noindent \textbf{答案：D（$e^6$）}
+\begin{verbatim}
+【考点】重要极限（$\lim\limits_{t \to \infty} \left(1 + \dfrac{1}{t}\right)^t = e$）
+【思路】令 $t = \dfrac{x}{3}$（即 $x = 3t$），将原式凑成重要极限形式。
+【解析步骤】
+原式 = $\lim\limits_{x \to \infty} \left(1 + \dfrac{3}{x}\right)^{2x}$
+= $\lim\limits_{t \to \infty} \left(1 + \dfrac{1}{t}\right)^{2 \times 3t}$（令 $t = \dfrac{x}{3}$，$x \to \infty$ 时 $t \to \infty$）
+= $\lim\limits_{t \to \infty} \left[ \left(1 + \dfrac{1}{t}\right)^t \right]^6$
+= $e^6$（由重要极限 $\lim\limits_{t \to \infty} \left(1 + \dfrac{1}{t}\right)^t = e$）
+\end{verbatim}
+
+\subsection*{4. 函数 $f(x) = \dfrac{1}{\ln(x - 1)}$ 的连续区间}
+\noindent \textbf{答案：B（$(1,2) \cup (2, +\infty)$）}
+\begin{verbatim}
+【考点】函数连续性（定义域与间断点）
+【思路】连续区间 = 定义域 - 间断点，需满足：①分母不为0；②对数真数大于0。
+【解析步骤】
+1. 对数真数要求：$x - 1 > 0 \implies x > 1$
+2. 分母不为0要求：$\ln(x - 1) \neq 0 \implies x - 1 \neq 1 \implies x \neq 2$
+3. 综上，定义域为 $x > 1$ 且 $x \neq 2$，即连续区间为 $(1,2) \cup (2, +\infty)$
+\end{verbatim}
+
+\subsection*{5. 设 $y = x^3 \cos x$，则 $y'$}
+\noindent \textbf{答案：C（$3x^2 \cos x - x^3 \sin x$）}
+\begin{verbatim}
+【考点】导数的乘积法则（$(uv)' = u'v + uv'$）
+【思路】令 $u = x^3$，$v = \cos x$，分别求导后代入乘积法则。
+【解析步骤】
+1. 求 $u'$：$u = x^3$，由幂函数求导公式 $(x^n)' = nx^{n-1}$，得 $u' = 3x^2$
+2. 求 $v'$：$v = \cos x$，由基本导数公式 $(\cos x)' = -\sin x$，得 $v' = -\sin x$
+3. 乘积法则：$y' = u'v + uv' = 3x^2 \cdot \cos x + x^3 \cdot (-\sin x)$
+= $3x^2 \cos x - x^3 \sin x$
+\end{verbatim}
+
+\subsection*{6. 设 $y = \ln(1 + x^2)$，则 $dy$}
+\noindent \textbf{答案：A（$\dfrac{2x}{1 + x^2}dx$）}
+\begin{verbatim}
+【考点】复合函数求导与微分（$dy = y'dx$）
+【思路】先求 $y'$（复合函数：令 $u = 1 + x^2$，$y = \ln u$），再乘 $dx$ 得 $dy$。
+【解析步骤】
+1. 复合函数求导：$y' = \dfrac{d}{du}(\ln u) \cdot \dfrac{d}{dx}(u)$（链式法则）
+   - $\dfrac{d}{du}(\ln u) = \dfrac{1}{u}$
+   - $\dfrac{d}{dx}(u) = \dfrac{d}{dx}(1 + x^2) = 2x$
+   - 故 $y' = \dfrac{1}{1 + x^2} \cdot 2x = \dfrac{2x}{1 + x^2}$
+2. 微分公式：$dy = y'dx = \dfrac{2x}{1 + x^2}dx$
+\end{verbatim}
+
+\subsection*{7. 曲线 $y = x^2 - 4x + 3$ 在点 $(2, -1)$ 处的切线方程}
+\noindent \textbf{答案：B（$y = -1$）}
+\begin{verbatim}
+【考点】导数的几何意义（切线斜率 = 该点导数）
+【思路】1. 求切线斜率 $k = y'\big|_{x=2}$；2. 用点斜式 $y - y_0 = k(x - x_0)$ 写方程。
+【解析步骤】
+1. 求导数：$y = x^2 - 4x + 3$，$y' = 2x - 4$
+2. 切线斜率：$k = y'\big|_{x=2} = 2 \times 2 - 4 = 0$（斜率为0，切线水平）
+3. 点斜式：$y - (-1) = 0 \times (x - 2) \implies y + 1 = 0 \implies y = -1$
+\end{verbatim}
+
+\subsection*{8. 函数 $f(x) = x^3 - 3x + 1$ 在区间 $[-2, 2]$ 上的极小值}
+\noindent \textbf{答案：D（-1）}
+\begin{verbatim}
+【考点】函数极值（导数判极值：一阶导数为0，二阶导数定正负）
+【思路】1. 求驻点（$f'(x) = 0$）；2. 判驻点是否为极值点；3. 计算极值。
+【解析步骤】
+1. 求一阶导数：$f'(x) = 3x^2 - 3 = 3(x^2 - 1)$
+2. 求驻点：令 $f'(x) = 0 \implies x^2 - 1 = 0 \implies x = 1$ 或 $x = -1$（均在 $[-2,2]$ 内）
+3. 二阶导数判极值：$f''(x) = 6x$
+   - 当 $x = 1$ 时：$f''(1) = 6 \times 1 = 6 > 0$，故 $x=1$ 是极小值点
+   - 当 $x = -1$ 时：$f''(-1) = 6 \times (-1) = -6 < 0$，故 $x=-1$ 是极大值点
+4. 计算极小值：$f(1) = 1^3 - 3 \times 1 + 1 = 1 - 3 + 1 = -1$
+\end{verbatim}
+
+\subsection*{9. 不定积分 $\int (x^2 + \sin x) dx$}
+\noindent \textbf{答案：C（$\dfrac{x^3}{3} - \cos x + C$）}
+\begin{verbatim}
+【考点】不定积分的基本公式与可加性（$\int (u + v)dx = \int udx + \int vdx$）
+【思路】分别积分两项，再相加，注意加积分常数 $C$。
+【解析步骤】
+1. 积分第一项：$\int x^2 dx$，由幂函数积分公式 $\int x^n dx = \dfrac{x^{n+1}}{n+1} + C$（$n \neq -1$）
+   得 $\int x^2 dx = \dfrac{x^3}{3} + C_1$
+2. 积分第二项：$\int \sin x dx$，由基本积分公式 $\int \sin x dx = -\cos x + C_2$
+3. 合并结果：$\int (x^2 + \sin x)dx = \dfrac{x^3}{3} - \cos x + (C_1 + C_2)$
+   令 $C = C_1 + C_2$，得 $\dfrac{x^3}{3} - \cos x + C$
+\end{verbatim}
+
+\subsection*{10. 不定积分 $\int x e^{x^2} dx$}
+\noindent \textbf{答案：A（$\dfrac{1}{2} e^{x^2} + C$）}
+\begin{verbatim}
+【考点】换元积分法（第一类换元：凑微分）
+【思路】令 $u = x^2$，则 $du = 2x dx \implies x dx = \dfrac{1}{2} du$，代入积分式。
+【解析步骤】
+1. 凑微分：令 $u = x^2$，则 $du = 2x dx \implies x dx = \dfrac{1}{2} du$
+2. 代入原式：$\int x e^{x^2} dx = \int e^u \cdot \dfrac{1}{2} du = \dfrac{1}{2} \int e^u du$
+3. 基本积分：$\int e^u du = e^u + C$，故 $\dfrac{1}{2} \int e^u du = \dfrac{1}{2} e^u + C$
+4. 回代 $u = x^2$：$\dfrac{1}{2} e^{x^2} + C$
+\end{verbatim}
+
+
+% 二、填空题解析
+\section*{二、填空题（每题3分，共30分）}
+
+\subsection*{1. 极限 $\lim\limits_{x \to 1} \dfrac{x^2 - 2x + 1}{x - 1}$}
+\noindent \textbf{答案：0}
+\begin{verbatim}
+【考点】$\frac{0}{0}$型极限（因式分解消零因子）
+【解析】
+分子因式分解：$x^2 - 2x + 1 = (x - 1)^2$
+原式 = $\lim\limits_{x \to 1} \dfrac{(x - 1)^2}{x - 1} = \lim\limits_{x \to 1} (x - 1) = 1 - 1 = 0$
+\end{verbatim}
+
+\subsection*{2. 极限 $\lim\limits_{x \to 0} \dfrac{\sqrt{1 + x} - 1}{x}$}
+\noindent \textbf{答案：$\dfrac{1}{2}$}
+\begin{verbatim}
+【考点】$\frac{0}{0}$型极限（分子有理化）
+【解析】
+分子有理化（乘共轭式 $\sqrt{1 + x} + 1$）：
+原式 = $\lim\limits_{x \to 0} \dfrac{(\sqrt{1 + x} - 1)(\sqrt{1 + x} + 1)}{x(\sqrt{1 + x} + 1)}$
+= $\lim\limits_{x \to 0} \dfrac{(1 + x) - 1}{x(\sqrt{1 + x} + 1)}$（分子用平方差公式）
+= $\lim\limits_{x \to 0} \dfrac{x}{x(\sqrt{1 + x} + 1)} = \lim\limits_{x \to 0} \dfrac{1}{\sqrt{1 + x} + 1}$
+= $\dfrac{1}{\sqrt{1 + 0} + 1} = \dfrac{1}{2}$
+\end{verbatim}
+
+\subsection*{3. 函数 $f(x) = \begin{cases} x + 1, & x \leq 0 \\ e^x + a, & x > 0 \end{cases}$ 在 $x = 0$ 处连续，求 $a$}
+\noindent \textbf{答案：0}
+\begin{verbatim}
+【考点】分段函数连续性（左右极限相等且等于函数值）
+【解析】
+1. 左极限（$x \to 0^-$）：$\lim\limits_{x \to 0^-} f(x) = \lim\limits_{x \to 0^-} (x + 1) = 0 + 1 = 1$
+2. 右极限（$x \to 0^+$）：$\lim\limits_{x \to 0^+} f(x) = \lim\limits_{x \to 0^+} (e^x + a) = e^0 + a = 1 + a$
+3. 连续性条件：左极限 = 右极限，即 $1 = 1 + a \implies a = 0$
+\end{verbatim}
+
+\subsection*{4. 函数 $f(x) = x^2 - 4x + 5$ 的单调递增区间}
+\noindent \textbf{答案：$(2, +\infty)$（或 $[2, +\infty)$）}
+\begin{verbatim}
+【考点】函数单调性（导数符号判单调区间）
+【解析】
+1. 求导数：$f'(x) = 2x - 4$
+2. 单调递增条件：$f'(x) > 0$（可导函数递增 $\iff$ 导数正，端点不影响区间单调性）
+   解不等式：$2x - 4 > 0 \implies x > 2$
+3. 故单调递增区间为 $(2, +\infty)$（包含端点 $[2, +\infty)$ 也正确，常规用开区间）
+\end{verbatim}
+
+\subsection*{5. 设 $y = \sin(3x - 1)$，则 $y''$}
+\noindent \textbf{答案：$-9\sin(3x - 1)$}
+\begin{verbatim}
+【考点】复合函数的二阶导数
+【解析】
+1. 求一阶导数 $y'$（

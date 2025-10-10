@@ -1,0 +1,99 @@
+\documentclass{ctexart}
+\usepackage{geometry}   % 页面布局
+\usepackage{xcolor}     % 颜色设置
+\usepackage{graphicx}   % 图形支持
+\usepackage{tikz}       % 装饰元素
+\usetikzlibrary{calc} % 声明使用 calc 库
+% 页面设置：A4纸，合理边距
+\geometry{a4paper, margin=2cm}
+\pagestyle{empty}       % 无页码
+
+\begin{document}
+
+\begin{center}
+    % 顶部装饰线与数学符号点缀
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[line width=1.2pt, blue!70] ($(current page.north west) + (2cm,-1.5cm)$) 
+            -- ($(current page.north east) + (-2cm,-1.5cm)$);
+    \end{tikzpicture}
+    
+    \vspace{1cm} % 与顶部装饰线的间距
+    
+    % 学年信息
+    {\Huge \textcolor{red!99}{2025至2026学年第一学期}}\\[5cm]
+    
+    % 主标题（核心突出）
+    {\fontsize{50}{60}\selectfont \bfseries \textcolor{blue!80}{数学课堂记录本}}\\[3cm]
+    
+\begin{center}
+    {\Huge  % 这里的字号也可以用别的方式修改
+    \makebox[4em][s]{班级}:\underline{\makebox[15em][c]{24智能运维1班}}\\
+    \makebox[4em][s]{任课教师}:\underline{\makebox[15em][c]{钱皓楠}}\\
+    \makebox[4em][s]{课代表}:\underline{\makebox[15em][c]{何奥燃\qquad 杨铠维 }}\\
+    }
+    \end{center}
+\end{center}
+
+
+\clearpage  % 结束封面页
+
+
+\begin{center}
+    % 顶部装饰线与数学符号点缀
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[line width=1.2pt, blue!70] ($(current page.north west) + (2cm,-1.5cm)$) 
+            -- ($(current page.north east) + (-2cm,-1.5cm)$);
+    \end{tikzpicture}
+    
+    \vspace{1cm} % 与顶部装饰线的间距
+    
+    % 学年信息
+    {\Huge \textcolor{red!99}{2025至2026学年第一学期}}\\[5cm]
+    
+    % 主标题（核心突出）
+    {\fontsize{50}{60}\selectfont \bfseries \textcolor{blue!80}{数学课堂记录本}}\\[3cm]
+    
+\begin{center}
+    {\Huge  % 这里的字号也可以用别的方式修改
+    \makebox[4em][s]{班级}:\underline{\makebox[15em][c]{24智能运维2班}}\\
+    \makebox[4em][s]{任课教师}:\underline{\makebox[15em][c]{钱皓楠}}\\
+    \makebox[4em][s]{课代表}:\underline{\makebox[15em][c]{ 包小淇 \qquad  马博俊}}\\
+    }
+    \end{center}
+\end{center}
+
+
+
+
+
+
+
+
+\clearpage  % 结束封面页
+
+
+\begin{center}
+    % 顶部装饰线与数学符号点缀
+    \begin{tikzpicture}[remember picture, overlay]
+        \draw[line width=1.2pt, blue!70] ($(current page.north west) + (2cm,-1.5cm)$) 
+            -- ($(current page.north east) + (-2cm,-1.5cm)$);
+    \end{tikzpicture}
+    
+    \vspace{1cm} % 与顶部装饰线的间距
+    
+    % 学年信息
+    {\Huge \textcolor{red!99}{2025至2026学年第一学期}}\\[5cm]
+    
+    % 主标题（核心突出）
+    {\fontsize{50}{60}\selectfont \bfseries \textcolor{blue!80}{数学课堂记录本}}\\[3cm]
+    
+\begin{center}
+    {\Huge  % 这里的字号也可以用别的方式修改
+    \makebox[4em][s]{班级}:\underline{\makebox[15em][c]{24智能运维3班}}\\
+    \makebox[4em][s]{任课教师}:\underline{\makebox[15em][c]{钱皓楠}}\\
+    \makebox[4em][s]{课代表}:\underline{\makebox[15em][c]{蒋昭杭 \qquad  於吉幸}}\\
+    }
+    \end{center}
+\end{center}
+
+\end{document}
