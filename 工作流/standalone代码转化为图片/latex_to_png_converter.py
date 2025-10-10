@@ -16,7 +16,9 @@ class LaTeXToPNGConverter:
                  default_dpi: int = 300, 
                  default_quiet: bool = False,
                  default_prefix: str = "latex_img",
-                 extra_preamble: str = ""):
+                 extra_preamble: str = "",
+                 default_output_dir: str = "./"
+                 ):
         """
         初始化转换器
         
@@ -33,6 +35,7 @@ class LaTeXToPNGConverter:
         self.default_quiet = default_quiet
         self.default_prefix = default_prefix
         self.extra_preamble = extra_preamble  # 额外导言区内容
+        self.default_output_dir = default_output_dir
         
         # 计数器用于自动命名
         self.auto_counter = 1
@@ -63,19 +66,36 @@ class LaTeXToPNGConverter:
         ).replace(
             "{extra_preamble}", self.extra_preamble.strip()
         )
-    
     def _generate_auto_filename(self, prefix: Optional[str]) -> str:
-        """生成自动文件名，格式: [前缀]_[序号].png"""
         current_prefix = prefix or self.default_prefix
+        # 生成纯文件名（如 "my_formula_1.png"）
         filename = f"{current_prefix}_{self.auto_counter}.png"
         
-        # 确保文件名不重复
-        while os.path.exists(filename):
+        # 1. 拼接默认路径和文件名，得到完整输出路径
+        full_path = os.path.join(self.default_output_dir, filename)
+        
+        # 2. 提取目录部分（排除文件名），兼容旧Python版本创建多级目录
+        dir_path = os.path.dirname(full_path)
+        if not os.path.exists(dir_path):
+            try:
+                # 尝试递归创建目录（Python 3.2+ 支持 parents=True，旧版本会报错）
+                os.makedirs(dir_path, exist_ok=True)
+            except TypeError:
+                # 兼容 Python 3.2 之前版本：手动递归创建目录
+                import pathlib
+                pathlib.Path(dir_path).mkdir(parents=True, exist_ok=True)
+            # 非静默模式下打印路径创建信息
+            if not self.default_quiet:
+                print(f"目标路径不存在，已自动创建：{os.path.abspath(dir_path)}")
+        
+        # 3. 确保完整路径的文件名不重复（检查文件是否已存在）
+        while os.path.exists(full_path):
             self.auto_counter += 1
             filename = f"{current_prefix}_{self.auto_counter}.png"
-            
+            full_path = os.path.join(self.default_output_dir, filename)
+        
         self.auto_counter += 1
-        return filename
+        return full_path  # 返回包含路径的完整文件名
     
     def _compile_pdf(self, latex_content: str, border: int, quiet: bool) -> str:
         """编译LaTeX内容为PDF，返回PDF文件路径"""
