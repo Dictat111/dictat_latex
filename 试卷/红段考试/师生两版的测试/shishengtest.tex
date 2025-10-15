@@ -1,0 +1,309 @@
+\documentclass{exam-zh}
+\usepackage{siunitx}
+\usepackage{array} % 用于指定列宽
+
+% 定义新的列类型,指定列宽为 0.80cm 且内容居中
+\newcolumntype{C}{>{\centering\arraybackslash}p{0.80cm}} %设置表格宽度
+
+% 显示答案
+\examsetup{
+  page/size=a4paper,
+  paren/show-paren=true,
+  paren/show-answer=true,
+  paren/text-color=red,
+  fillin/show-answer=true,
+  fillin/text-color=blue,
+  solution/text-color=blue,
+  solution/show-solution=show-stay,
+  page/foot-content=第;页，共;页,
+}
+
+%学生版
+\ExamPrintAnswerSet{
+    page/size=a4paper,             % 试卷页面尺寸设为A4
+    paren/show-paren=true,        % 显示选择题答案括号（如"( )"）
+    paren/show-answer=false,      % 隐藏选择题括号内答案
+    paren/text-color=red,         % 选择题答案文字颜色（若显示则为红色）
+    fillin/show-answer=false,     % 隐藏填空题答案
+    fillin/text-color=blue,       % 填空题答案文字颜色（若显示则为蓝色）
+    fillin/no-answer-type=none,   % 填空题隐藏答案时无占位符（去除黑三角）
+    solution/show-solution=hide,  % 隐藏解答题解答内容
+}
+
+% 不显示答案（如需隐藏答案,可注释上方“显示答案”配置,启用下方代码）]
+
+
+% \examsetup{
+%   page/size=a4paper,             % 试卷页面尺寸设为A4
+%   paren/show-paren=true,        % 显示选择题答案括号（如"( )"）
+%   paren/show-answer=false,      % 隐藏选择题括号内答案
+%   paren/text-color=red,         % 选择题答案文字颜色（若显示则为红色）
+%   fillin/show-answer=false,     % 隐藏填空题答案
+%   fillin/text-color=blue,       % 填空题答案文字颜色（若显示则为蓝色）
+%   fillin/no-answer-type=none,   % 填空题隐藏答案时无占位符（去除黑三角）
+%   solution/show-solution=hide,  % 隐藏解答题解答内容
+%   % solution/blank-type=manual,  % （可选）隐藏解答时手动加空白
+%   % solution/blank-vsep=60ex plus 1ex minus 1ex % （可选）控制空白高度
+% }
+% \ExamPrintAnswerSet[\geometry{showframe}]{
+% page/size=a3paper,
+% solution/show-solution=show-stay,
+% paren/show-paren=true,
+% }
+
+\everymath{\displaystyle}
+
+\usepackage{tasks}
+\usepackage{tabularx}
+
+
+\begin{document} 
+
+\title{杭州市中职数学思维等级证书\\红段测试题}
+\maketitle
+
+\information{
+考试时间: 45分钟,
+满分: 100分
+}
+
+\section{选择题(每题4分,共60分)}
+
+\begin{question}
+     已知集合 $A = \{x \in \mathbf{N} \mid x < 5\}$,集合 $B = \{3,4,6\}$,则 $A \cup B =$ \paren[A]
+    \begin{choices}
+        \item $\{3,4,6\}$ 
+        \item $\{0,1,2,3,4,6\}$ 
+        \item $\{1,2,3,4,5,6\}$ 
+        \item $\{0,1,2,3,4,5,6\}$
+    \end{choices}
+\end{question}
+
+\begin{question}
+    已知 $a > b$,$c > 0$,下列结论正确的是 \paren[B]
+    \begin{choices}
+        \item $a - c < b - c$
+        \item $ac > bc$
+        \item $a + c < b + c$
+        \item $\dfrac{a}{c} < \dfrac{b}{c}$
+    \end{choices}
+\end{question}
+\begin{question}
+    倾斜角为 $\dfrac{\pi}{6}$,在 $y$ 轴上的截距为 $4$,求直线的方程 \paren[A]
+    \begin{choices}
+        \item $x - \sqrt{3}y + 4\sqrt{3} = 0$
+        \item $x + \sqrt{3}y + 4\sqrt{3} = 0$
+        \item $x - \sqrt{3}y - 4\sqrt{3} = 0$
+        \item $x + \sqrt{3}y - 4\sqrt{3} = 0$
+    \end{choices}
+\end{question}
+
+\begin{question}
+    已知 $x \in (0,\pi)$,则 $\cos x = -\dfrac{1}{2}$ 的解为 \paren[B]
+    \begin{choices}
+        \item $\dfrac{\pi}{3}$
+        \item $\dfrac{2\pi}{3}$
+        \item $\dfrac{\pi}{6}$
+        \item $\dfrac{5\pi}{6}$
+    \end{choices}
+\end{question}
+
+\begin{question}
+    $\tan x > 0$ 是 $x$ 在第一或第三象限的 \paren[C]
+    \begin{choices}
+        \item 充分不必要条件
+        \item 必要不充分条件
+        \item 充要条件
+        \item 既不充分又不必要条件
+    \end{choices}
+\end{question}
+
+\begin{question}
+    函数 $f(x)=\sqrt{\lg(x + 3)}+\dfrac{1}{\sqrt{3 - x}}$ 的定义域为\paren[C]
+    \begin{choices}
+        \item $(-3,3)$
+        \item $(-2,3]$
+        \item $[-2,3)$
+        \item $(-3,4]$
+    \end{choices}
+\end{question}
+
+\begin{question}
+    方程 $|\sqrt{(x - 3)^2 + y^2}-\sqrt{(x + 3)^2 + y^2}|=4$ 表示的\paren[D]
+    \begin{choices}
+        \item 线段
+        \item 椭圆
+        \item 直线
+        \item 双曲线
+    \end{choices}
+\end{question}
+
+
+
+
+\begin{question}
+    二次函数 $y = x^2 - 2x - 4$ 在区间 $[-1,2]$ 上的最大值、最小值分别为\paren[A]
+    \begin{choices}
+        \item $-1, -5$
+        \item $-1, -4$
+        \item $-4, -5$
+        \item $-5, -4$
+    \end{choices}
+    \end{question}
+    
+    \begin{question}
+    如果角 $\alpha$ 的终边过点 $(5,m)$,且 $\cos\alpha=\dfrac{5}{13}$,则 $\tan(\pi - \alpha)=$\paren[A]
+    \begin{choices}
+        \item $-\dfrac{12}{5}$
+        \item $\pm\dfrac{12}{5}$
+        \item $\dfrac{5}{12}$
+        \item $\pm\dfrac{5}{12}$
+    \end{choices}
+    \end{question}
+    
+    \begin{question}
+    已知向量 $\vec{a}=(4,-2)$,$\vec{b}=(2,3)$,则 $|\vec{a} + 2\vec{b}|=$\paren[B]
+    \begin{choices}
+        \item $(8,4)$
+        \item $4\sqrt{5}$
+        \item $(8,8)$
+        \item $8\sqrt{2}$
+    \end{choices}
+    \end{question}
+    
+    \begin{question}
+    已知二次函数$f(-1)=f(3)>f(4)$,则$f(0)$与 $f(5)$的大小关系是\paren[A]
+    \begin{choices}
+        \item $f(0)<f(5)$
+        \item   $f(0)>f(5)$
+        \item   $f(0)=f(5)$
+        \item   无法确定
+    \end{choices}
+    \end{question}
+    
+    \begin{question}
+    已知 $\log_{a}\frac{1}{2}=m$,$\log_{a}3 = n$,则 $a^{m + n}=$\paren[A]
+    \begin{choices}
+        \item $\dfrac{3}{2}$
+        \item $\dfrac{2}{3}$
+        \item $6$
+        \item $\dfrac{1}{6}$
+    \end{choices}
+    \end{question}
+    
+    \begin{question}
+    圆 $x^2 + y^2 - 6x - 8y + 16 = 0$ 与直线 $x + y - 5 = 0$ 相交于 $A,B$ 两点,则 $|AB|=$\paren[A]
+    \begin{choices}
+        \item $2\sqrt{7}$
+        \item $4\sqrt{2}$
+        \item $3\sqrt{2}$
+        \item $4\sqrt{7}$
+    \end{choices}
+    \end{question}
+    
+    \begin{question}
+    5封信投入6个邮筒,每个邮筒最多投1封,共有不同的投法种数为\paren[D]
+    \begin{choices}
+        \item $6$
+        \item $30$
+        \item $120$
+        \item $720$
+    \end{choices}
+    \end{question}
+    
+    \begin{question}
+    抛掷两颗均匀的骰子,出现点数之和为 $7$ 的概率是\paren[A]
+    \begin{choices}
+        \item $\dfrac{1}{6}$
+        \item $\dfrac{1}{9}$
+        \item $\dfrac{1}{12}$
+        \item $\dfrac{1}{3}$
+    \end{choices}
+    \end{question}
+    
+
+
+
+
+
+
+
+
+
+\section{填空题(每题4分,共24分)}
+
+\begin{question}
+    已知函数 
+    \(
+    f(x)=
+    \begin{cases}
+        x^2 + x - 4, & x \leq 0 \\
+        \log_{4}x, & x > 0
+    \end{cases}
+    \)
+    则函数 $f(x)$ 的图像与 $x$ 轴交点坐标为 \fillin[$(1,0)$].
+\end{question}
+\begin{question}
+    已知 $\sin(x + \pi)\cos(x - \pi) = 4a + 1$,则实数 $a$ 的取值范围是  \fillin[$[-\frac{3}{4},-\frac{1}{4}]$].
+\end{question}
+\begin{question}
+    若直线 $4x + 5y - 5 = 0$ 和直线 $ax - y + 2 = 0$ 垂直,则实数 $a$ 为\fillin[$\frac{5}{4}$].
+\end{question}
+\begin{question}
+ 若关于 $x$ 的不等式的$|x-3| \ge 2m -1$ 的解集是$\mathbf{R}$,则 $m$ 的取值范围是\fillin[${(-\infty,\frac{1}{2}])}$]
+\end{question}
+\begin{question}
+    若圆锥的轴截面是面积为 $4\sqrt{3}$ 的等边三角形,则此圆锥的侧面积为 \fillin[$8\pi$].
+\end{question}
+\begin{question}
+    计算：
+    \(
+    4\log_{4}\dfrac{1}{16}+\left(\dfrac{64}{27}\right)^{\frac{1}{3}}+\lg1000+(\sqrt{3} - 1)\ln e=
+    \)\fillin[$\sqrt{3}-\frac{14}{3}$].
+\end{question}
+
+
+\section{解答题：本题共 4 小题,共 40 分.解答应写出文字说明、证明过程或者演算步骤.}
+
+\begin{problem}[points = 8]
+已知双曲线的方程为$16x^2-9y^2=144$.
+\begin{enumerate}
+    \item 求此双曲线的焦点坐标；
+    \item 已知点$P$在此双曲线上,若$PF_1 \perp  PF_2$,求$S_{\triangle F_1PF_2}$.
+\end{enumerate}
+
+\end{problem}
+
+\begin{solution}
+\begin{enumerate}
+    \item 化成标准形式,$\frac{x^2}{9}+\frac{y^2}{16}=1$,所以$a^2 = 9,b^2 =16,c^2 = a^2+b^2 = 25$,则 $c = 5$,所以双曲线的焦点坐标为 $(-5,0)$ 和 $(5,0)$ \score{2}
+    \item 因为$P$在双曲线上,所以$||PF_1|-|PF_2||=2a = 6$,两边同时平方得$|PF_1|^2-2|PF_1||PF_2|+|PF_1|^2 = 36$,又因为 $PF_1\perp PF_2$,所以$|PF_1|^2+|PF_2|^2 =(2c)^2 =100$,则 $|PF_1||PF_2| =32$,故$S_{\triangle F_1PF_2} =\frac{1}{2} |PF_1||PF_2|  = 16 $.\score{6}
+
+\end{enumerate}
+    
+\end{solution}
+  
+% \clearpage
+\begin{problem}[points = 10]
+某商场试销一种成本为$60$元/件的服装,经试销发现,销售量$y$(件)与销售单价$x$(元)符合一次函数 $y = k x+b$ 关系,且当$x=65$时,$y=55$;当$x = 17$时,$y=45$.
+    \begin{enumerate}
+        \item 写出一次函数 $y = k x +b $的解析式.
+        \item 若该商场获得的利润不低于$500$元,试确定销售单价$x$的取值范围.
+
+    \end{enumerate}
+\end{problem}
+\begin{solution}
+    \begin{enumerate}
+        \item $y = -x +120$.\score{2}
+        \item 设销售单价为$x$元时,该商场获得的利润为$z$元,由题意得\[
+        z = (x-60) (-x+120) = -x^2 +180x-7200,\]
+        令 $z = -x^2 +180x-7200 \ge 500$, 则 $x^2 -180+7700 \le 0$, 解得 $70 \le x\le 110$,
+        所以x的取值范围是$[70,110]$.\score{8}
+
+    
+    \end{enumerate}
+        
+\end{solution}
+% \draftpaper
+
+\end{document}
