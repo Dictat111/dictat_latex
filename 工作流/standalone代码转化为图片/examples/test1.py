@@ -1,6 +1,6 @@
 import sys
 sys.path.append("..")
-from latex_to_png_converter import LaTeXToPNGConverter
+from core.latex_to_png_converter import LaTeXToPNGConverter
 
 
 converter = LaTeXToPNGConverter(

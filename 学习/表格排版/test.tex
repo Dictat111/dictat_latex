@@ -1,0 +1,26 @@
+\documentclass{ctexart}
+\usepackage{tabularx}  % 必须加载才能使用tabularx环境
+\usepackage{booktabs}
+% 自定义段落间距为 10pt（数值可改，支持pt/cm/mm）
+\usepackage[skip=1cm]{parskip}
+
+\begin{document}
+\begin{tabular}{lll}
+    Animal & Food  & Size   \\
+    dog    & meat  & medium \\
+    horse  & hay   & large  \\
+    frog   & flies & small  \\
+  \end{tabular}
+
+
+
+  \begin{tabular}{lll}
+    \toprule
+    Animal & Food  & Size   \\
+    \midrule
+    dog    & meat  & medium \\
+    horse  & hay   & large  \\
+    frog   & flies & small  \\
+    \bottomrule
+  \end{tabular}
+\end{document}

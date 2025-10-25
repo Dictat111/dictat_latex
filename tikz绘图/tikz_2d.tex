@@ -2,6 +2,9 @@
 \usepackage{etex}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{intersections}
+
 \usetikzlibrary{calc} % 声明使用 calc 库
 
 \begin{document}
@@ -186,14 +189,14 @@ $a = 1,b = 1$的时候,这里的双曲线是用参数方程定义的
     
 \end{figure}
 
-\begin{tikzpicture}[scale = 1]
-    % 定义参数 p 的值
-    \def\p{1/2}
-    \def \x{1.2}
-    % 绘制坐标轴
-    \draw[->] (-0.2,0) -- (2,0) node[right] {$x$};
-    \draw[->] (0,-1) -- (0,1) node[above] {$y$};
-    % 绘制抛物线
-    \draw[domain=-\x:\x, samples=100, smooth, variable=\t, blue] plot ({2*\p*\t*\t}, {2*\p*\t});
-\end{tikzpicture}
+
+
+\section{抛物线}
+% \input{sections/tikz_2d/抛物线.tex} 
+\includegraphics{单个图形/抛物线焦点弦.pdf}
+
+上面这个图像在写的时候,$x = 2pt^2$,$y = 2pt$, 则有 $y^2 =2px$.
+这个图像比较复杂,用了求交点的函数导致运行时间长.
+
+
 \end{document} 

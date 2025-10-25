@@ -1,0 +1,55 @@
+\documentclass[handout,aspectratio=169]{ctexbeamer}
+% 使用handout禁用所有动画
+\usepackage{tikz}
+\usetheme{thubeamer}
+\usefonttheme[onlymath]{serif}
+\usepackage{amsmath}      % 数学公式支持
+\usepackage{xeCJK}
+\usetikzlibrary{decorations.pathreplacing,calligraphy,calc,backgrounds,3d} % 合并重复的tikz库
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+\setCJKmainfont{SimHei}  % 替换为系统存在的字体（如SimHei、SimSun等，避免STKaiti不存在的问题）
+\usepackage{xcolor}
+\newcommand{\uline}{\rule{1cm}{0.6pt}}
+% 1. 定义习题环境（按section编号：如3.1节的第一个习题为“习题3.1”）
+\newtheorem{exercise}{习题}[subsection]
+
+% 3. 显式设置编号格式为纯数字（可选，默认就是阿拉伯数字）
+\renewcommand{\theexercise}{\arabic{exercise}}
+% 2. 强制开启定理编号（beamer标准命令）
+\setbeamertemplate{theorems}[numbered]
+
+
+
+\begin{document} % 确保此句存在且无拼写错误
+
+\title{高二上练习题-拓展模块上}
+\date{\today}
+\author{钱皓楠}
+\begin{frame}{}{}
+    \titlepage{}
+\end{frame}
+
+\section{第三章-圆锥曲线}
+\subsection{双曲线}
+
+\begin{frame}{根据渐近线求双曲线方程}{}
+如果 双曲线的方程为 $$\dfrac{y^2}{a^2} - \dfrac{x^2}{b^2} = 1,$$则其渐近线方程方程为\[y =\pm \frac{a}{b} ,\]
+所有渐近线为$\dfrac{y^2}{a^2} - \dfrac{x^2}{b^2} = 1$的双曲线的方程可以设为\[\dfrac{y^2}{a^2} - \dfrac{x^2}{b^2} = \lambda.\]
+\end{frame}
+
+
+\begin{frame}{根据渐近线求双曲线方程}{}
+    \begin{exercise}
+        经过点 $P(-1,\frac{9}{2})$，两渐近线方程为 $y = \pm \frac{3}{2}x$ 的双曲线方程为\uline。
+    \end{exercise}
+
+    \begin{block}{解答}
+        双曲线方程为 $\dfrac{y^2}{18} - \dfrac{x^2}{8} = 1$. 可以设渐近线方程为 $y = \pm \frac{3}{2}x$ 的双曲线方程为  $\dfrac{y^2}{9} - \dfrac{x^2}{4} = \lambda$,代入$P(-1,\frac{9}{2})$得$\lambda = 2$,则 双曲线方程为 $\dfrac{y^2}{9} - \dfrac{x^2}{4} = 2$.
+    \end{block}
+\end{frame}
+
+
+
+
+\end{document}

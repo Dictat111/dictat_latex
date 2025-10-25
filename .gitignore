@@ -15,16 +15,23 @@
 *.nav
 *.synctex
 *.synctex(busy)
+
 # 忽略临时文件和备份文件
 *~
 *.bak
 
-# 忽略 PDF 文件（假设你只想要源代码）
-*.pdf    
-# 忽略 图片
-*.png    
+# 1. 全局忽略 PDF 和图片（默认不跟踪）
+*.pdf
+*.png
 *.jpg
-*.jpeg 
+*.jpeg
 
+# 2. 反向保留特定文件夹的 PDF（相对路径，关键！）
+# 路径：dictat_latex → tikz绘图 → 单个图形
+!tikz绘图/单个图形/*.pdf
 
+# 可选：若“单个图形”文件夹有子目录，需保留所有子目录的 PDF
+!tikz绘图/单个图形/**/*.pdf
+
+# 忽略压缩包
 *.zip
