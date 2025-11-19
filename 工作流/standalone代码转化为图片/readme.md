@@ -69,3 +69,4 @@ converter.add_to_preamble(r"""
 
 设置两种保存图片的模式,会清空文件夹,不会清空文件夹
 
+设置编译的次数,是否需要二次编译xelatex

@@ -1,7 +1,7 @@
 import subprocess
 import tempfile
 import os
-import shutil  # 新增：用于复制log文件
+import shutil  # 用于复制log和tex文件
 from typing import List, Dict, Optional, Union
 
 class LaTeXToPNGConverter:
@@ -10,7 +10,7 @@ class LaTeXToPNGConverter:
     
     支持自动命名、批量系列命名、自定义导言区内容，
     提供单文件转换和批量转换功能，支持参数预设和静默模式
-    错误时自动保存LaTeX日志到 tex_log 文件夹
+    错误时自动保存LaTeX日志和.tex源文件到对应目录
     """
     
     def __init__(self, 
@@ -20,13 +20,15 @@ class LaTeXToPNGConverter:
                  default_prefix: str = "latex_img",
                  extra_preamble: str = "",
                  default_output_dir: str = "./",
-                 log_dir: str = "./tex_log"  # 新增：日志文件夹路径
+                 log_dir: str = "./tex_log",  # 日志保存目录
+                 tex_dir: str = "./tex_source"  # 新增：失败的.tex文件保存目录
                  ):
         """
         初始化转换器
         
         参数:
-            log_dir: LaTeX日志保存目录（默认当前目录下的 tex_log 文件夹）
+            log_dir: LaTeX日志保存目录（默认 ./tex_log）
+            tex_dir: 编译失败的.tex源文件保存目录（默认 ./tex_source）
         """
         # 原有参数初始化
         self.default_border = default_border
@@ -38,9 +40,10 @@ class LaTeXToPNGConverter:
         self.auto_counter = 1
         self.conversion_history: List[Dict] = []
         
-        # 新增：日志目录初始化
+        # 日志和.tex文件目录初始化
         self.log_dir = log_dir
-        self._init_log_dir()  # 确保日志目录存在
+        self.tex_dir = tex_dir
+        self._init_dirs()  # 初始化所有必要目录
         
         # LaTeX基础模板（不变）
         self._base_template = r"""
@@ -56,33 +59,45 @@ class LaTeXToPNGConverter:
 \end{document}
         """
     
-    def _init_log_dir(self) -> None:
-        """确保日志目录存在，不存在则创建"""
+    def _init_dirs(self) -> None:
+        """初始化日志目录和.tex文件目录（不存在则创建）"""
+        # 初始化日志目录
         if not os.path.exists(self.log_dir):
             os.makedirs(self.log_dir, exist_ok=True)
             if not self.default_quiet:
                 print(f"日志目录已创建：{os.path.abspath(self.log_dir)}")
+        
+        # 初始化.tex文件保存目录
+        if not os.path.exists(self.tex_dir):
+            os.makedirs(self.tex_dir, exist_ok=True)
+            if not self.default_quiet:
+                print(f"LaTeX源文件保存目录已创建：{os.path.abspath(self.tex_dir)}")
     
-    def _save_log_files(self, tmpdir: str, output_filename: str) -> None:
+    def _save_failed_tex_and_logs(self, tmpdir: str, output_filename: str) -> None:
         """
-        从临时目录复制LaTeX日志文件到日志目录
+        编译失败时，保存.tex源文件和日志文件到对应目录
         
         参数:
-            tmpdir: LaTeX编译的临时目录（含 .log 和 .aux 等文件）
-            output_filename: 当前转换任务的输出文件名（用于日志命名）
+            tmpdir: LaTeX编译的临时目录（含 document.tex 和日志文件）
+            output_filename: 当前转换任务的输出文件名（用于文件命名）
         """
-        # 提取输出文件名（不含路径和后缀），作为日志前缀
-        log_prefix = os.path.splitext(os.path.basename(output_filename))[0]
-        # 要保存的日志文件类型（可根据需要扩展）
-        log_file_types = [".log", ".aux", ".out"]
+        # 提取文件名前缀（不含路径和后缀），确保.tex和日志文件同名关联
+        file_prefix = os.path.splitext(os.path.basename(output_filename))[0]
         
+        # 1. 保存.tex源文件（核心新增）
+        tmp_tex_path = os.path.join(tmpdir, "document.tex")
+        target_tex_path = os.path.join(self.tex_dir, f"{file_prefix}.tex")
+        if os.path.exists(tmp_tex_path):
+            shutil.copy2(tmp_tex_path, target_tex_path)
+            if not self.default_quiet:
+                print(f"失败的LaTeX源文件已保存：{os.path.abspath(target_tex_path)}")
+        
+        # 2. 保存日志文件（复用原有逻辑，与.tex文件同名）
+        log_file_types = [".log", ".aux", ".out"]
         for file_type in log_file_types:
-            # 临时目录中的日志文件路径
             tmp_log_path = os.path.join(tmpdir, f"document{file_type}")
             if os.path.exists(tmp_log_path):
-                # 目标日志路径（日志目录 + 前缀 + 文件类型）
-                target_log_path = os.path.join(self.log_dir, f"{log_prefix}{file_type}")
-                # 复制文件到日志目录
+                target_log_path = os.path.join(self.log_dir, f"{file_prefix}{file_type}")
                 shutil.copy2(tmp_log_path, target_log_path)
                 if not self.default_quiet:
                     print(f"日志文件已保存：{os.path.abspath(target_log_path)}")
@@ -122,9 +137,7 @@ class LaTeXToPNGConverter:
         return full_path
     
     def _compile_pdf(self, latex_content: str, border: int, quiet: bool, output_filename: str) -> str:
-        """
-        编译LaTeX内容为PDF（新增 output_filename 参数，用于日志保存）
-        """
+        """编译LaTeX内容为PDF（修改：调用新的保存方法）"""
         tmpdir = tempfile.mkdtemp()
         tex_path = os.path.join(tmpdir, "document.tex")
         
@@ -158,14 +171,14 @@ class LaTeXToPNGConverter:
                 text=True
             )
         except subprocess.CalledProcessError as e:
-            # 新增：编译失败时保存日志
-            self._save_log_files(tmpdir, output_filename)
+            # 关键修改：调用新方法，同时保存.tex和日志
+            self._save_failed_tex_and_logs(tmpdir, output_filename)
             raise RuntimeError(f"PDF编译失败: {e.stderr}") from e
         
         pdf_path = os.path.join(tmpdir, "document.pdf")
         if not os.path.exists(pdf_path):
-            # 新增：PDF未生成时保存日志
-            self._save_log_files(tmpdir, output_filename)
+            # PDF未生成时也保存.tex和日志
+            self._save_failed_tex_and_logs(tmpdir, output_filename)
             raise FileNotFoundError("PDF文件未生成")
         
         if not quiet:
@@ -207,7 +220,7 @@ class LaTeXToPNGConverter:
                 dpi: Optional[int] = None, 
                 quiet: Optional[bool] = None,
                 auto_prefix: Optional[str] = None) -> bool:
-        """转换单个LaTeX内容为PNG（修改：传递output_filename到_compile_pdf）"""
+        """转换单个LaTeX内容为PNG（逻辑不变，复用新的保存方法）"""
         if output_filename is None:
             output_filename = self._generate_auto_filename(auto_prefix)
         
@@ -221,7 +234,6 @@ class LaTeXToPNGConverter:
                 print(f"开始转换为: {output_filename}")
                 print("="*40)
             
-            # 关键修改：传递 output_filename 到 _compile_pdf（用于日志命名）
             pdf_path = self._compile_pdf(latex_content, current_border, current_quiet, output_filename)
             self._convert_pdf_to_png(pdf_path, output_filename, current_dpi, current_quiet)
             
@@ -249,7 +261,7 @@ class LaTeXToPNGConverter:
                      tasks: Union[List[str], List[Dict]], 
                      series_prefix: Optional[str] = None,
                      start_index: int = 1) -> Dict[str, int]:
-        """批量转换任务（不变，自动复用convert的日志功能）"""
+        """批量转换任务（不变，自动复用失败保存功能）"""
         total = len(tasks)
         success = 0
         current_index = start_index
@@ -319,14 +331,15 @@ class LaTeXToPNGConverter:
             self.extra_preamble = content
         print(f"已添加内容到导言区:\n{content}")
 
-# 使用示例（不变，错误时自动保存日志）
+# 使用示例（测试失败时保存.tex和日志）
 if __name__ == "__main__":
     converter = LaTeXToPNGConverter(
         default_border=1,
         default_dpi=600,
         default_quiet=False,  # 显示详细过程
         default_prefix="my_formula",
-        log_dir="./tex_log"  # 可自定义日志目录，如 "./logs/latex"
+        log_dir="./tex_log",    # 日志目录
+        tex_dir="./tex_source"  # .tex文件保存目录（可自定义）
     )
     
     converter.add_to_preamble(r"""
@@ -334,13 +347,13 @@ if __name__ == "__main__":
 \usetikzlibrary{shapes.geometric}
 """)
     
-    # 测试：故意写一个错误的LaTeX内容（漏写$），触发日志保存
+    # 测试：故意写错误LaTeX内容（漏写$），触发.tex和日志保存
     converter.convert(
         latex_content=r"x^2 + y^2 = r^2 圆的方程",  # 错误：缺少$符号
         output_filename="error_test.png"
     )
     
-    # 正常转换（无日志保存）
+    # 正常转换（不保存.tex和日志）
     converter.convert(
         latex_content=r"$\sin^2\theta + \cos^2\theta = 1$ 三角函数恒等式",
         auto_prefix="trig_identity"
