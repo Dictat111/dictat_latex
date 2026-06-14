@@ -2,10 +2,8 @@
 	"folders": [
         {
             "path": ".."
-        },
-        {
-            "path": "../../latex_test"
         }
+
     ],
 	"settings": {
 
@@ -163,6 +161,7 @@
     "**/*.fdb_latexmk": true,
     "**/*.toc": true,
     "**/*.loe": true,
+    "**/*.out": true,
     // "**/*.pdf": true,
     "**/*.nav": true,
     "**/*.snm": true,
